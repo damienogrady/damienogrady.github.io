@@ -1,3 +1,4 @@
+{type:"module"};
 export {pos, vals};
 var pos = {
 	north: -853555.82199773,
