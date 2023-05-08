@@ -10,21 +10,28 @@
   <!-- <script src="https://unpkg.com/leaflet-hash/leaflet-hash.js"></script> -->
     <!-- <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.0/proj4.js"
+    integrity="sha512-lO8f7sIViqr9x5VE6Q72PS6f4FoZcuh5W9YzeSyfNRJ9z/qL3bkweiwG6keGzWS0BQzNDqAWXdBhYzFD6KffIw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="deltar.js"></script>
+  <script src="sigma.js"></script>
+  <script src="calcs.js"></script>
   <script>
-    import './deltar.js';
 
     var url = window.location.href
     var coords = url.split("?")[1].split(',')
     window.alert(coords[0]+','+coords[1]);
 
-    console.print("north is " +pos.north);
+    console.log("Delta_R is " +deltar(coords[0],coords[1]));
+    test = dr_from_longlat(144.702,-38.132);
+    console.log(test)
   </script>
 </head>
 
 <body>
 <p>Click following link</p>
       <a href = "index.html" target="_self"> 
-         <img ismap src="deltaR_rgb.png" alt="Tutorials Point" border="0"/> 
+         <img ismap src="aus_currents.png" alt="Tutorials Point" border="0"/> 
       </a>
 </body>
 
