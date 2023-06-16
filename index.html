@@ -50,8 +50,8 @@
     // Function to update the dot position and odometer speed
     function updateDashboard() {
       // Update dot position randomly
-      dotX = Math.random() * mapcanvas.width;
-      dotY = Math.random() * mapcanvas.height;
+      dotX = 5 + Math.random() * (mapcanvas.width - 10);
+      dotY = 5 + Math.random() * (mapcanvas.height - 10);
 
       // Clear the mapcanvas
       ctx2.clearRect(0, 0, mapcanvas.width, mapcanvas.height);
