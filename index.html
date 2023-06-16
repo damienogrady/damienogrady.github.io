@@ -1,38 +1,109 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
-  <title>ΔR for Austrlian Coast</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <!-- <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> -->
-  <!-- <script src="https://unpkg.com/leaflet-hash/leaflet-hash.js"></script> -->
-    <!-- <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script> -->
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.0/proj4.js"
-    integrity="sha512-lO8f7sIViqr9x5VE6Q72PS6f4FoZcuh5W9YzeSyfNRJ9z/qL3bkweiwG6keGzWS0BQzNDqAWXdBhYzFD6KffIw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="deltar.js"></script>
-  <script src="sigma.js"></script>
-  <script src="calcs.js"></script>
-  <script>
-
-    var url = window.location.href
-    var coords = url.split("?")[1].split(',')
-    window.alert(coords[0]+','+coords[1]);
-
-    console.log("Delta_R is " +deltar(coords[0],coords[1]));
-    test = dr_from_longlat(144.702,-38.132);
-    console.log(test)
-  </script>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    #mapCanvas {
+      background-color: lightgray;
+      background-image: url('small_world.jpg');
+      width: 640px;
+      height: 432px;
+    }
+    #odometer {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
-
 <body>
-<p>Click following link</p>
-      <a href = "index.html" target="_self"> 
-         <img ismap src="aus_currents.png" alt="Tutorials Point" border="0"/> 
-      </a>
-</body>
+  <h1>Nathan Location</h1>
+  <canvas id="mapCanvas"></canvas>
+  <!-- <div id="odometer"></div> -->
+  <div id="speedometer">
+    <h1>Verbosity Velocity</h1>
+      <div style="display: none;"><img id="sprite" src="assets/icons.svg"></div>
+      <canvas id="canvas" width="425" height="210"></canvas>
+      <p><b>Note:</b>  Due to the dictates of the Heisenberg Uncertainty
+        Principle, Nathan's location AND verbosity cannot both <br>be
+        known at any one time.  There is therefore a fraction of
+        a delay between the two outputs.
+      </p>
+  </div>
 
+  <script src="js/fraction.min.js"></script>
+  <script src="js/speedometer.js"></script>
+  <script>
+    // Get the canvas element and set its dimensions
+    const mapcanvas = document.getElementById('mapCanvas');
+    const ctx2 = mapcanvas.getContext('2d');
+    mapcanvas.width = 640;
+    mapcanvas.height = 432;
+
+    // Set the initial dot position
+    let dotX = mapcanvas.width / 2;
+    let dotY = mapcanvas.height / 2;
+
+    // Function to update the dot position and odometer speed
+    function updateDashboard() {
+      // Update dot position randomly
+      dotX = Math.random() * mapcanvas.width;
+      dotY = Math.random() * mapcanvas.height;
+
+      // Clear the mapcanvas
+      ctx2.clearRect(0, 0, mapcanvas.width, mapcanvas.height);
+
+      // Draw the map background image
+      //ctx2.drawImage(canvas.backgroundImage, 0, 0, canvas.width, canvas.height);
+
+      // Draw the map
+      ctx2.fillStyle = 'red';
+      ctx2.beginPath();
+      ctx2.arc(dotX, dotY, 5, 0, 2 * Math.PI);
+      ctx2.fill();
+
+      // Update odometer with random speed
+      const speed = Math.random();
+      // document.getElementById('odometer').innerText = 'Speed: ' + speed.toFixed(2) + ' km/h';
+
+      // Schedule the next update
+      setTimeout(updateDashboard, 2000);
+
+      tacho = Math.random();
+      gas = Math.random();
+      mileage = Math.round(Math.random() * 100000)
+
+      let turnSignalsStates = {
+          'left':  true,
+          'right': true
+      }
+
+      let iconsStates = {
+          // main circle
+          'dippedBeam': 1,
+          'brake':      1,
+          'drift':      1,
+          'highBeam':   1,
+          'lock':       1,
+          'seatBelt':   1,
+          'engineTemp': 2,
+          'stab':       1,
+          'abs':        1,
+          // right circle
+          'gas':        2,
+          'trunk':      1,
+          'bonnet':     1,
+          'doors':      1,
+          // left circle
+          'battery':    2,
+          'oil':        2,
+          'engineFail': 2
+      }
+      draw(speed, tacho, gas, mileage, turnSignalsStates, iconsStates);
+    }
+
+    // Start the dashboard update
+    updateDashboard();
+  </script>
+</body>
 </html>
