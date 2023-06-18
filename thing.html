@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Red Dot Ping Pong</title>
+  <style>
+    #red-dot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: red;
+    }
+
+    body {
+      background-image: url('world-map.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="red-dot"></div>
+
+  <script>
+    function moveRedDot() {
+      var dot = document.getElementById("red-dot"); // Get the dot element
+
+      var x = 0; // Initial x position
+      var y = 0; // Initial y position
+
+      var directionX = 1; // Initial x direction (1: right, -1: left)
+      var directionY = 1; // Initial y direction (1: down, -1: up)
+
+      var speed = 5; // Speed of movement (adjust as needed)
+
+      function animateDot() {
+        // Update the position
+        x += speed * directionX;
+        y += speed * directionY;
+
+        // Get the window dimensions
+        var windowWidth = window.innerWidth;
+        var windowHeight = window.innerHeight;
+
+        // Check if the dot reaches the edges of the screen
+        if (x >= windowWidth - dot.offsetWidth || x <= 0) {
+          directionX *= -1; // Reverse the x direction
+        }
+        if (y >= windowHeight - dot.offsetHeight || y <= 0) {
+          directionY *= -1; // Reverse the y direction
+        }
+
+        // Set the new position
+        dot.style.left = x + "px";
+        dot.style.top = y + "px";
+
+        // Call the animation recursively
+        requestAnimationFrame(animateDot);
+      }
+
+      // Start the animation
+      animateDot();
+    }
+
+    // Call moveRedDot when the page has finished loading
+    window.onload = moveRedDot;
+  </script>
+</body>
+</html>

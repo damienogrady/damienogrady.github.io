@@ -43,70 +43,50 @@
     mapcanvas.width = 640;
     mapcanvas.height = 432;
 
-    // Set the initial dot position
+    // Set the initial dot position and velocity
     let dotX = mapcanvas.width / 2;
     let dotY = mapcanvas.height / 2;
+    let velocityX = 1; // Initial velocity along the x-axis
+    let velocityY = 1; // Initial velocity along the y-axis
+
+    // Create an image element for the dot
+    const dotImage = new Image();
+    dotImage.src = 'small_dot.jpg';
 
     // Function to update the dot position and odometer speed
     function updateDashboard() {
-      // Update dot position randomly
-      dotX = 5 + Math.random() * (mapcanvas.width - 10);
-      dotY = 5 + Math.random() * (mapcanvas.height - 10);
+      // Update dot position
+      dotX += velocityX;
+      dotY += velocityY;
+
+      // Check if the dot reaches the edges of the map and change velocity direction accordingly
+      if (dotX <= 0 || dotX >= mapcanvas.width) {
+        velocityX *= -1;
+      }
+      if (dotY <= 0 || dotY >= mapcanvas.height) {
+        velocityY *= -1;
+      }
 
       // Clear the mapcanvas
       ctx2.clearRect(0, 0, mapcanvas.width, mapcanvas.height);
 
       // Draw the map background image
-      //ctx2.drawImage(canvas.backgroundImage, 0, 0, canvas.width, canvas.height);
+      // ctx2.drawImage(canvas.backgroundImage, 0, 0, canvas.width, canvas.height);
 
-      // Draw the map
-      ctx2.fillStyle = 'red';
-      ctx2.beginPath();
-      ctx2.arc(dotX, dotY, 5, 0, 2 * Math.PI);
-      ctx2.fill();
+      // Draw the dot image
+      ctx2.drawImage(dotImage, dotX - dotImage.width / 2, dotY - dotImage.height / 2);
 
       // Update odometer with random speed
-      const speed = Math.random();
+      const speed = Math.sqrt(velocityX ** 2 + velocityY ** 2);
       // document.getElementById('odometer').innerText = 'Speed: ' + speed.toFixed(2) + ' km/h';
 
       // Schedule the next update
-      setTimeout(updateDashboard, 2000);
-
-      tacho = Math.random();
-      gas = Math.random();
-      mileage = Math.round(Math.random() * 100000)
-
-      let turnSignalsStates = {
-          'left':  true,
-          'right': true
-      }
-
-      let iconsStates = {
-          // main circle
-          'dippedBeam': 1,
-          'brake':      1,
-          'drift':      1,
-          'highBeam':   1,
-          'lock':       1,
-          'seatBelt':   1,
-          'engineTemp': 2,
-          'stab':       1,
-          'abs':        1,
-          // right circle
-          'gas':        2,
-          'trunk':      1,
-          'bonnet':     1,
-          'doors':      1,
-          // left circle
-          'battery':    2,
-          'oil':        2,
-          'engineFail': 2
-      }
-      draw(speed, tacho, gas, mileage, turnSignalsStates, iconsStates);
+      requestAnimationFrame(updateDashboard);
     }
 
     // Start the dashboard update
-    updateDashboard();
+    dotImage.onload = updateDashboard;
+
   </script>
 </body>
 </html>
