@@ -88,5 +88,53 @@
     dotImage.onload = updateDashboard;
 
   </script>
+  <script>
+
+    // Function to update the dot position and odometer speed
+    function updateSpeedo() {
+
+      // Update odometer with random speed
+      const speed = Math.random();
+      // document.getElementById('odometer').innerText = 'Speed: ' + speed.toFixed(2) + ' km/h';
+
+      // Schedule the next update
+      setTimeout(updateDashboard, 2000);
+
+      tacho = Math.random();
+      gas = Math.random();
+      mileage = Math.round(Math.random() * 100000)
+
+      let turnSignalsStates = {
+          'left':  true,
+          'right': true
+      }
+
+      let iconsStates = {
+          // main circle
+          'dippedBeam': 1,
+          'brake':      1,
+          'drift':      1,
+          'highBeam':   1,
+          'lock':       1,
+          'seatBelt':   1,
+          'engineTemp': 2,
+          'stab':       1,
+          'abs':        1,
+          // right circle
+          'gas':        2,
+          'trunk':      1,
+          'bonnet':     1,
+          'doors':      1,
+          // left circle
+          'battery':    2,
+          'oil':        2,
+          'engineFail': 2
+      }
+      draw(speed, tacho, gas, mileage, turnSignalsStates, iconsStates);
+    }
+
+    // Start the dashboard update
+    updateSpeedo();
+  </script>
 </body>
 </html>
