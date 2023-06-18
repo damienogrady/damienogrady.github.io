@@ -48,22 +48,7 @@
     let dotY = mapcanvas.height / 2;
 
     // Function to update the dot position and odometer speed
-    function updateDashboard() {
-      // Update dot position randomly
-      dotX = 5 + Math.random() * (mapcanvas.width - 10);
-      dotY = 5 + Math.random() * (mapcanvas.height - 10);
-
-      // Clear the mapcanvas
-      ctx2.clearRect(0, 0, mapcanvas.width, mapcanvas.height);
-
-      // Draw the map background image
-      //ctx2.drawImage(canvas.backgroundImage, 0, 0, canvas.width, canvas.height);
-
-      // Draw the map
-      ctx2.fillStyle = 'red';
-      ctx2.beginPath();
-      ctx2.arc(dotX, dotY, 5, 0, 2 * Math.PI);
-      ctx2.fill();
+    function updateSpeedo() {
 
       // Update odometer with random speed
       const speed = Math.random();
