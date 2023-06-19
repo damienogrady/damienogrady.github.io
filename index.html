@@ -14,9 +14,22 @@
       font-size: 24px;
       margin-top: 20px;
     }
+    .video-container {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   </style>
 </head>
 <body>
+  <div class="video-container">
+    <video width="640" height="360" autoplay muted>
+      <source src="nathan.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
   <div>
   <h1>Nathan Location and Ideation Dashboard</h1>
       <h2>Instructions:</h2>  <p>The image shows the best current estimation as to Nathan's position in the space-time continuum,
@@ -42,6 +55,24 @@
 
   <script src="js/fraction.min.js"></script>
   <script src="js/speedometer.js"></script>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var clickCount = 0;
+      var videoContainer = document.querySelector('.video-container');
+      var mapCanvas = document.getElementById('mapCanvas');
+
+      function handleMapClick() {
+        clickCount++;
+        if (clickCount === 5) {
+          videoContainer.style.display = 'block';
+          mapCanvas.removeEventListener('click', handleMapClick);
+        }
+      }
+
+      mapCanvas.addEventListener('click', handleMapClick);
+    });
+  </script>
   <script>
 // Get the canvas element and set its dimensions
 const mapcanvas = document.getElementById('mapCanvas');
