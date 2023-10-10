@@ -110,6 +110,7 @@
     </div>
 
     <div class="code-snippet-container" id="my-code-block">
+      <a href="https://code.earthengine.google.com/c25cf22e607fa4ecbd38c78f34002e30" target="_blank">View in Google Earth Engine</a>
       <pre>
         <code class="language-javascript">
         // Deltas
@@ -129,9 +130,9 @@
           return img.add(wc);
         });
         
-        // Display the mosaic
-        Map.addLayer(annuals, vis, "Annual Rainfall");
-
+        // Display the precipitation mosaic
+        Map.setCenter(167.563, -15.305, 7);
+        Map.addLayer(annuals.select(0), vis, "Annual Rainfall");
         </code>
       </pre>
     </div>
@@ -244,9 +245,8 @@
       tab[i].addEventListener('click', onTabClick, false);
     }
   </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
 
 </body>
 </html>
