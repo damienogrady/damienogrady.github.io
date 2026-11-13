@@ -1,6 +1,166 @@
-<html>
-	<body>
-		<h1>Where's the schedule?</h1>
-		<p>Ask me for an update</p>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Damien O'Grady — Remote Sensing &amp; GIS Consultant</title>
+<meta name="description" content="Python-driven geospatial pipelines that turn satellite data into decision-ready environmental intelligence. Water extent, vegetation monitoring, SDG/TNFD reporting.">
+<style>
+  :root{
+    --ink:#1a1a2e;
+    --muted:#5a5a72;
+    --accent:#4a3f8f;
+    --bg:#fafafa;
+    --card:#ffffff;
+    --line:#e4e4ec;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background-color:var(--bg);background-image:linear-gradient(rgba(74,63,143,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(74,63,143,.07) 1px,transparent 1px);background-size:28px 28px;line-height:1.6;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  header{border-bottom:3px solid var(--accent);background:#fff;padding:20px 0;}
+  header .wrap{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;}
+  header h1{font-size:1.15rem;letter-spacing:.02em;}
+  header nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:.92rem;}
+  header nav a:hover{color:var(--accent);}
+
+  .hero{padding:56px 0 40px;display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:32px;align-items:start;}
+  .hero h2{font-size:1.9rem;line-height:1.25;max-width:46rem;}
+  .hero p{margin-top:14px;max-width:44rem;color:var(--muted);}
+  .pillars{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;}
+  .pillar{background:#efeefb;color:var(--accent);border-radius:999px;padding:4px 14px;font-size:.85rem;font-weight:600;}
+  .hero-image{display:block;width:100%;height:auto;}
+
+  @media(max-width:640px){
+    .hero{grid-template-columns:1fr;gap:24px;}
+    .hero-image{width:min(220px,100%);justify-self:end;}
+  }
+
+  section{padding:36px 0;border-top:1px solid var(--line);}
+  section h3{font-size:1.25rem;margin-bottom:6px;}
+  section .lede{color:var(--muted);margin-bottom:24px;max-width:44rem;}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px;display:flex;flex-direction:column;}
+  .card-image{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;margin-bottom:16px;}
+  .card .tag{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700;margin-bottom:8px;}
+  .card h4{font-size:1.05rem;margin-bottom:8px;}
+  .card p{font-size:.92rem;color:var(--muted);flex-grow:1;}
+  .card .links{margin-top:14px;display:flex;gap:14px;}
+  .card .links a{font-size:.88rem;color:var(--accent);text-decoration:none;font-weight:600;}
+  .card .links a:hover{text-decoration:underline;}
+
+  .legacy{background:#f2f1f8;border:1px dashed var(--line);}
+  .legacy .tag{color:var(--muted);}
+
+  .live-card{border-left:4px solid var(--accent);}
+  .live-badge{display:inline-block;background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:4px;margin-bottom:10px;text-transform:uppercase;}
+
+  footer{padding:28px 0 40px;color:var(--muted);font-size:.85rem;}
+  footer a{color:var(--accent);text-decoration:none;}
+  footer a:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Damien O&rsquo;Grady</h1>
+    <nav>
+      <a href="#demonstrations">Demonstrations</a>
+      <a href="#live">Live tools</a>
+      <a href="#heritage">Earlier work</a>
+      <a href="https://github.com/damienogrady">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero wrap">
+  <div>
+    <h2>Python-driven geospatial pipelines that turn satellite data into decision-ready environmental intelligence.</h2>
+    <p>I build reproducible remote sensing pipelines &mdash; Google Earth Engine for large-area raster, BigQuery and PostGIS for large vector, QGIS and GRASS GIS downstream. Clients should own their toolchain, not rent it.</p>
+    <div class="pillars">
+      <span class="pillar">Water extent &amp; change</span>
+      <span class="pillar">Vegetation &amp; ecosystem time-series</span>
+      <span class="pillar">Nature-related reporting (SDG)</span>
+    </div>
+  </div>
+  <img class="hero-image" src="images/lidar.png" alt="Portrait rendered as a colourful LiDAR point cloud">
+</div>
+
+<section id="demonstrations">
+  <div class="wrap">
+    <h3>Public demonstrations</h3>
+    <p class="lede">Every product in these repositories is regenerated from raw satellite imagery by the code. Each pipeline reruns end to end on any qualifying study area.</p>
+    <div class="grid">
+
+      <div class="card">
+        <img class="card-image" src="images/aral.png" alt="Aral Sea waterline change map">
+        <div class="tag">Water extent &amp; change</div>
+        <h4>Aral Sea Waterline Change</h4>
+        <p>Broad-area water-change mapping across the Aral Sea using MODIS (2000&ndash;2024) and Google Earth Engine: annual classifications, per-year thresholds and regional water-area time series. The approach echoes published multi-sensor water-mapping research in the same study region.</p>
+        <div class="links"><a href="https://github.com/damienogrady/aral-sea-waterline-change">View repository &rarr;</a></div>
+      </div>
+
+      <div class="card">
+        <img class="card-image" src="images/flood.png" alt="Flood extent imagery from the Indus basin">
+        <div class="tag">Water extent &amp; change &middot; Radar</div>
+        <h4>Flood Extent Explorer</h4>
+        <p>An interactive Sentinel-1 flood explorer built around the 2022 Indus basin floods &mdash; choose your own area and two dates, compare radar mosaics, and export imagery for further analysis. Demonstrates the VH&minus;VV open-water separation at work, any location, any time.</p>
+        <div class="links"><a href="https://github.com/damienogrady/flood-extent-explorer">View repository &rarr;</a></div>
+      </div>
+
+      <div class="card">
+        <img class="card-image" src="images/montage.png" alt="Coastal shoreline change analysis montage">
+        <div class="tag">Coastal &middot; Growth area</div>
+        <h4>Coastal Shoreline Change Toolkit</h4>
+        <p>An interactive, form-based demonstration of shoreline change: cloud masking, temporal compositing, shoreline extraction and projected transect geometry &mdash; all orchestrated in Python against Google Earth Engine, with methodology documented.</p>
+        <div class="links"><a href="https://github.com/damienogrady/coastal-shoreline-toolkit">View repository &rarr;</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="live">
+  <div class="wrap">
+    <h3>Live tools</h3>
+    <p class="lede">A running, publicly accessible system &mdash; not a screenshot of one.</p>
+    <div class="grid">
+      <div class="card live-card">
+        <span class="live-badge">Live &middot; Public</span>
+        <h4>Australian &Delta;R Calculator</h4>
+        <p>The national marine radiocarbon reservoir effect calculator, accompanying the published &Delta;R atlas. I did the modelling and built the web application. Research-backed, in daily use by the Quaternary science community.</p>
+        <div class="links">
+          <a href="./delta_r.html">Read the walkthrough &rarr;</a>
+          <a href="https://delta-r-calc.jcu.io">Use the calculator &rarr;</a>
+          <a href="https://github.com/damienogrady">More on GitHub &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="heritage">
+  <div class="wrap">
+    <h3>Earlier work</h3>
+    <p class="lede">Code with a longer history &mdash; part of the engineering thread behind the current practice.</p>
+    <div class="grid">
+      <div class="card legacy">
+        <div class="tag">Heritage &middot; HPC</div>
+        <h4>GrassPerlenSpiel</h4>
+        <p>Reusable Perl modules for generating GRASS GIS scripts and submitting them as PBS jobs to a high-performance computing cluster &mdash; GRASS sessions, ASCII raster I/O, job scripting and configuration, from an earlier phase of scripted geoprocessing at scale.</p>
+        <div class="links"><a href="https://github.com/damienogrady/GrassPerlenSpiel">View repository &rarr;</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Damien O&rsquo;Grady</strong> &mdash; independent remote sensing and GIS consultant, Melbourne, Australia.
+  Methods underpinned by my own peer-reviewed publications; commercial client work delivered traceable, defensible and reproducible.
+  <a href="https://github.com/damienogrady">github.com/damienogrady</a></p>
+</footer>
+
+</body>
 </html>

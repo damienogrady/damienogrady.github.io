@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Australian ΔR Calculator — Damien O&amp;rsquo;Grady</title>
+<meta name="description" content="How sparse dated observations around 34,000 km of Australian coastline became a live, queryable spatial model: the Australian ΔR Calculator.">
+<style>
+  :root{
+    --ink:#1a1a2e;
+    --muted:#5a5a72;
+    --accent:#4a3f8f;
+    --bg:#fafafa;
+    --card:#ffffff;
+    --line:#e4e4ec;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background-color:var(--bg);background-image:linear-gradient(rgba(74,63,143,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(74,63,143,.07) 1px,transparent 1px);background-size:28px 28px;line-height:1.6;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  header{border-bottom:3px solid var(--accent);background:#fff;padding:20px 0;}
+  header .wrap{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;}
+  header h1{font-size:1.15rem;letter-spacing:.02em;}
+  header h1 a{color:var(--ink);text-decoration:none;}
+  header nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:.92rem;}
+  header nav a:hover{color:var(--accent);}
+
+  section{padding:36px 0;border-top:1px solid var(--line);}
+  section:first-of-type{border-top:none;}
+  section h3{font-size:1.25rem;margin-bottom:6px;}
+  section .lede{color:var(--muted);margin-bottom:24px;max-width:44rem;}
+
+  article h2{font-size:1.65rem;line-height:1.3;margin-bottom:14px;max-width:46rem;}
+  .live-line{background:#efeefb;border:1px solid var(--line);border-radius:8px;padding:14px 18px;font-weight:600;margin:24px 0;max-width:44rem;}
+  .live-line a{color:var(--accent);}
+
+  figure{margin:28px 0;max-width:44rem;}
+  figure img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:8px;}
+  figcaption{font-size:.85rem;color:var(--muted);margin-top:10px;max-width:44rem;}
+
+  .article-section{margin-top:36px;padding-top:24px;border-top:1px solid var(--line);}
+  .article-section h4{font-size:1.2rem;margin-bottom:12px;color:var(--accent);}
+  .article-section p{margin-bottom:16px;max-width:44rem;}
+  .article-section p:last-child{margin-bottom:0;}
+  .article-section ul{margin:0 0 16px 20px;max-width:44rem;}
+  .article-section li{margin-bottom:12px;}
+  .article-section strong{color:var(--ink);}
+
+  .callout{background:var(--card);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;padding:18px 20px;margin:24px 0;max-width:44rem;}
+
+  .reference{background:#f2f1f8;border:1px dashed var(--line);border-radius:8px;padding:18px 20px;font-size:.92rem;max-width:48rem;}
+  .reference a{color:var(--accent);}
+
+  footer{padding:28px 0 40px;color:var(--muted);font-size:.85rem;}
+  footer a{color:var(--accent);text-decoration:none;}
+  footer a:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1><a href="index.html">Damien O&rsquo;Grady</a></h1>
+    <nav>
+      <a href="index.html#demonstrations">Demonstrations</a>
+      <a href="index.html#live">Live tools</a>
+      <a href="index.html#heritage">Earlier work</a>
+      <a href="https://github.com/damienogrady">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <article>
+
+      <h2>The Australian &Delta;R Calculator: interactive spatial modelling</h2>
+
+      <p class="live-line">Live at <a href="https://delta-r-calc.jcu.io">https://delta-r-calc.jcu.io</a> &mdash; try it: click anywhere on the Australian coast and the tool returns the local &Delta;R value, with its uncertainty.</p>
+
+      <figure>
+        <img src="images/delta_r.png" alt="The modelled ΔR surface around the Australian coast: sparse dated observations — each labelled with its measured value and uncertainty — interpolated into a continuous surface.">
+        <figcaption>The modelled &Delta;R surface around the Australian coast: sparse dated observations &mdash; each labelled with its measured value and uncertainty &mdash; interpolated into a continuous surface. <em>(Ulm et al. 2023)</em></figcaption>
+      </figure>
+
+      <div class="article-section">
+        <h4>The problem behind the tool</h4>
+        <p>Radiocarbon dating is how we put ages on shells, bones, charcoal and sediments &mdash; the backbone of archaeology, Quaternary science and palaeoenvironmental reconstruction. But a radiocarbon date measured on marine material doesn&rsquo;t map cleanly onto calendar years. The ocean&rsquo;s carbon is not the atmosphere&rsquo;s carbon: surface seawater carries a radiocarbon signature offset from the air, and that offset &mdash; the marine reservoir effect &mdash; varies from place to place.</p>
+        <p>A shell collected off one stretch of coast can date centuries &ldquo;older&rdquo; than an identical shell collected elsewhere. So every marine radiocarbon measurement needs a <strong>local correction, called &Delta;R</strong>, before it can be calibrated to a real calendar age. Getting &Delta;R wrong doesn&rsquo;t produce an obviously bad date &mdash; it produces a plausible-looking date that is silently wrong, which is worse.</p>
+        <p>Here is the practical difficulty: &Delta;R can&rsquo;t be measured everywhere. We only have &Delta;R values where someone has dated suitable paired samples &mdash; shells of known collection age, or marine and terrestrial material buried together. Around Australia, those observations are sparse and unevenly distributed: clusters where research has been busy, long empty stretches where nobody has worked.</p>
+        <p>So the spatial problem is a classic one: <strong>a handful of dated observations scattered irregularly around 34,000 km of coastline, and a question that must be answered at any point on that coast.</strong> Between the observations, &Delta;R doesn&rsquo;t jump discretely &mdash; it varies continuously, influenced by oceanography such as currents and coastal geometry. It needs estimating, with the influence of nearby measurements weighted sensibly and the uncertainty of the estimate made visible.</p>
+      </div>
+
+      <div class="article-section">
+        <h4>The approach</h4>
+        <p>The answer is <strong>kriging</strong> &mdash; the standard geostatistical method for interpolating a continuous surface from irregular point observations. Each observation contributes to the estimate at a queried location according to the modelled spatial relationship between the measurements: how much two &Delta;R values can be expected to resemble each other as a function of their separation along the coast.</p>
+        <p>The modelling work that sits behind the Calculator did exactly this: it modelled the relationship between each observed &Delta;R value and its neighbours, and derived from that a <strong>rule for the entire Australian coast</strong> &mdash; not a set of point answers, but a continuous surface. Crucially, kriging doesn&rsquo;t just produce a best estimate; it produces a variance. The Calculator can therefore tell a researcher not only the expected &Delta;R at their site, but how confident to be in that number given how far it lies from the nearest observations. A query in data-rich waters and a query in a long data gap get different, honest answers.</p>
+      </div>
+
+      <div class="article-section">
+        <h4>The product</h4>
+        <p>The Australian &Delta;R Calculator (<a href="https://delta-r-calc.jcu.io">https://delta-r-calc.jcu.io</a>) packages that modelled surface as a live, public web application. Click on a location and the tool returns the local &Delta;R and its uncertainty, on demand. It accompanies a paper I co-authored, <a href="#reference"><strong>Ulm et al. (2023) &Delta;R atlas</strong></a> &mdash; the research publication that assembled and analysed the observations &mdash; and gives that research a working, queryable delivery vehicle: the atlas is the evidence base, the Calculator is the interface to it.</p>
+        <div class="callout">
+          <p><strong>My involvement was the modelling and the web construction:</strong> building the spatial model that turns sparse dated observations into the coastal &Delta;R surface, and building the web tool that serves it.</p>
+        </div>
+      </div>
+
+      <div class="article-section">
+        <h4>Why I point to this piece</h4>
+        <p>I show this work because it shows the whole pattern of my practice in miniature:</p>
+        <ul>
+          <li><strong>From sparse, messy observations to a defensible spatial estimate</strong> &mdash; the same shape as the problems I solve for clients in water, vegetation and environmental monitoring.</li>
+          <li><strong>Uncertainty carried honestly alongside the answer</strong> &mdash; an estimate without its confidence is not a decision-grade product; it&rsquo;s a guess wearing a number.</li>
+          <li><strong>Research shipped as a working tool, not a PDF</strong> &mdash; a live, public, reproducible interface that anyone can interrogate: analysis that is <strong>traceable, defensible and reproducible</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="article-section" id="reference">
+        <h4>Reference</h4>
+        <p class="reference"><strong>Ulm, S., D. O&rsquo;Grady, F. Petchey, Q. Hua, G. Jacobsen, L. Linnenlucke, B. David, D. Rosendahl, M.M.E. Bunbury, M.I. Bird and P.J. Reimer 2023</strong> Australian marine radiocarbon reservoir effects: &Delta;R atlas and &Delta;R calculator for Australian mainland coasts and near-shore islands. Radiocarbon 65(5):1139-1159. <a href="https://doi.org/10.1017/RDC.2023.95">https://doi.org/10.1017/RDC.2023.95</a></p>
+      </div>
+
+    </article>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Damien O&rsquo;Grady</strong> &mdash; independent remote sensing and GIS consultant, Melbourne, Australia.
+  Methods underpinned by my own peer-reviewed publications; commercial client work delivered traceable, defensible and reproducible.
+  <a href="https://github.com/damienogrady">github.com/damienogrady</a></p>
+</footer>
+
+</body>
+</html>
