@@ -21,22 +21,14 @@
   header{border-bottom:3px solid var(--accent);background:#fff;padding:8px 0;}
   header .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
   header h1{font-size:1.15rem;letter-spacing:.02em;}
-  .header-icon{display:block;height:3.5em;width:auto;flex:none;}
-  .header-icon-link{display:block;margin-left:auto;margin-right:8px;flex:none;}
   header nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:.92rem;}
   header nav a:hover{color:var(--accent);}
 
-  .hero{padding:56px 24px 40px;display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:32px;align-items:start;}
-  .hero h2{font-size:1.9rem;line-height:1.25;max-width:46rem;}
-  .hero p{margin-top:14px;max-width:44rem;color:var(--muted);}
+  .hero{padding:56px 24px 40px;}
+  .hero h2{font-size:1.9rem;line-height:1.25;}
+  .hero p{margin-top:14px;color:var(--muted);}
   .pillars{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;}
   .pillar{background:#efeefb;color:var(--accent);border-radius:999px;padding:4px 14px;font-size:.85rem;font-weight:600;}
-  .hero-image{display:block;width:100%;height:auto;}
-
-  @media(max-width:640px){
-    .hero{grid-template-columns:1fr;gap:24px;}
-    .hero-image{width:min(220px,100%);justify-self:end;}
-  }
 
   section{padding:36px 0;border-top:1px solid var(--line);}
   section h3{font-size:1.25rem;margin-bottom:6px;}
@@ -74,7 +66,6 @@
       <a href="#heritage">Earlier work</a>
       <a href="https://github.com/damienogrady">GitHub</a>
     </nav>
-    <a class="header-icon-link" href="la_mouette.html"><img class="header-icon" src="images/icon.png" alt=""></a>
   </div>
 </header>
 
@@ -88,7 +79,6 @@
       <span class="pillar">Nature-related reporting (SDG)</span>
     </div>
   </div>
-  <img class="hero-image" src="images/lidar.png" alt="Portrait rendered as a colourful LiDAR point cloud">
 </div>
 
 <section id="demonstrations">
