@@ -3,277 +3,167 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Publications — Damien O'Grady</title>
-<meta name="description" content="Sixteen peer-reviewed publications by Damien O'Grady — remote sensing method development for water and flood mapping, and spatial-modelling contributions to collaborative research in archaeology, Quaternary science and hydrology.">
-<!-- NOTE: ampersands below intentionally written as &amp; -->
+<title>Publications &mdash; Damien O&rsquo;Grady</title>
+<meta name="description" content="Peer-reviewed publications by Damien O&rsquo;Grady &mdash; remote sensing method development for water and flood mapping, and spatial-modelling contributions to collaborative research in archaeology, Quaternary science and hydrology.">
 <style>
-  :root {
-    --ceng: #607080;  /* engineering era — slate grey   */
-    --cres: #3e7a78;  /* university research — muted teal */
-    --cind: #56688e;  /* consulting — slate blue         */
-    --cfree:#a88838;  /* independent — muted gold        */
-    --ink: #22272e;
-    --soft: #55606c;
-    --paper: #fbfaf7;
-    --hair: #e4e1da;
+  :root{
+    --ink:#1a1a2e;
+    --muted:#5a5a72;
+    --accent:#4a3f8f;
+    --bg:#fafafa;
+    --card:#ffffff;
+    --line:#e4e4ec;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: var(--ink);
-    background: var(--paper);
-    line-height: 1.55;
-  }
-  .wrap { max-width: 46rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background-color:var(--bg);background-image:linear-gradient(rgba(74,63,143,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(74,63,143,.07) 1px,transparent 1px);background-size:28px 28px;line-height:1.6;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
 
-  /* Site header — mirrors the landing-page pattern */
-  .site-header {
-    border-bottom: 3px solid var(--cfree);
-    background: #fff;
-    padding: 8px 0;
-  }
-  .site-header .wrap {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .site-header h1 a {
-    color: var(--ink);
-    text-decoration: none;
-    font-size: 1.15rem;
-    letter-spacing: .02em;
-  }
-  .site-header nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 20px;
-  }
-  .site-header nav a {
-    color: var(--soft);
-    text-decoration: none;
-    font-size: .92rem;
-  }
-  .site-header nav a:hover { color: var(--cfree); }
+  header{border-bottom:3px solid var(--accent);background:#fff;padding:8px 0;}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+  header h1{font-size:1.15rem;letter-spacing:.02em;}
+  header nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:.92rem;}
+  header nav a:hover{color:var(--accent);}
 
-  /* Page title block */
-  .pagehead { margin: 3rem 0 1.5rem; }
-  .pagehead .eyebrow { color: var(--cfree); text-size-adjust: .8rem; font-size: .8rem;
-    text-transform: uppercase; letter-spacing: .12em; margin-bottom: .4rem; }
-  .pagehead h2 { font-size: 2rem; letter-spacing: -.01em; margin-bottom: .75rem; }
-  .lede { color: var(--soft); font-size: 1.02rem; }
+  .page-hero{padding:48px 0 24px;}
+  .page-hero h2{font-size:1.9rem;line-height:1.25;}
+  .page-hero p{margin-top:14px;color:var(--muted);max-width:46rem;}
 
-  /* Sections */
-  section.block { margin-top: 3rem; }
-  .sechead { display: flex; align-items: baseline; gap: .6rem; border-bottom: 1px solid var(--hair); padding-bottom: .45rem; }
-  .sechead h3 { font-size: 1.18rem; letter-spacing: .01em; }
-  .sechead .count { color: var(--soft); font-size: .8rem; white-space: nowrap; }
-  .frame { color: var(--soft); font-style: italic; margin: .6rem 0 1.1rem; font-size: .95rem; }
+  section{padding:36px 0;border-top:1px solid var(--line);}
+  section h3{font-size:1.25rem;margin-bottom:6px;}
+  section .lede{color:var(--muted);margin-bottom:20px;max-width:44rem;}
+  .count{display:inline-block;background:#efeefb;color:var(--accent);border-radius:999px;padding:2px 12px;font-size:.75rem;font-weight:700;margin-left:10px;vertical-align:middle;}
 
-  /* Section accent colours (CV palette carried to the site) */
-  .accent-teal  .sechead h3 { color: var(--cres); }
-  .accent-slate .sechead h3 { color: var(--cind); } /* see fix note: use --cind */
-  .accent-gold  .sechead h3 { color: var(--cfree); }
-  .accent-eng   .sechead h3 { color: var(--ceng); }
+  .publist{list-style:none;}
+  .publist li{position:relative;padding:14px 0 14px 44px;border-bottom:1px solid var(--line);font-size:.94rem;}
+  .publist li:last-child{border-bottom:none;}
+  .publist li::before{content:counter(pub,decimal-leading-zero);position:absolute;left:0;top:16px;font-size:.78rem;font-weight:700;color:var(--accent);}
+  .pubgroup{counter-reset:pub;}
+  .publist li{counter-increment:pub;}
+  .publist .journal{font-style:italic;}
+  .publist .doi{display:block;margin-top:4px;font-size:.82rem;}
+  .publist .doi a{color:var(--accent);text-decoration:none;font-weight:600;}
+  .publist .doi a:hover{text-decoration:underline;}
+  .crosslink{margin-top:6px;font-size:.85rem;color:var(--muted);}
+  .crosslink a{color:var(--accent);text-decoration:none;font-weight:600;}
+  .crosslink a:hover{text-decoration:underline;}
 
-  /* Citations */
-  ol.publist { list-style: none; counter-reset: pub; }
-  ol.publist li {
-    counter-increment: pub;
-    padding: .85rem 0 .85rem 2.3rem;
-    border-bottom: 1px dotted var(--hair);
-    position: relative;
-    font-size: .95rem;
-  }
-  ol.publist li::before {
-    content: counter(pub, decimal-leading-zero);
-    position: absolute; left: 0; top: .95rem;
-    color: var(--cfree); font-size: .78rem; font-weight: 700;
-  }
-  ol.publist .authors { display: block; }
-  ol.publist .doi { color: var(--cind); text-decoration: none; font-size: .82rem; white-space: nowrap; }
-  ol.publist .doi:hover { color: var(--cfree); }
-  .me { font-weight: 700; }          /* Damien's own name */
-  .journal { font-style: italic; }
-  .crosslink { display: block; margin-top: .3rem; font-size: .85rem; }
-  .crosslink a { color: var(--cfree); text-decoration: none; }
-  .crosslink a:hover { text-decoration: underline; }
+  .strip{background:#f2f1f8;border:1px dashed var(--line);border-radius:8px;padding:18px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px;}
+  .strip .note{color:var(--muted);font-size:.9rem;flex-basis:100%;}
+  .strip a{color:var(--accent);text-decoration:none;font-weight:600;font-size:.92rem;}
+  .strip a:hover{text-decoration:underline;}
 
-  /* Downloads strip */
-  .strip { margin-top: 3.5rem; border-top: 3px solid var(--cfree); padding-top: 1.1rem; }
-  .strip p { font-size: .9rem; color: var(--soft); margin-bottom: .7rem; }
-  .strip a { display: inline-block; margin: .25rem 1rem .25rem 0; padding: .45rem .9rem;
-    border: 1px solid var(--cind); color: var(--cind); text-decoration: none;
-    border-radius: 999px; font-size: .85rem; }
-  .strip a:hover { background: var(--cind); color: #fff; }
-
-  /* Footer — matches the site's footer line */
-  footer { border-top: 1px solid var(--hair); margin-top: 3rem; padding-top: 1.1rem;
-    color: var(--soft); font-size: .85rem; }
-  footer a { color: var(--cind); text-decoration: none; }
-  footer a:hover { color: var(--cfree); }
-
-  @media (max-width: 480px) {
-    .site-header .wrap { flex-direction: column; gap: .6rem; }
-    ol.publist li { padding-left: 1.9rem; font-size: .9rem; }
-  }
+  footer{padding:28px 0 40px;color:var(--muted);font-size:.85rem;}
+  footer a{color:var(--accent);text-decoration:none;}
+  footer a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
 
-  <!-- ======================= Site header ======================= -->
-  <header class="site-header">
-    <div class="wrap">
-      <h1><a href="./">Damien O'Grady</a></h1>
-      <nav>
-        <a href="./#demonstrations">Demonstrations</a>
-        <a href="./#live">Live tools</a>
-        <a href="./#heritage">Earlier work</a>
-        <a href="https://github.com/damienogrady">GitHub</a>
-      </nav>
-    </div>
-  </header>
-
-<div class="wrap">
-
-  <!-- ======================= Page head ======================= -->
-  <header class="pagehead">
-    <div class="eyebrow">Evidence</div>
-    <h2>Publications</h2>
-    <p class="lede">Peer-reviewed publications: direct remote sensing method development for water and flood mapping, and spatial-modelling contributions to collaborative research in archaeology, Quaternary science and hydrology. This is the public record behind the standard I bring to client work — analysis that is traceable, defensible and reproducible. Commercial client work is held to the same standard and is confidential, by the client organisations&rsquo; choice.</p>
-  </header>
-
-  <!-- ============ Section A — Water extent & flood mapping ============ -->
-  <section class="block accent-teal">
-    <div class="sechead">
-      <h3>Water extent and flood mapping</h3>
-      <span class="count">4 papers</span>
-    </div>
-    <p class="frame">The method development behind my headline service — radar mapping of water extent, from single reaches to continental scale.</p>
-    <ol class="publist">
-      <li>
-        <span class="authors"><span class="me">O&rsquo;Grady, D.</span>, Leblanc, M. &amp; Bass, A. (2014). The use of radar satellite data from multiple incidence angles improves surface water mapping. <span class="journal">Remote Sensing of Environment.</span></span>
-        <a class="doi" href="https://doi.org/10.1016/j.rse.2013.10.006">doi:10.1016/j.rse.2013.10.006</a>
-      </li>
-      <li>
-        <span class="authors"><span class="me">O&rsquo;Grady, D.</span>, Leblanc, M. &amp; Gillieson, D. (2013). Relationship of local incidence angle with satellite radar backscatter for different surface conditions. <span class="journal">International Journal of Applied Earth Observation and Geoinformation.</span></span>
-        <a class="doi" href="https://doi.org/10.1016/j.jag.2013.02.005">doi:10.1016/j.jag.2013.02.005</a>
-      </li>
-      <li>
-        <span class="authors"><span class="me">O&rsquo;Grady, D.</span> &amp; Leblanc, M. (2014). Radar mapping of broad-scale inundation: challenges and opportunities in Australia. <span class="journal">Stochastic Environmental Research and Risk Assessment.</span></span>
-        <a class="doi" href="https://doi.org/10.1007/s00477-013-0712-3">doi:10.1007/s00477-013-0712-3</a>
-      </li>
-      <li>
-        <span class="authors"><span class="me">O&rsquo;Grady, D.</span>, Leblanc, M. &amp; Gillieson, D. (2011). Use of ENVISAT ASAR Global Monitoring Mode to complement optical data in the mapping of rapid broad-scale flooding in Pakistan. <span class="journal">Hydrology and Earth System Sciences.</span></span>
-        <a class="doi" href="https://doi.org/10.5194/hess-15-3475-2011">doi:10.5194/hess-15-3475-2011</a>
-      </li>
-    </ol>
-    <p class="crosslink">These methods are running today in the <a href="https://github.com/damienogrady/flood-extent-explorer">Flood Extent Explorer</a> and <a href="https://github.com/damienogrady/aral-sea-waterline-change">Aral Sea waterline change</a> repositories — see the methods in action.</p>
-  </section>
-
-  <!-- ======== Section B — Water, carbon & floodplain processes ======== -->
-  <section class="block accent-slate">
-    <div class="sechead">
-      <h3>Water, carbon and floodplain processes</h3>
-      <span class="count">4 papers</span>
-    </div>
-    <p class="frame">Collaborative research on the water and carbon dynamics of the landscapes I now map for clients.</p>
-    <ol class="publist">
-      <li>
-        <span class="authors">Shen, H., Leblanc, M., Frappart, F., Seoane, L., <span class="me">O&rsquo;Grady, D.</span>, Olioso, A. &amp; Tweed, S. (2017). A comparative study of GRACE with continental evapotranspiration estimates in Australian semi-arid and arid basins: sensitivity to climate variability and extremes. <span class="journal">Water.</span></span>
-        <a class="doi" href="https://doi.org/10.3390/w9090614">doi:10.3390/w9090614</a>
-      </li>
-      <li>
-        <span class="authors">Bass, A. M., <span class="me">O&rsquo;Grady, D.</span>, Leblanc, M., Tweed, S., Nelson, P. N. &amp; Bird, M. I. (2014). Carbon dioxide and methane emissions from a wet-dry tropical floodplain in Northern Australia. <span class="journal">Wetlands.</span></span>
-        <a class="doi" href="https://doi.org/10.1007/s13157-014-0522-5">doi:10.1007/s13157-014-0522-5</a>
-      </li>
-      <li>
-        <span class="authors">Bass, A. M., Munksgaard, N. C., <span class="me">O&rsquo;Grady, D.</span>, Williams, M. J. M., Bostock, H. C., Rintoul, S. R. &amp; Bird, M. J. (2014). Continuous shipboard measurements of oceanic &delta;<sup>18</sup>O, &delta;D and &delta;<sup>13</sup>C<sub>DIC</sub> along a transect from New Zealand to Antarctica using cavity ring-down isotope spectrometry. <span class="journal">Journal of Marine Systems.</span></span>
-        <a class="doi" href="https://doi.org/10.1016/j.jmarsys.2014.04.003">doi:10.1016/j.jmarsys.2014.04.003</a>
-      </li>
-      <li>
-        <span class="authors">Bass, A. M., <span class="me">O&rsquo;Grady, D.</span>, Berkin, C., Leblanc, M., Tweed, S., Nelson, P. N. &amp; Bird, M. I. (2013). High diurnal variation in dissolved inorganic C, &delta;<sup>13</sup>C values and surface efflux of CO<sub>2</sub> in a seasonal tropical floodplain. <span class="journal">Environmental Chemistry Letters.</span></span>
-        <a class="doi" href="https://doi.org/10.1007/s10311-013-0421-7">doi:10.1007/s10311-013-0421-7</a>
-      </li>
-    </ol>
-  </section>
-
-  <!-- ===== Section C — Archaeology & palaeoenvironments ===== -->
-  <section class="block accent-gold">
-    <div class="sechead">
-      <h3>Archaeology and palaeoenvironments</h3>
-      <span class="count">5 papers</span>
-    </div>
-    <p class="frame">Spatial modelling and mapping contributions to collaborative archaeological and palaeoenvironmental research.</p>
-    <ol class="publist">
-      <li>
-        <span class="authors">Ulm, S., <span class="me">O&rsquo;Grady, D.</span>, Petchey, F., Hua, Q., Jacobsen, G., Linnenlucke, L., David, B., Rosendahl, D., Bunbury, M. M. E., Bird, M. I. &amp; Reimer, P. J. (2023). Australian marine radiocarbon reservoir effects: &Delta;R atlas and &Delta;R calculator for Australian mainland coasts and near-shore islands. <span class="journal">Radiocarbon.</span></span>
-        <a class="doi" href="https://doi.org/10.1017/RDC.2023.95">doi:10.1017/RDC.2023.95</a>
-        <span class="crosslink">I built the modelling and web construction behind the live calculator — <a href="./delta_r.html">read the walkthrough</a>.</span>
-      </li>
-      <li>
-        <span class="authors">Ditchfield, K., Ulm, S., Manne, T., Farr, H., <span class="me">O&rsquo;Grady, D.</span> &amp; Veth, P. (2022). Framing Australian Pleistocene coastal occupation and archaeology. <span class="journal">Quaternary Science Reviews.</span></span>
-        <a class="doi" href="https://doi.org/10.1016/j.quascirev.2022.107706">doi:10.1016/j.quascirev.2022.107706</a>
-      </li>
-      <li>
-        <span class="authors">Bird, M. I., Condie, S. A., O&rsquo;Conor, S., <span class="me">O&rsquo;Grady, D.</span>, Reepmeyer, C., Ulm, S., Zega, M., Saltr&eacute;, F. &amp; Bradshaw, C. (2019). Early human settlement of Sahul was not an accident. <span class="journal">Scientific Reports.</span></span>
-        <a class="doi" href="https://doi.org/10.1038/s41598-019-42946-9">doi:10.1038/s41598-019-42946-9</a>
-      </li>
-      <li>
-        <span class="authors">Bird, M. I., <span class="me">O&rsquo;Grady, D.</span> &amp; Ulm, S. (2016). Humans, water and the colonization of Australia. <span class="journal">Proceedings of the National Academy of Sciences.</span></span>
-        <a class="doi" href="https://doi.org/10.1073/pnas.1608470113">doi:10.1073/pnas.1608470113</a>
-      </li>
-      <li>
-        <span class="authors">Nott, J., Forsyth, A., Rhodes, E. &amp; <span class="me">O&rsquo;Grady, D.</span> (2015). The origin of centennial- to millennial-scale chronological gaps in storm emplaced beach ridge plains. <span class="journal">Marine Geology.</span></span>
-        <a class="doi" href="https://doi.org/10.1016/j.margeo.2015.05.011">doi:10.1016/j.margeo.2015.05.011</a>
-        <span class="crosslink">Storm-deposited coastal landforms — the same shores the <a href="https://github.com/damienogrady/coastal-shoreline-toolkit">coastal shoreline change toolkit</a> measures.</span>
-      </li>
-    </ol>
-  </section>
-
-  <!-- ===== Section D — Land, vegetation & biodiversity ===== -->
-  <section class="block accent-eng">
-    <div class="sechead">
-      <h3>Land, vegetation and biodiversity</h3>
-      <span class="count">3 papers</span>
-    </div>
-    <p class="frame">Sampling design, vegetation measurement and biodiversity targeting.</p>
-    <ol class="publist">
-      <li>
-        <span class="authors">Nelson, P. N., Banabas, M., Goodrick, I., Webb, M. J., Huth, N. I. &amp; <span class="me">O&rsquo;Grady, D.</span> (2015). Soil sampling in oil palm plantations: a practical design that accounts for lateral variability at the tree scale. <span class="journal">Plant and Soil.</span></span>
-        <a class="doi" href="https://doi.org/10.1007/s11104-015-2490-9">doi:10.1007/s11104-015-2490-9</a>
-      </li>
-      <li>
-        <span class="authors">Nelson, P. N., Webb, M. J., Banabas, M., Nake, S., Goodrick, I., Gordon, J., <span class="me">O&rsquo;Grady, D.</span> &amp; Dubos, B. (2014). Methods to account for tree-scale variability in soil- and plant-related parameters in oil palm plantations. <span class="journal">Plant and Soil.</span></span>
-        <a class="doi" href="https://doi.org/10.1007/s11104-013-1894-7">doi:10.1007/s11104-013-1894-7</a>
-      </li>
-      <li>
-        <span class="authors">Venter, O., Fuller, R. A., Segan, D. B., Carwardine, J., Brooks, T., Butchart, S. H. M., Di Marco, M., Iwamura, T., Joseph, L., <span class="me">O&rsquo;Grady, D.</span>, Possingham, H. P., Rondinini, C., Smith, R. J., Venter, M. &amp; Watson, J. E. M. (2014). Targeting global protected area expansion for imperiled biodiversity. <span class="journal">PLoS Biology</span> (ed. C. Moritz).</span>
-        <a class="doi" href="https://doi.org/10.1371/journal.pbio.1001891">doi:10.1371/journal.pbio.1001891</a>
-      </li>
-    </ol>
-  </section>
-
-  <!-- ===================== Downloads strip ===================== -->
-  <div class="strip">
-    <p>The complete bibliographic record, and my public research profiles:</p>
-    <a href="./publications.bib" download>Download publications.bib</a>
-    <a href="https://orcid.org/0000-0002-2355-2305">ORCID</a>
-    <a href="https://scholar.google.com/citations?user=S0Hb8-8AAAAJ&amp;hl=en&amp;oi=ao">Google Scholar</a>
+<header>
+  <div class="wrap">
+    <h1>Damien O&rsquo;Grady</h1>
+    <nav>
+      <a href="./index.html#demonstrations">Demonstrations</a>
+      <a href="./index.html#live">Live tools</a>
+      <a href="./index.html#heritage">Earlier work</a>
+      <a href="#pubs">Publications</a>
+      <a href="https://github.com/damienogrady">GitHub</a>
+    </nav>
   </div>
+</header>
 
-  <!-- ======================== Footer ======================== -->
-  <footer>
-    <p>Damien O&rsquo;Grady — independent remote sensing and GIS consultant, Melbourne.
-    Analysis that is <a href="./publications.html">traceable, defensible and reproducible</a>.
-    <a href="https://github.com/damienogrady">GitHub</a></p>
-  </footer>
-
+<div class="page-hero wrap">
+  <h2>Publications</h2>
+  <p>Peer-reviewed publications: direct remote sensing method development for water and flood mapping, and spatial-modelling contributions to collaborative research in archaeology, Quaternary science and hydrology. This is the public record behind the standard I bring to client work &mdash; analysis that is traceable, defensible and reproducible. Commercial client work is held to the same standard and is confidential, by the client organisations&rsquo; choice.</p>
 </div>
+
+<section id="pubs" class="pubgroup">
+  <div class="wrap">
+    <h3>Water extent and flood mapping <span class="count">4 papers</span></h3>
+    <p class="lede">The method development behind my headline service &mdash; radar mapping of water extent, from single reaches to continental scale.</p>
+    <ol class="publist">
+      <li><strong>O&rsquo;Grady, D.</strong>, Leblanc, M. &amp; Bass, A. (2014). The use of radar satellite data from multiple incidence angles improves surface water mapping. <span class="journal">Remote Sensing of Environment.</span>
+        <span class="doi"><a href="https://doi.org/10.1016/j.rse.2013.10.006">doi:10.1016/j.rse.2013.10.006</a></span></li>
+      <li><strong>O&rsquo;Grady, D.</strong>, Leblanc, M. &amp; Gillieson, D. (2013). Relationship of local incidence angle with satellite radar backscatter for different surface conditions. <span class="journal">International Journal of Applied Earth Observation and Geoinformation.</span>
+        <span class="doi"><a href="https://doi.org/10.1016/j.jag.2013.02.005">doi:10.1016/j.jag.2013.02.005</a></span></li>
+      <li><strong>O&rsquo;Grady, D.</strong> &amp; Leblanc, M. (2014). Radar mapping of broad-scale inundation: challenges and opportunities in Australia. <span class="journal">Stochastic Environmental Research and Risk Assessment.</span>
+        <span class="doi"><a href="https://doi.org/10.1007/s00477-013-0712-3">doi:10.1007/s00477-013-0712-3</a></span></li>
+      <li><strong>O&rsquo;Grady, D.</strong>, Leblanc, M. &amp; Gillieson, D. (2011). Use of ENVISAT ASAR Global Monitoring Mode to complement optical data in the mapping of rapid broad-scale flooding in Pakistan. <span class="journal">Hydrology and Earth System Sciences.</span>
+        <span class="doi"><a href="https://doi.org/10.5194/hess-15-3475-2011">doi:10.5194/hess-15-3475-2011</a></span></li>
+    </ol>
+    <p class="crosslink">These methods are running today in the <a href="https://github.com/damienogrady/flood-extent-explorer">Flood Extent Explorer</a> and <a href="https://github.com/damienogrady/aral-sea-waterline-change">Aral Sea waterline change</a> repositories &mdash; see the methods in action.</p>
+  </div>
+</section>
+
+<section class="pubgroup">
+  <div class="wrap">
+    <h3>Water, carbon and floodplain processes <span class="count">4 papers</span></h3>
+    <p class="lede">Collaborative research on the water and carbon dynamics of the landscapes I now map for clients.</p>
+    <ol class="publist">
+      <li>Shen, H., Leblanc, M., Frappart, F., Seoane, L., <strong>O&rsquo;Grady, D.</strong>, Olioso, A. &amp; Tweed, S. (2017). A comparative study of GRACE with continental evapotranspiration estimates in Australian semi-arid and arid basins: sensitivity to climate variability and extremes. <span class="journal">Water.</span>
+        <span class="doi"><a href="https://doi.org/10.3390/w9090614">doi:10.3390/w9090614</a></span></li>
+      <li>Bass, A. M., <strong>O&rsquo;Grady, D.</strong>, Leblanc, M., Tweed, S., Nelson, P. N. &amp; Bird, M. I. (2014). Carbon dioxide and methane emissions from a wet-dry tropical floodplain in Northern Australia. <span class="journal">Wetlands.</span>
+        <span class="doi"><a href="https://doi.org/10.1007/s13157-014-0522-5">doi:10.1007/s13157-014-0522-5</a></span></li>
+      <li>Bass, A. M., Munksgaard, N. C., <strong>O&rsquo;Grady, D.</strong>, Williams, M. J. M., Bostock, H. C., Rintoul, S. R. &amp; Bird, M. J. (2014). Continuous shipboard measurements of oceanic &delta;<sup>18</sup>O, &delta;D and &delta;<sup>13</sup>C<sub>DIC</sub> along a transect from New Zealand to Antarctica using cavity ring-down isotope spectrometry. <span class="journal">Journal of Marine Systems.</span>
+        <span class="doi"><a href="https://doi.org/10.1016/j.jmarsys.2014.04.003">doi:10.1016/j.jmarsys.2014.04.003</a></span></li>
+      <li>Bass, A. M., <strong>O&rsquo;Grady, D.</strong>, Berkin, C., Leblanc, M., Tweed, S., Nelson, P. N. &amp; Bird, M. I. (2013). High diurnal variation in dissolved inorganic C, &delta;<sup>13</sup>C values and surface efflux of CO<sub>2</sub> in a seasonal tropical floodplain. <span class="journal">Environmental Chemistry Letters.</span>
+        <span class="doi"><a href="https://doi.org/10.1007/s10311-013-0421-7">doi:10.1007/s10311-013-0421-7</a></span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="pubgroup">
+  <div class="wrap">
+    <h3>Archaeology and palaeoenvironments <span class="count">5 papers</span></h3>
+    <p class="lede">Spatial modelling and mapping contributions to collaborative archaeological and palaeoenvironmental research.</p>
+    <ol class="publist">
+      <li>Ulm, S., <strong>O&rsquo;Grady, D.</strong>, Petchey, F., Hua, Q., Jacobsen, G., Linnenlucke, L., David, B., Rosendahl, D., Bunbury, M. M. E., Bird, M. I. &amp; Reimer, P. J. (2023). Australian marine radiocarbon reservoir effects: &Delta;R atlas and &Delta;R calculator for Australian mainland coasts and near-shore islands. <span class="journal">Radiocarbon.</span>
+        <span class="doi"><a href="https://doi.org/10.1017/RDC.2023.95">doi:10.1017/RDC.2023.95</a></span>
+        <span class="crosslink">I built the modelling and web construction behind the live calculator &mdash; <a href="./delta_r.html">read the walkthrough</a>.</span></li>
+      <li>Ditchfield, K., Ulm, S., Manne, T., Farr, H., <strong>O&rsquo;Grady, D.</strong> &amp; Veth, P. (2022). Framing Australian Pleistocene coastal occupation and archaeology. <span class="journal">Quaternary Science Reviews.</span>
+        <span class="doi"><a href="https://doi.org/10.1016/j.quascirev.2022.107706">doi:10.1016/j.quascirev.2022.107706</a></span></li>
+      <li>Bird, M. I., Condie, S. A., O&rsquo;Conor, S., <strong>O&rsquo;Grady, D.</strong>, Reepmeyer, C., Ulm, S., Zega, M., Saltr&eacute;, F. &amp; Bradshaw, C. (2019). Early human settlement of Sahul was not an accident. <span class="journal">Scientific Reports.</span>
+        <span class="doi"><a href="https://doi.org/10.1038/s41598-019-42946-9">doi:10.1038/s41598-019-42946-9</a></span></li>
+      <li>Bird, M. I., <strong>O&rsquo;Grady, D.</strong> &amp; Ulm, S. (2016). Humans, water and the colonization of Australia. <span class="journal">Proceedings of the National Academy of Sciences.</span>
+        <span class="doi"><a href="https://doi.org/10.1073/pnas.1608470113">doi:10.1073/pnas.1608470113</a></span></li>
+      <li>Nott, J., Forsyth, A., Rhodes, E. &amp; <strong>O&rsquo;Grady, D.</strong> (2015). The origin of centennial- to millennial-scale chronological gaps in storm emplaced beach ridge plains. <span class="journal">Marine Geology.</span>
+        <span class="doi"><a href="https://doi.org/10.1016/j.margeo.2015.05.011">doi:10.1016/j.margeo.2015.05.011</a></span>
+        <span class="crosslink">Storm-deposited coastal landforms &mdash; the same shores the <a href="https://github.com/damienogrady/coastal-shoreline-toolkit">coastal shoreline change toolkit</a> measures.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="pubgroup">
+  <div class="wrap">
+    <h3>Land, vegetation and biodiversity <span class="count">3 papers</span></h3>
+    <p class="lede">Sampling design, vegetation measurement and biodiversity targeting.</p>
+    <ol class="publist">
+      <li>Nelson, P. N., Banabas, M., Goodrick, I., Webb, M. J., Huth, N. I. &amp; <strong>O&rsquo;Grady, D.</strong> (2015). Soil sampling in oil palm plantations: a practical design that accounts for lateral variability at the tree scale. <span class="journal">Plant and Soil.</span>
+        <span class="doi"><a href="https://doi.org/10.1007/s11104-015-2490-9">doi:10.1007/s11104-015-2490-9</a></span></li>
+      <li>Nelson, P. N., Webb, M. J., Banabas, M., Nake, S., Goodrick, I., Gordon, J., <strong>O&rsquo;Grady, D.</strong> &amp; Dubos, B. (2014). Methods to account for tree-scale variability in soil- and plant-related parameters in oil palm plantations. <span class="journal">Plant and Soil.</span>
+        <span class="doi"><a href="https://doi.org/10.1007/s11104-013-1894-7">doi:10.1007/s11104-013-1894-7</a></span></li>
+      <li>Venter, O., Fuller, R. A., Segan, D. B., Carwardine, J., Brooks, T., Butchart, S. H. M., Di Marco, M., Iwamura, T., Joseph, L., <strong>O&rsquo;Grady, D.</strong>, Possingham, H. P., Rondinini, C., Smith, R. J., Venter, M. &amp; Watson, J. E. M. (2014). Targeting global protected area expansion for imperiled biodiversity. <span class="journal">PLoS Biology</span> (ed. C. Moritz).
+        <span class="doi"><a href="https://doi.org/10.1371/journal.pbio.1001891">doi:10.1371/journal.pbio.1001891</a></span></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="strip">
+      <span class="note">The complete bibliographic record, and my public research profiles:</span>
+      <a href="publications.bib" download>Download publications.bib</a>
+      <a href="https://orcid.org/0000-0002-2355-2305">ORCID &rarr;</a>
+      <a href="https://scholar.google.com/citations?user=S0Hb8-8AAAAJ&amp;hl=en&amp;oi=ao">Google Scholar &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><strong>Damien O&rsquo;Grady</strong> &mdash; independent remote sensing and GIS consultant, Melbourne, Australia.
+  Methods underpinned by my own <a href="./publications.html">peer-reviewed publications</a>; commercial client work delivered traceable, defensible and reproducible.
+  <a href="https://github.com/damienogrady">github.com/damienogrady</a></p>
+</footer>
+
 </body>
 </html>
-
