@@ -1,6 +1,6 @@
 {
-  "name": "Your Site Name",
-  "short_name": "YourSite",
+  "name": "Damien O'Grady",
+  "short_name": "Damo",
   "icons": [
     { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }
   ],
