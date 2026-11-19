@@ -1,0 +1,127 @@
+.map-nav-window {
+  position: relative;
+}
+
+.map-viewport {
+  max-height: 44rem;
+  overflow: auto;
+  background:
+    linear-gradient(45deg, #edf1eb 25%, transparent 25%),
+    linear-gradient(-45deg, #edf1eb 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #edf1eb 75%),
+    linear-gradient(-45deg, transparent 75%, #edf1eb 75%),
+    #f7f9f5;
+  background-position: 0 0, 0 0.45rem, 0.45rem -0.45rem, -0.45rem 0;
+  background-size: 0.9rem 0.9rem;
+  border: 1px solid #dde7dd;
+  border-radius: 0.7rem;
+}
+
+.map-scroll-content {
+  min-width: 100%;
+}
+
+.map-scale {
+  position: absolute;
+  z-index: 5;
+  bottom: 0.8rem;
+  left: 0.8rem;
+  display: grid;
+  justify-items: start;
+  gap: 0.15rem;
+  padding: 0.3rem 0.4rem;
+  color: #172522;
+  background: #fffffff0;
+  border-radius: 0.25rem;
+  font-size: 0.7rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.map-scale span {
+  display: block;
+  border-top: 3px solid #172522;
+}
+
+.map-click-marker {
+  position: absolute;
+  z-index: 4;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #a62922;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.map-click-marker[hidden] {
+  display: none;
+}
+
+.ndvi-map-window {
+  display: block;
+  overflow: visible;
+}
+
+.ndvi-embedded .map-panel {
+  min-width: 0;
+}
+
+.ndvi-embedded select:disabled {
+  color: #68776f;
+  background: #edf1ed;
+  cursor: not-allowed;
+}
+
+.ndvi-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.25rem;
+  margin-top: 1.2rem;
+  color: #172f2a;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.ndvi-chart-legend span:not([hidden]) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ndvi-chart-key {
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px currentColor;
+}
+
+.ndvi-chart-key.impact {
+  color: #167256;
+  background: #167256;
+}
+
+.ndvi-chart-key.control {
+  color: #d18b36;
+  background: #d18b36;
+}
+
+.ndvi-embedded #chart {
+  margin-top: 0.5rem;
+}
+
+.ndvi-map-stage {
+  position: relative;
+  width: 100%;
+}
+
+.ndvi-map-stage #map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+}

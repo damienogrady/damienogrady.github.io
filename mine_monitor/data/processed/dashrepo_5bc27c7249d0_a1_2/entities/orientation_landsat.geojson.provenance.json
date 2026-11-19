@@ -1,0 +1,10 @@
+{
+  "artifact": "orientation_landsat.geojson",
+  "artifact_sha256": "97aa02217ef21bc0c5d2ad1f1d6d9c06e9f5db329fbd77fb467f3823f36ea583",
+  "namespace": "dashrepo_5bc27c7249d0_a1_2",
+  "source_phase4_manifest_sha256": "5bc27c7249d09ec02ada51fb95ff7b0971aa90a72dc4c3c666cbe9cbb00beb86",
+  "derived_from_phase4_outputs_sha256": {
+    "distance_bands_landsat.gpkg": "ba1c669215c3d223417655bc62a0537ee11b74b5e2ae41fe789e9f76b1fc80f2"
+  },
+  "derivation": "Dissolved and 30 m simplified floor-2 distance-band geometries; lease and locator geometry are not in the accepted inputs."
+}

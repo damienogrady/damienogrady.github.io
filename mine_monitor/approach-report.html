@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Plain-language report on the purpose and methods of the Curragh mine rehabilitation monitoring demonstration."
+    >
+    <title>Monitoring approach | Curragh Mine Rehabilitation Monitor</title>
+    <link rel="icon" href="./branding/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="./branding/favicon.ico" sizes="any">
+    <link rel="icon" href="./branding/icon-32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="./branding/icon-192.png" type="image/png" sizes="192x192">
+    <link rel="apple-touch-icon" href="./branding/apple-touch-icon.png" sizes="180x180">
+    <link rel="stylesheet" href="./assets/styles.css?v=footer-links-1">
+  </head>
+  <body>
+    <header class="masthead">
+      <a class="author-brand" href="https://damienogrady.github.io/" aria-label="Damien O’Grady portfolio">
+        <img class="brand-logo-screen" src="./branding/favicon-white.svg" alt="">
+        <img class="brand-logo-print" src="./branding/favicon.svg" alt="">
+        <span>Damien O’Grady</span>
+      </a>
+      <a class="brand" href="./" aria-label="Return to dashboard">
+        <span class="brand-mark" aria-hidden="true">M</span>
+        <span>
+          <strong>Mine Rehabilitation Monitoring</strong>
+          <small>Curragh demonstration · Approach report</small>
+        </span>
+      </a>
+      <span class="snapshot-tag report-tag">Plain-language report</span>
+    </header>
+
+    <main class="main-content">
+      <article class="approach-report">
+        <nav class="report-nav" aria-label="Report navigation">
+          <a href="./">← Return to the dashboard</a>
+          <a href="#" onclick="window.print(); return false;">Print or save as PDF</a>
+        </nav>
+        <p class="eyebrow">Purpose, principles and limits</p>
+        <h1>What this monitoring demonstration is for</h1>
+        <a class="report-author" href="https://damienogrady.github.io/">
+          <img src="./branding/favicon.svg" width="32" height="32" alt="">
+          <span><strong>Damien O’Grady</strong>
+            <small>Independent remote sensing and GIS consultant</small></span>
+        </a>
+        <p class="report-lead">This project explores how long satellite records can help mine rehabilitation teams see where vegetation patterns change, when those changes occur, and which places may deserve closer investigation.</p>
+        <p class="report-meta">Curragh, Queensland · Static, pinned demonstration</p>
+
+        <h2>In brief</h2>
+        <p>Satellite imagery provides repeated observations over large areas. This demonstration turns those observations into maps and records of vegetation trajectory: areas that appear stable, areas with a disturbance signal, and areas with a later recovery signal. It is designed to make it easier to find patterns, follow up locations on the ground, and review how evidence was assembled.</p>
+        <p>The demonstration focuses on Curragh in Queensland. We chose Curragh because pinned monitoring outputs provide a concrete dataset to examine, and peer-reviewed research has already applied Landsat and LandTrendr to vegetation disturbance and recovery at the site. This gives the demonstration a locally relevant, research-informed starting point; its results and thresholds are specific to Curragh and should not be assumed to transfer to other mines.</p>
+        <p>The intended outcome is a practical monitoring aid for mine rehabilitation and monitoring managers and a transparent evidence interface for regulators. The longer-term aim is to support site-specific, repeatable monitoring that can direct attention and help organize evidence—not to replace field assessment or statutory completion criteria.</p>
+        <p><strong>Beyond mine sites:</strong> the underlying approach could be adapted relatively quickly to monitor vegetation in other landscapes, subject to suitable imagery, local configuration and validation. This website is a static Curragh demonstration: it does not currently run analyses for new areas, and Curragh's thresholds and results should not be assumed to apply elsewhere.</p>
+        <p><strong>Closer inspection:</strong> a future extension could combine the broad-area monitoring with higher-resolution imagery to help scrutinise locations flagged for management. Such imagery is not included here and would complement rather than replace field checks.</p>
+        <div class="report-note"><strong>What it does not establish:</strong> a mapped disturbance is not proof that mining caused it; a vegetation recovery label is not a rehabilitation-quality verdict; and this demonstration does not determine legal completion or compliance.</div>
+
+        <h2 id="research-foundations">The peer-reviewed research behind the approach</h2>
+        <p>These are not decorative citations: each paper informs a specific part of the method or its interpretation. The dashboard adapts those ideas to pinned Curragh data; citing a study does not mean that study validated this implementation.</p>
+        <ul>
+          <li><strong>Time-series segmentation:</strong> Kennedy, R. E., Yang, Z., &amp; Cohen, W. B. (2010). “Detecting trends in forest disturbance and recovery using yearly Landsat time series: 1. LandTrendr — Temporal segmentation algorithms.” <em>Remote Sensing of Environment</em>, 114(12), 2897–2910. <a href="https://doi.org/10.1016/j.rse.2010.07.008">doi:10.1016/j.rse.2010.07.008</a>. LandTrendr provides the temporal-segmentation foundation for representing long satellite histories as change trajectories.</li>
+          <li><strong>Study design and controls:</strong> Underwood, A. J. (1994). “On Beyond BACI: Sampling Designs that Might Reliably Detect Environmental Disturbances.” <em>Ecological Applications</em>, 4(1), 3–15. <a href="https://doi.org/10.2307/1942110">doi:10.2307/1942110</a>. This work motivates careful control selection and replication. The dashboard exposes matching and eligibility gates; it does not present a causal effect estimate.</li>
+          <li><strong>Mining and Curragh application:</strong> Yang, Y., Erskine, P. D., Lechner, A. M., Mulligan, D., Zhang, S., &amp; Wang, Z. (2018). “Detecting the dynamics of vegetation disturbance and recovery in surface mining area via Landsat imagery and LandTrendr algorithm.” <em>Journal of Cleaner Production</em>, 178, 353–362. <a href="https://doi.org/10.1016/j.jclepro.2018.01.050">doi:10.1016/j.jclepro.2018.01.050</a>. This peer-reviewed Curragh case study provides relevant precedent for mining-landscape disturbance and recovery mapping.</li>
+          <li><strong>Mining trajectory rules:</strong> Hui, J., &amp; Cheng, Y. (2026). “Detecting disturbance and recovery in mining landscapes: A novel time-series framework based on improved LandTrendr and machine learning.” <em>Environmental Research</em>, 295, article 123868. <a href="https://doi.org/10.1016/j.envres.2026.123868">doi:10.1016/j.envres.2026.123868</a>. This mining-focused framework informs the adapted event ordering and six trajectory classes; this demonstration's adaptation remains unvalidated pending M4.
+        </ul>
+
+        <h2>How to use the dashboard</h2>
+        <ol>
+          <li><strong>Start with the map.</strong> Choose Landsat or Sentinel-2, which are kept as separate products. Use the map modes and cohort selectors to explore class and event timing.</li>
+          <li><strong>Choose a place to investigate.</strong> Select an event point to inspect its mapped cohort and location information. Treat it as a lead for ground-truthing, not as a field observation.</li>
+          <li><strong>Inspect the fitted vegetation signal.</strong> Open <a href="./?view=ndvi">Explore fitted NDVI</a> in the dashboard menu to scrub annual maps and inspect selected event pixels and available matched controls. It displays fitted values, not the underlying observations, and makes no impact estimate.</li>
+          <li><strong>Review the evidence and its limits.</strong> The reporting and audit pages expose cohort summaries, matching-control gates, sensitivities and data-quality disclosures. The provenance page describes the pinned inputs and derived files.</li>
+        </ol>
+
+        <h2 id="baci">BACI: comparing change with a reference</h2>
+        <p><strong>BACI</strong> stands for <em>Before–After, Control–Impact</em>. The basic idea is to compare change over time in an area of interest with change over the same period in suitable reference areas. If both areas change in a similar way, some of the change may reflect broader conditions such as weather or regional vegetation cycles. A difference between their before-to-after changes can be informative, provided the reference areas and study design are appropriate.</p>
+        <p>Reliable impact assessment requires more than drawing a before-and-after map. Controls need to be suitably comparable, the design needs adequate independent replication, and other possible causes must be considered. The project uses matched impact–control records and machine-checkable eligibility gates as part of this discipline. In this monitoring demonstration, the gates and summaries are available to inspect, but no causal effect estimate is presented. A gate being eligible is not itself evidence that an effect occurred.</p>
+
+        <h2 id="threshold-method">How the vegetation stability threshold is set</h2>
+        <p><strong>NDVI</strong> is a satellite-derived indicator of vegetation condition, based on the contrast between reflected red and near-infrared light. It is useful for tracking broad patterns, but it does not directly measure plant species, overall ecological condition, or whether a rehabilitation area has met a completion criterion.</p>
+        <p>A threshold is needed to distinguish relatively small fitted changes from larger greening or browning movements. For each sensor independently, the pipeline first forms a calibration group of pixels with at least two valid observations and without a disturbance or accepted recovery event under the current event rules. For each calibration pixel it measures the absolute net change between the first and last valid fitted NDVI values. The <strong>95th percentile</strong> of those changes sets the width of the stability band: it is a data-derived way of describing the upper end of movement in this selected reference group, rather than a number chosen by eye.</p>
+        <p>The 90th and 99th percentile alternatives are also checked to show how the resulting stable/greening/browning counts respond to a narrower or wider band. They are sensitivity checks, not three competing regulatory standards.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th scope="col">Sensor</th><th scope="col">90th-percentile width</th><th scope="col">95th-percentile width used</th><th scope="col">99th-percentile width</th><th scope="col">Calibration pixels</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Landsat</td><td>0.2152</td><td><strong>0.2563</strong></td><td>0.3958</td><td>641,779</td></tr>
+              <tr><td>Sentinel-2</td><td>0.1726</td><td><strong>0.2439</strong></td><td>0.4408</td><td>365,584</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="report-meta">Widths are absolute net fitted NDVI changes in the pinned sensor runs. The calibration populations are sensor-specific subsets, not the full area of interest. Landsat and Sentinel-2 thresholds are not cross-calibrated. These values apply to this Curragh demonstration only and must not be treated as universal defaults or regulatory thresholds.</p>
+
+        <h2>Important boundaries</h2>
+        <ul>
+          <li>This is a static, versioned Curragh demonstration using pinned outputs; it does not run live analysis or Earth Engine requests.</li>
+          <li>The two sensors remain separate. Their thresholds and products are not combined or cross-calibrated.</li>
+          <li>Disturbance and recovery classes describe satellite-observed trajectory patterns. They do not attribute cause or certify rehabilitation quality.</li>
+          <li>The 2022/T3 cohort is QA-only because attribution is under investigation; it is not evidence for mining impact.</li>
+          <li>Distance bands are administrative strata, not ecological boundaries. Areas are 30 m cell-area equivalents, not surveyed or statutory areas.</li>
+          <li>Lease-union and nested locator geometries are absent from accepted display inputs. Fitted-NDVI time series are provided in a separate static viewer; they are not observed values or an impact estimate.</li>
+          <li>Curragh thresholds are not general defaults. The frozen 15 November 2026 tenure snapshot remains in use: a 19 November comparison found one 30 m cell outside the refreshed analysis area that appears as a control in eight matching records, including four primary floor-2 records. Results were not recalculated; lease renewal status is not legally verified. This is not a current-tenure or regulatory determination.</li>
+          <li>This demonstration uses the ODbL option for MERIT Hydro; derived data and source notices are available via the data-licensing page. Future operational use requires its own assessment.</li>
+        </ul>
+        <p class="report-meta">For data lineage and hash checks, return to the dashboard and open “Data quality &amp; provenance.”</p>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <p class="footer-meta">
+        Sources: Landsat data courtesy of the <a href="https://www.usgs.gov/centers/eros/data-citation">U.S. Geological Survey</a>;
+        contains modified <a href="https://ecds.ecmwf.int/licences/ec-sentinel">Copernicus Sentinel data</a> 2016–2026.
+        Tenure context adapted from <a href="https://qldspatial.information.qld.gov.au/catalogue/catalog/search/resource/details.page?uuid=%7BA36B4591-EE8F-46CF-A23E-0397A1F9A1A4%7D">Queensland mining and exploration tenure data</a>,
+        © State of Queensland (Department of Natural Resources and Mines, Manufacturing and Regional and Rural Development) 2026,
+        <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+        HAND strata derive from <a href="https://developers.google.com/earth-engine/datasets/catalog/MERIT_Hydro_v1_0_1">MERIT Hydro</a>
+        (<a href="https://doi.org/10.1029/2019WR024873">Yamazaki et al., 2019</a>), available under the
+        <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License (ODbL) 1.0</a>.
+        <a href="./data-licensing.html">Data licensing and downloads</a>.
+      </p>
+      <p class="footer-branding">
+        <strong>Damien O’Grady</strong> — independent remote sensing and GIS consultant, Melbourne, Australia.
+        Methods underpinned by my own peer-reviewed publications; commercial client work delivered
+        traceable, defensible and reproducible.
+        <a href="https://github.com/damienogrady">github.com/damienogrady</a>
+      </p>
+    </footer>
+  </body>
+</html>

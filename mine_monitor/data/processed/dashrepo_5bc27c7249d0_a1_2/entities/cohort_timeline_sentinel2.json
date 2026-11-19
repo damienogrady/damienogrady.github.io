@@ -1,0 +1,592 @@
+{
+  "record_granularity": "One row per cohort year and tier at the fixed 2-cell display floor.",
+  "pixel_area_equivalent_m2": 900,
+  "cohorts": [
+    {
+      "onset_year": 2016,
+      "cohort_tier": "T1",
+      "tier_status": "primary",
+      "tier_flag": "",
+      "window_gapped": true,
+      "window_gapped_years": "[2015]",
+      "patch_floor_cells": 2,
+      "event_component_count_by_band": "{\"far\": 0, \"near\": 8439, \"transition\": 0}",
+      "event_pixel_count_by_band": "{\"far\": 0, \"near\": 137659, \"transition\": 0}",
+      "matching_participation_reference_count": 90,
+      "qa_only": false,
+      "provisional": false,
+      "r_d_caption": "",
+      "event_components": 8439,
+      "event_pixels": 137659,
+      "event_pixel_area_equivalent_m2": 123893100,
+      "class_pixel_counts": {
+        "4": 95560,
+        "5": 26356,
+        "6": 15743
+      },
+      "fragility_contribution": null,
+      "matching_gate": {
+        "matching_cell_rows": 90,
+        "gate_eligible_rows": 0,
+        "flagged_rows": 90,
+        "evidence_permitted_rows": 0,
+        "underpowered_rows": 90,
+        "by_matching_arm": {
+          "primary_caliper_0.050": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_caliper_0.020": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_global_no_reuse": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          }
+        }
+      }
+    },
+    {
+      "onset_year": 2017,
+      "cohort_tier": "T1",
+      "tier_status": "primary",
+      "tier_flag": "",
+      "window_gapped": true,
+      "window_gapped_years": "[2015]",
+      "patch_floor_cells": 2,
+      "event_component_count_by_band": "{\"far\": 0, \"near\": 1443, \"transition\": 0}",
+      "event_pixel_count_by_band": "{\"far\": 0, \"near\": 15630, \"transition\": 0}",
+      "matching_participation_reference_count": 90,
+      "qa_only": false,
+      "provisional": false,
+      "r_d_caption": "",
+      "event_components": 1443,
+      "event_pixels": 15630,
+      "event_pixel_area_equivalent_m2": 14067000,
+      "class_pixel_counts": {
+        "4": 10453,
+        "5": 3153,
+        "6": 2024
+      },
+      "fragility_contribution": null,
+      "matching_gate": {
+        "matching_cell_rows": 90,
+        "gate_eligible_rows": 0,
+        "flagged_rows": 90,
+        "evidence_permitted_rows": 0,
+        "underpowered_rows": 0,
+        "by_matching_arm": {
+          "primary_caliper_0.050": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_caliper_0.020": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_global_no_reuse": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          }
+        }
+      }
+    },
+    {
+      "onset_year": 2018,
+      "cohort_tier": "T1",
+      "tier_status": "primary",
+      "tier_flag": "",
+      "window_gapped": true,
+      "window_gapped_years": "[2015]",
+      "patch_floor_cells": 2,
+      "event_component_count_by_band": "{\"far\": 0, \"near\": 359, \"transition\": 0}",
+      "event_pixel_count_by_band": "{\"far\": 0, \"near\": 9815, \"transition\": 0}",
+      "matching_participation_reference_count": 90,
+      "qa_only": false,
+      "provisional": false,
+      "r_d_caption": "",
+      "event_components": 359,
+      "event_pixels": 9815,
+      "event_pixel_area_equivalent_m2": 8833500,
+      "class_pixel_counts": {
+        "4": 3362,
+        "5": 102,
+        "6": 6351
+      },
+      "fragility_contribution": null,
+      "matching_gate": {
+        "matching_cell_rows": 90,
+        "gate_eligible_rows": 0,
+        "flagged_rows": 90,
+        "evidence_permitted_rows": 0,
+        "underpowered_rows": 0,
+        "by_matching_arm": {
+          "primary_caliper_0.050": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_caliper_0.020": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_global_no_reuse": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          }
+        }
+      }
+    },
+    {
+      "onset_year": 2019,
+      "cohort_tier": "T1",
+      "tier_status": "primary",
+      "tier_flag": "",
+      "window_gapped": false,
+      "window_gapped_years": "[]",
+      "patch_floor_cells": 2,
+      "event_component_count_by_band": "{\"far\": 0, \"near\": 2136, \"transition\": 0}",
+      "event_pixel_count_by_band": "{\"far\": 0, \"near\": 31341, \"transition\": 0}",
+      "matching_participation_reference_count": 90,
+      "qa_only": false,
+      "provisional": false,
+      "r_d_caption": "",
+      "event_components": 2136,
+      "event_pixels": 31341,
+      "event_pixel_area_equivalent_m2": 28206900,
+      "class_pixel_counts": {
+        "4": 19176,
+        "5": 5065,
+        "6": 7100
+      },
+      "fragility_contribution": null,
+      "matching_gate": {
+        "matching_cell_rows": 90,
+        "gate_eligible_rows": 0,
+        "flagged_rows": 90,
+        "evidence_permitted_rows": 0,
+        "underpowered_rows": 0,
+        "by_matching_arm": {
+          "primary_caliper_0.050": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_caliper_0.020": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_global_no_reuse": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          }
+        }
+      }
+    },
+    {
+      "onset_year": 2020,
+      "cohort_tier": "T1",
+      "tier_status": "primary",
+      "tier_flag": "",
+      "window_gapped": false,
+      "window_gapped_years": "[]",
+      "patch_floor_cells": 2,
+      "event_component_count_by_band": "{\"far\": 0, \"near\": 272, \"transition\": 0}",
+      "event_pixel_count_by_band": "{\"far\": 0, \"near\": 1397, \"transition\": 0}",
+      "matching_participation_reference_count": 90,
+      "qa_only": false,
+      "provisional": false,
+      "r_d_caption": "",
+      "event_components": 272,
+      "event_pixels": 1397,
+      "event_pixel_area_equivalent_m2": 1257300,
+      "class_pixel_counts": {
+        "4": 1104,
+        "5": 133,
+        "6": 160
+      },
+      "fragility_contribution": null,
+      "matching_gate": {
+        "matching_cell_rows": 90,
+        "gate_eligible_rows": 0,
+        "flagged_rows": 90,
+        "evidence_permitted_rows": 0,
+        "underpowered_rows": 5,
+        "by_matching_arm": {
+          "primary_caliper_0.050": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_caliper_0.020": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_global_no_reuse": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          }
+        }
+      }
+    },
+    {
+      "onset_year": 2021,
+      "cohort_tier": "T1",
+      "tier_status": "primary",
+      "tier_flag": "",
+      "window_gapped": false,
+      "window_gapped_years": "[]",
+      "patch_floor_cells": 2,
+      "event_component_count_by_band": "{\"far\": 0, \"near\": 289, \"transition\": 0}",
+      "event_pixel_count_by_band": "{\"far\": 0, \"near\": 1849, \"transition\": 0}",
+      "matching_participation_reference_count": 90,
+      "qa_only": false,
+      "provisional": false,
+      "r_d_caption": "",
+      "event_components": 289,
+      "event_pixels": 1849,
+      "event_pixel_area_equivalent_m2": 1664100,
+      "class_pixel_counts": {
+        "4": 1019,
+        "5": 98,
+        "6": 732
+      },
+      "fragility_contribution": null,
+      "matching_gate": {
+        "matching_cell_rows": 90,
+        "gate_eligible_rows": 0,
+        "flagged_rows": 90,
+        "evidence_permitted_rows": 0,
+        "underpowered_rows": 6,
+        "by_matching_arm": {
+          "primary_caliper_0.050": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_caliper_0.020": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_global_no_reuse": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          }
+        }
+      }
+    },
+    {
+      "onset_year": 2022,
+      "cohort_tier": "T3",
+      "tier_status": "attribution-suspended",
+      "tier_flag": "region_wide_2022_attribution_suspended",
+      "window_gapped": false,
+      "window_gapped_years": "[]",
+      "patch_floor_cells": 2,
+      "event_component_count_by_band": "{\"far\": 0, \"near\": 5240, \"transition\": 0}",
+      "event_pixel_count_by_band": "{\"far\": 0, \"near\": 841567, \"transition\": 0}",
+      "matching_participation_reference_count": 90,
+      "qa_only": true,
+      "provisional": false,
+      "r_d_caption": "disturbance-class onset, 2022 — attribution under investigation (flood/wet-season confounding active at this site)",
+      "event_components": 5240,
+      "event_pixels": 841567,
+      "event_pixel_area_equivalent_m2": 757410300,
+      "class_pixel_counts": {
+        "4": 707665,
+        "5": 24221,
+        "6": 109681
+      },
+      "fragility_contribution": null,
+      "matching_gate": {
+        "matching_cell_rows": 90,
+        "gate_eligible_rows": 0,
+        "flagged_rows": 90,
+        "evidence_permitted_rows": 0,
+        "underpowered_rows": 60,
+        "by_matching_arm": {
+          "primary_caliper_0.050": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_caliper_0.020": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_global_no_reuse": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          }
+        }
+      }
+    },
+    {
+      "onset_year": 2023,
+      "cohort_tier": "T1",
+      "tier_status": "primary",
+      "tier_flag": "",
+      "window_gapped": false,
+      "window_gapped_years": "[]",
+      "patch_floor_cells": 2,
+      "event_component_count_by_band": "{\"far\": 0, \"near\": 738, \"transition\": 0}",
+      "event_pixel_count_by_band": "{\"far\": 0, \"near\": 5756, \"transition\": 0}",
+      "matching_participation_reference_count": 90,
+      "qa_only": false,
+      "provisional": false,
+      "r_d_caption": "",
+      "event_components": 738,
+      "event_pixels": 5756,
+      "event_pixel_area_equivalent_m2": 5180400,
+      "class_pixel_counts": {
+        "4": 4548,
+        "5": 633,
+        "6": 575
+      },
+      "fragility_contribution": null,
+      "matching_gate": {
+        "matching_cell_rows": 90,
+        "gate_eligible_rows": 0,
+        "flagged_rows": 90,
+        "evidence_permitted_rows": 0,
+        "underpowered_rows": 7,
+        "by_matching_arm": {
+          "primary_caliper_0.050": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_caliper_0.020": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_global_no_reuse": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          }
+        }
+      }
+    },
+    {
+      "onset_year": 2024,
+      "cohort_tier": "T1",
+      "tier_status": "primary",
+      "tier_flag": "",
+      "window_gapped": false,
+      "window_gapped_years": "[]",
+      "patch_floor_cells": 2,
+      "event_component_count_by_band": "{\"far\": 0, \"near\": 129, \"transition\": 0}",
+      "event_pixel_count_by_band": "{\"far\": 0, \"near\": 626, \"transition\": 0}",
+      "matching_participation_reference_count": 90,
+      "qa_only": false,
+      "provisional": false,
+      "r_d_caption": "",
+      "event_components": 129,
+      "event_pixels": 626,
+      "event_pixel_area_equivalent_m2": 563400,
+      "class_pixel_counts": {
+        "4": 563,
+        "5": 5,
+        "6": 58
+      },
+      "fragility_contribution": null,
+      "matching_gate": {
+        "matching_cell_rows": 90,
+        "gate_eligible_rows": 0,
+        "flagged_rows": 90,
+        "evidence_permitted_rows": 0,
+        "underpowered_rows": 32,
+        "by_matching_arm": {
+          "primary_caliper_0.050": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_caliper_0.020": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_global_no_reuse": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          }
+        }
+      }
+    },
+    {
+      "onset_year": 2025,
+      "cohort_tier": "T1",
+      "tier_status": "primary",
+      "tier_flag": "",
+      "window_gapped": false,
+      "window_gapped_years": "[]",
+      "patch_floor_cells": 2,
+      "event_component_count_by_band": "{\"far\": 0, \"near\": 5768, \"transition\": 0}",
+      "event_pixel_count_by_band": "{\"far\": 0, \"near\": 91493, \"transition\": 0}",
+      "matching_participation_reference_count": 90,
+      "qa_only": false,
+      "provisional": false,
+      "r_d_caption": "",
+      "event_components": 5768,
+      "event_pixels": 91493,
+      "event_pixel_area_equivalent_m2": 82343700,
+      "class_pixel_counts": {
+        "4": 91493,
+        "5": 0,
+        "6": 0
+      },
+      "fragility_contribution": null,
+      "matching_gate": {
+        "matching_cell_rows": 90,
+        "gate_eligible_rows": 0,
+        "flagged_rows": 90,
+        "evidence_permitted_rows": 0,
+        "underpowered_rows": 27,
+        "by_matching_arm": {
+          "primary_caliper_0.050": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_caliper_0.020": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          },
+          "sensitivity_global_no_reuse": {
+            "matching_cell_rows": 30,
+            "gate_eligible_rows": 0,
+            "flagged_rows": 30,
+            "evidence_permitted_rows": 0
+          }
+        }
+      }
+    }
+  ],
+  "recovery_onset_years": [
+    {
+      "recovery_onset_year": 2017,
+      "cohort_tier": "T1",
+      "event_pixels": 3224,
+      "pixel_area_equivalent_m2": 2901600
+    },
+    {
+      "recovery_onset_year": 2018,
+      "cohort_tier": "T1",
+      "event_pixels": 14314,
+      "pixel_area_equivalent_m2": 12882600
+    },
+    {
+      "recovery_onset_year": 2019,
+      "cohort_tier": "T1",
+      "event_pixels": 6384,
+      "pixel_area_equivalent_m2": 5745600
+    },
+    {
+      "recovery_onset_year": 2020,
+      "cohort_tier": "T1",
+      "event_pixels": 6732,
+      "pixel_area_equivalent_m2": 6058800
+    },
+    {
+      "recovery_onset_year": 2021,
+      "cohort_tier": "T1",
+      "event_pixels": 29875,
+      "pixel_area_equivalent_m2": 26887500
+    },
+    {
+      "recovery_onset_year": 2022,
+      "cohort_tier": "T1",
+      "event_pixels": 1604,
+      "pixel_area_equivalent_m2": 1443600
+    },
+    {
+      "recovery_onset_year": 2023,
+      "cohort_tier": "T1",
+      "event_pixels": 1064,
+      "pixel_area_equivalent_m2": 957600
+    },
+    {
+      "recovery_onset_year": 2023,
+      "cohort_tier": "T3",
+      "event_pixels": 20539,
+      "pixel_area_equivalent_m2": 18485100
+    },
+    {
+      "recovery_onset_year": 2024,
+      "cohort_tier": "T1",
+      "event_pixels": 4420,
+      "pixel_area_equivalent_m2": 3978000
+    },
+    {
+      "recovery_onset_year": 2024,
+      "cohort_tier": "T3",
+      "event_pixels": 113068,
+      "pixel_area_equivalent_m2": 101761200
+    },
+    {
+      "recovery_onset_year": 2025,
+      "cohort_tier": "T1",
+      "event_pixels": 671,
+      "pixel_area_equivalent_m2": 603900
+    },
+    {
+      "recovery_onset_year": 2025,
+      "cohort_tier": "T3",
+      "event_pixels": 295,
+      "pixel_area_equivalent_m2": 265500
+    }
+  ],
+  "fragility_note": "No cohort-year fragility-contribution measure is supplied by the pinned entities. Sensor-level fragility values remain in the pinned run summaries.",
+  "matching_gate_note": "Matching-gate counts are counts of pinned control-summary rows at floor 2, grouped by cohort year/tier and matching arm. They are not pooled across cohort years."
+}

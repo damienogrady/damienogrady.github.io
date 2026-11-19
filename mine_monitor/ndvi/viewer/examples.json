@@ -1,0 +1,36 @@
+{
+  "landsat": {
+    "sensor": "landsat",
+    "onset_year": 1989,
+    "impact_pixel_id": 241521,
+    "pixel_row": 229,
+    "pixel_col": 613,
+    "event_id": 14742,
+    "control_pixel_id": 155521,
+    "control_row": 147,
+    "control_col": 877,
+    "matching_arm": "primary_caliper_0.050",
+    "floor": 2,
+    "band": "near",
+    "hand_stratum": "H1",
+    "cohort_tier": "T1",
+    "window_gapped": true
+  },
+  "sentinel2": {
+    "sensor": "sentinel2",
+    "onset_year": 2017,
+    "impact_pixel_id": 1852861,
+    "pixel_row": 1761,
+    "pixel_col": 289,
+    "event_id": 22090,
+    "control_pixel_id": 574875,
+    "control_row": 546,
+    "control_col": 483,
+    "matching_arm": "primary_caliper_0.050",
+    "floor": 2,
+    "band": "near",
+    "hand_stratum": "H1",
+    "cohort_tier": "T1",
+    "window_gapped": true
+  }
+}

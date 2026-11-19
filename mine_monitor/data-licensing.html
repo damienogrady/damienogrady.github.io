@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data licensing | Curragh Mine Rehabilitation Monitor</title>
+    <link rel="icon" href="./branding/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./assets/styles.css?v=footer-links-1">
+  </head>
+  <body>
+    <header class="masthead">
+      <a class="author-brand" href="https://damienogrady.github.io/" aria-label="Damien O’Grady portfolio">
+        <img class="brand-logo-screen" src="./branding/favicon-white.svg" alt="">
+        <img class="brand-logo-print" src="./branding/favicon.svg" alt="">
+        <span>Damien O’Grady</span>
+      </a>
+      <a class="brand" href="./">
+        <span class="brand-mark" aria-hidden="true">M</span>
+        <span><strong>Mine Rehabilitation Monitoring</strong><small>Curragh demonstration · Data licensing</small></span>
+      </a>
+    </header>
+    <main class="main-content">
+      <article class="approach-report">
+        <nav class="report-nav" aria-label="Page navigation"><a href="./">← Return to the dashboard</a></nav>
+        <h1>Data licensing and MERIT Hydro</h1>
+        <p>Contains information derived from <a href="https://developers.google.com/earth-engine/datasets/catalog/MERIT_Hydro_v1_0_1">MERIT Hydro</a>,
+          available under the <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License (ODbL) 1.0</a>.
+          The project owner has selected the ODbL option offered by the source for this demonstration.
+          Cite <a href="https://doi.org/10.1029/2019WR024873">Yamazaki et al. (2019)</a>; MERIT Hydro copyright belongs to its developers.</p>
+        <p>The analysis transformed the HAND band into H1–H10 categorical strata on the analysis grid.
+          These strata informed control matching; neither raster is included in the website package.
+          Machine-readable outputs that explicitly carry these labels include:</p>
+        <p>The <a href="https://drive.proton.me/urls/FEWQE6826C#nMNdGCnA0yIZ">public MERIT Hydro-derived data folder</a>
+          provides the full HAND-label raster and matching table, with a README and checksums. These
+          companion files are hosted separately from the website.</p>
+        <ul>
+          <li><a href="./data/processed/dashrepo_5bc27c7249d0_a1_2/entities/control_pairs_summary_landsat.parquet">Landsat control-summary Parquet</a>
+            and <a href="./data/processed/dashrepo_5bc27c7249d0_a1_2/entities/control_pairs_summary_sentinel2.parquet">Sentinel-2 control-summary Parquet</a>.</li>
+          <li><a href="./data/processed/dashrepo_5bc27c7249d0_a1_2/sources/full_run_caliper_exclusions.csv">Caliper-exclusion CSV</a>
+            and <a href="./data/processed/dashrepo_5bc27c7249d0_a1_2/sources/full_run_control_reuse.csv">Control-reuse CSV</a>.</li>
+          <li><a href="./data/processed/dashrepo_5bc27c7249d0_a1_2/dashboard/dashboard.json">Dashboard JSON</a>
+            and the fitted-NDVI viewer's <a href="./ndvi/viewer/DATA_DICTIONARY.md">matched-pair tile records</a>.</li>
+        </ul>
+        <p>The project owner has accepted these sharing arrangements for this demonstration.
+          These files retain their existing provenance and their applicable third-party terms.
+          Future operational or client-backed use requires its own licensing and attribution assessment.</p>
+        <p>The <a href="./LICENSE">MIT licence</a> covers the project code, not third-party data or
+          automatically all derived outputs. Other sources retain their own terms. Legal verification of
+          tenure status and release authorization also remain outstanding.</p>
+      </article>
+    </main>
+  </body>
+</html>

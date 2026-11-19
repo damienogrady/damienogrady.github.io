@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vegetation through time | Curragh demonstration</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="eyebrow">CURRAGH · DEMONSTRATION</div>
+    <h1>Vegetation through time.</h1>
+    <p>Explore the fitted vegetation signal across a landscape, one season at a time.</p>
+    <div class="notice"><strong>Fitted NDVI, not observations.</strong> These maps and lines
+      show LandTrendr model values derived from seasonal satellite imagery. They are
+      descriptive, unvalidated evidence—not proof of mining impact or rehabilitation success.</div>
+  </header>
+  <main>
+    <section class="controls" aria-label="Map controls">
+      <label>Satellite
+        <select id="sensor"><option value="landsat">Landsat</option><option value="sentinel2" selected>Sentinel-2</option></select>
+      </label>
+      <label class="year-control">Season <output id="year-label"></output>
+        <input id="year" type="range" aria-label="Season year">
+      </label>
+      <button id="play" type="button">Play years</button>
+    </section>
+    <p id="coverage" class="muted"></p>
+    <div class="layout">
+      <section class="panel map-panel">
+        <div class="section-title"><h2>Explore the landscape</h2><span>Click a map cell</span></div>
+        <div class="map-wrap"><canvas id="map" aria-label="Annual fitted NDVI map; click to select a map cell"></canvas></div>
+        <div class="legend"><span>−1</span><div class="gradient"></div><span>+1 NDVI</span></div>
+        <p class="muted small">Map cells average up to 4 × 4 original 30 m pixels.
+          Fainter cells have less valid coverage; dark areas have no valid fitted value.
+          Select an exact event pixel after clicking.</p>
+      </section>
+      <section class="panel detail-panel">
+        <div class="section-title"><h2>Inspect a location</h2><span>30 m source pixel</span></div>
+        <div id="selection" class="empty">Click the map to find mapped event pixels in that cell.</div>
+        <div id="details" hidden>
+          <label>Event pixel in selected map cell <select id="pixel"></select></label>
+          <p id="pixel-info" class="muted"></p>
+          <p id="warning" class="warning" hidden></p>
+          <label>Matched-control context <select id="pair"><option value="">No control selected</option></select></label>
+          <p id="pair-info" class="muted small"></p>
+          <p class="muted small">Controls are from the primary caliper 0.050, floor-2 matching
+            arm. Each option is a separate recorded match, not a causal estimate.
+            Event and pair window-gap flags come from different source records and can disagree.</p>
+          <canvas id="chart" aria-label="Annual fitted NDVI chart"></canvas>
+          <p id="chart-note" class="muted small"></p>
+          <details><summary>Annual values and QA counts</summary>
+            <div class="table-wrap"><table><thead><tr><th>Year</th><th>Impact fit</th><th>Impact QA</th><th>Control fit</th><th>Control QA</th></tr></thead><tbody id="rows"></tbody></table></div>
+          </details>
+        </div>
+      </section>
+    </div>
+    <section class="footer-note">
+      <h2>What you are seeing</h2>
+      <p>Each year represents an April–July seasonal composite. Input years with fewer
+        than five QA-valid scenes at a pixel are masked, not filled. The chart retains
+        gaps. Landsat and Sentinel-2 are not cross-calibrated. A fitted line is a
+        model of the signal, not a record of the individual observed values.</p>
+      <p>The area shown is the 10 km buffered 14-lease AOI (1,534,281 cells at 30 m),
+        not a mine footprint. Classes are a rule-based adaptation, unvalidated.
+        Same-year recovery candidates are not accepted as recovery. The 2022
+        disturbance-onset cohort is internal QA only.</p>
+      <p>Imagery attribution: Landsat — USGS/NASA; Sentinel-2 — Copernicus.
+        Public release remains subject to source licensing and tenure revalidation.
+        Files are checked against the bundled manifest; those hashes do not authenticate
+        the bundle itself.</p>
+    </section>
+    <div id="error" class="error" role="alert" hidden></div>
+  </main>
+</body>
+</html>

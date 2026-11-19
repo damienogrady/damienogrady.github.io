@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Static, Curragh-only demonstration of mine rehabilitation monitoring outputs."
+    >
+    <meta name="theme-color" content="#102522">
+    <title>Curragh | Mine Rehabilitation Monitoring</title>
+    <link rel="icon" href="./branding/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="./branding/favicon.ico" sizes="any">
+    <link rel="icon" href="./branding/icon-32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="./branding/icon-192.png" type="image/png" sizes="192x192">
+    <link rel="apple-touch-icon" href="./branding/apple-touch-icon.png" sizes="180x180">
+    <link rel="stylesheet" href="./assets/styles.css?v=footer-links-1">
+    <link rel="stylesheet" href="./assets/map-navigation.css">
+    <script>
+      window.DASH_DATA_URL =
+        "./data/processed/dashrepo_5bc27c7249d0_a1_2/dashboard/dashboard.json";
+    </script>
+    <script src="./assets/app.js?v=tenure-review-1" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="masthead">
+      <a class="author-brand" href="https://damienogrady.github.io/" aria-label="Damien O’Grady portfolio">
+        <img class="brand-logo-screen" src="./branding/favicon-white.svg" alt="">
+        <img class="brand-logo-print" src="./branding/favicon.svg" alt="">
+        <span>Damien O’Grady</span>
+      </a>
+      <a class="brand" href="./" aria-label="Curragh demonstration home">
+        <span class="brand-mark" aria-hidden="true">M</span>
+        <span>
+          <strong>Mine Rehabilitation Monitor</strong>
+          <small>Static demonstration · Curragh only</small>
+        </span>
+      </a>
+      <div class="snapshot-tag">
+        <span class="status-dot" aria-hidden="true"></span>
+        Pinned data snapshot
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <p class="eyebrow">Demonstration</p>
+        <nav class="primary-nav" aria-label="Dashboard sections">
+          <button type="button" class="nav-link active" data-view="overview">Monitor your site</button>
+          <button type="button" class="nav-link" data-view="ndvi">Explore fitted NDVI</button>
+          <button type="button" class="nav-link" data-view="manage">Manage a problem</button>
+          <button type="button" class="nav-link" data-view="reporting">Regulator reporting</button>
+          <button type="button" class="nav-link" data-view="maps">Class & timing maps</button>
+          <button type="button" class="nav-link" data-view="science">Science & references</button>
+          <button type="button" class="nav-link" data-view="events">Event records</button>
+          <button type="button" class="nav-link" data-view="cohorts">Cohort ledger</button>
+          <button type="button" class="nav-link" data-view="bands">Administrative distance strata</button>
+          <button type="button" class="nav-link" data-view="controls">Control audit</button>
+          <button type="button" class="nav-link" data-view="methods">Data quality & provenance</button>
+        </nav>
+        <div class="sidebar-note">
+          <span class="eyebrow">Scope</span>
+          <p>One real site. Two separate sensor products. Static and pinned.</p>
+        </div>
+      </aside>
+
+      <main id="main" class="main-content" tabindex="-1">
+        <div id="loading" class="loading-card" role="status">Loading the pinned demonstration data…</div>
+        <div id="app" hidden></div>
+        <div id="error" class="error-card" role="alert" hidden></div>
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <details>
+        <summary>Site, data-quality and use disclosures</summary>
+        <p>
+          Analysis AOI: the 10,000 m buffer around the dissolved union of 14 leases
+          (1,380.85 km²; 1,534,281 cells at 30 m). The lease union is approximately
+          196.72 km² (14.25% of the AOI). Areas are 30 m cell-area equivalents, not
+          surveyed or statutory areas; buffered-AOI percentages are not percentages
+          of the lease union.
+        </p>
+        <p>
+          Flood-prone HAND screening proxy only; not a statutory flood extent, flood
+          hazard map, or 0.5% AEP floodplain.
+        </p>
+        <p>
+          This demonstration retains its 15 November 2026 tenure snapshot.
+          A 19 November comparison found one 30 m cell outside the refreshed
+          10 km analysis area; that cell appears as a control in eight historical
+          matching records, including four primary floor-2 records. Results
+          have not been recalculated. Lease renewal status is not legally verified;
+          do not use this snapshot to establish current tenure or for
+          regulatory decisions.
+        </p>
+        <p><strong>Curragh thresholds are NOT general defaults.</strong></p>
+        <p>Class outputs: rule-based adaptation, unvalidated, pending M4 supervised validation.</p>
+        <p>Trajectory-rate labels only: DHR/DLR fragility is 24.26% for Landsat and 7.19% for Sentinel-2; these are not rehabilitation-quality or completion-criteria verdicts.</p>
+        <p class="rd-caption">disturbance-class onset, 2022 — attribution under investigation (flood/wet-season confounding active at this site)</p>
+      </details>
+      <p class="footer-meta">Static, versioned demonstration · No Earth Engine or live catalog requests.</p>
+      <p class="footer-meta">
+        Sources: Landsat data courtesy of the <a href="https://www.usgs.gov/centers/eros/data-citation">U.S. Geological Survey</a>;
+        contains modified <a href="https://ecds.ecmwf.int/licences/ec-sentinel">Copernicus Sentinel data</a> 2016–2026.
+        Tenure context adapted from <a href="https://qldspatial.information.qld.gov.au/catalogue/catalog/search/resource/details.page?uuid=%7BA36B4591-EE8F-46CF-A23E-0397A1F9A1A4%7D">Queensland mining and exploration tenure data</a>,
+        © State of Queensland (Department of Natural Resources and Mines, Manufacturing and Regional and Rural Development) 2026,
+        <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+        HAND strata derive from <a href="https://developers.google.com/earth-engine/datasets/catalog/MERIT_Hydro_v1_0_1">MERIT Hydro</a>
+        (<a href="https://doi.org/10.1029/2019WR024873">Yamazaki et al., 2019</a>), available under the
+        <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License (ODbL) 1.0</a>.
+        <a href="./data-licensing.html">Data licensing and downloads</a>.
+      </p>
+      <p class="footer-branding">
+        <strong>Damien O’Grady</strong> — independent remote sensing and GIS consultant, Melbourne, Australia.
+        Methods underpinned by my own peer-reviewed publications; commercial client work delivered
+        traceable, defensible and reproducible.
+        <a href="https://github.com/damienogrady">github.com/damienogrady</a>
+      </p>
+    </footer>
+  </body>
+</html>

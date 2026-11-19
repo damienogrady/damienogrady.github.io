@@ -19,7 +19,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
 
 <!-- PWA / Windows tile (optional but future-proof) -->
-<link rel="manifest" href="/site.webmanifest">
+<link rel="manifest" href="./ste.webmanifest">
 <meta name="theme-color" content="#102522">
 <link rel="stylesheet" href="./styles.css">
 </head>
@@ -29,12 +29,15 @@
   <div class="wrap">
     <h1><a href="./index.html"><img src="./favicon.svg" alt="">Damien O&rsquo;Grady</a></h1>
     <nav>
+      <a href="./services.html">Services</a>
+      <a href="./mine_monitor/">Mine monitor</a>
       <a href="./index.html#demonstrations">Demonstrations</a>
       <a href="./index.html#live">Live tools</a>
       <a href="./index.html#heritage">Earlier work</a>
       <a href="./background.html">Background</a>
       <a href="./publications.html">Publications</a>
       <a href="https://github.com/damienogrady">GitHub</a>
+      <a href="mailto:damien.ogrady@proton.me">Contact</a>
     </nav>
   </div>
 </header>
@@ -42,7 +45,8 @@
 <div class="hero wrap">
   <div>
     <h2>Python-driven geospatial pipelines that turn satellite data into decision-ready environmental intelligence.</h2>
-    <p>I build reproducible remote sensing pipelines &mdash; Google Earth Engine for large-area raster, BigQuery and PostGIS for large vector, QGIS and GRASS GIS downstream. Clients should own their toolchain, not rent it.</p>
+    <p>I build reproducible remote sensing pipelines &mdash; GDAL/OGR, rasterio, GeoPandas, Shapely, openEO, scikit-learn, TensorFlow, Google Earth Engine, Google Bigquery, PostGIS, QGIS, GRASS GIS.
+      Clients should own their toolchain, not rent it.</p>
     <div class="pillars">
       <span class="pillar">Water extent &amp; change</span>
       <span class="pillar">Vegetation &amp; ecosystem time-series</span>
@@ -50,6 +54,27 @@
     </div>
   </div>
 </div>
+
+<section class="featured-section" id="mine-monitor">
+  <div class="wrap">
+    <div class="featured-demo">
+      <div class="featured-content">
+        <p class="featured-kicker">Featured interactive demonstration</p>
+        <h3>Mine rehabilitation monitoring</h3>
+        <p>Explore how satellite time-series can help track vegetation change, investigate events and organize evidence for mine rehabilitation monitoring at Curragh, Queensland.</p>
+        <p class="featured-note">Interactive, pinned data snapshot · Curragh only · Not a live operational monitoring service</p>
+        <div class="featured-actions">
+          <a class="featured-primary" href="./mine_monitor/">Explore the monitor &rarr;</a>
+          <a href="./mine_monitor/approach-report.html">Read the approach</a>
+        </div>
+      </div>
+      <a class="featured-visual" href="./mine_monitor/" aria-label="Explore the Mine Rehabilitation Monitor dashboard">
+        <img src="./mine_monitor/data/processed/dashrepo_5bc27c7249d0_a1_2/dashboard/six_class_map_landsat.png" alt="Landsat six-class vegetation trajectory map for Curragh">
+        <span>Landsat trajectory classes · Curragh</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <section id="demonstrations">
   <div class="wrap">
@@ -82,6 +107,13 @@
       </div>
 
     </div>
+    <p class="crosslink">Want to hire this work? <a href="./services.html">See the services page</a>.</p>
+  </div>
+</section>
+
+<section class="service-teaser">
+  <div class="wrap">
+    <p>Teams can be trained in this: bespoke in-house training on remote sensing, GIS and Python pipelines, built around your data and workflows &mdash; <a href="./services.html#training">see the training section</a>.</p>
   </div>
 </section>
 
@@ -125,9 +157,9 @@
     <p class="lede">Peer-reviewed papers &mdash; remote sensing method development for water and flood mapping, and spatial-modelling contributions to collaborative research. The public record behind the standard I bring to client work.</p>
     <div class="grid">
       <div class="card live-card">
-        <span class="live-badge">Evidence &middot; 16 papers</span>
+        <span class="live-badge">Evidence &middot; Peer-reviewed research</span>
         <h4>Peer-reviewed research</h4>
-        <p>Direct remote sensing research and collaborative spatial modelling in archaeology, Quaternary science and hydrology &mdash; every entry linked to its DOI. The .bib file downloads too: the bibliography is reproducible, like everything else.</p>
+        <p>Direct remote sensing research and collaborative spatial modelling in archaeology, Quaternary science and hydrology &mdash; peer-reviewed papers linked to their DOIs, with other contributions listed separately. The .bib file downloads too: the bibliography is reproducible, like everything else.</p>
         <div class="links">
           <a href="./publications.html">Browse the publications &rarr;</a>
         </div>
@@ -138,8 +170,8 @@
 
 <footer class="wrap">
   <p><strong>Damien O&rsquo;Grady</strong> &mdash; independent remote sensing and GIS consultant, Melbourne, Australia.
-  Methods underpinned by my own peer-reviewed publications; commercial client work delivered traceable, defensible and reproducible.
-  <a href="https://github.com/damienogrady">github.com/damienogrady</a></p>
+  Methods underpinned by my own <a href="./publications.html">peer-reviewed publications</a>; commercial client work delivered traceable, defensible and reproducible.
+  <a href="mailto:damien.ogrady@proton.me">Email</a> &middot; <a href="https://github.com/damienogrady">github.com/damienogrady</a></p>
 </footer>
 
 </body>

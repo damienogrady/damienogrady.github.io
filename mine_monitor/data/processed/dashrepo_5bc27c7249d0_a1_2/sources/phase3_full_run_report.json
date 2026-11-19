@@ -1,0 +1,45 @@
+{
+  "generated_at_utc": "2026-11-17T07:32:01.040673+00:00",
+  "source_namespace": "21d4c71d4894_0c45935c0979",
+  "status": "complete",
+  "cohort_summaries": [
+    {
+      "sensor": "landsat",
+      "cohort_count": 35,
+      "matching_cell_count": 5250,
+      "primary_floor2_pairs": 932356
+    },
+    {
+      "sensor": "sentinel2",
+      "cohort_count": 10,
+      "matching_cell_count": 1500,
+      "primary_floor2_pairs": 515733
+    }
+  ],
+  "table_row_counts": {
+    "full_run_achieved_nstar.csv": 6750,
+    "full_run_pooled_detectability.csv": 70,
+    "full_run_cohort_detectability.csv": 225,
+    "full_run_control_reuse.csv": 4050,
+    "full_run_caliper_exclusions.csv": 6750,
+    "full_run_sensitivities.csv": 4725
+  },
+  "pooled_detectability_row_count": 70,
+  "cohort_detectability_row_count": 225,
+  "spatial_diagnostics": "full_run_spatial_diagnostics.json",
+  "manifest_sha256": "d5e716e800d9223f0c42e8a963cd369b61f8b50b66a55a2134fb7f5ffcb03c51",
+  "outputs_sha256": {
+    "full_run_achieved_nstar.csv": "04cd241dccf799b35d5ed333f39aafed465398428f23bc64d869138ea1272a31",
+    "full_run_pooled_detectability.csv": "d405b9794f64676d7648244d7d3b8c3dedfa8e6c5122a0552af98b50ba854396",
+    "full_run_cohort_detectability.csv": "2c27fa388c9fe38dd3cc4a55e19b07e4b14bd2b6ec011759429a698712d12166",
+    "full_run_control_reuse.csv": "69f3348a0f7d5ea7ac3776563b5a575bc826234340fb856b277737e83848dad3",
+    "full_run_caliper_exclusions.csv": "6a1c7e8cab469b40b8fca4fbb69694cf1bc424420448286ff715690db4231894",
+    "full_run_sensitivities.csv": "e60bb924b0dd2cec9f5fdea6127fc8c4ffeb075adede4eb813aaeea20fff09ca",
+    "full_run_spatial_diagnostics.json": "c7c92a882ca653d53d45426f9e6c6dc52d5a893d9fc866f7d38d8e4d5a4e9865",
+    "full_run_pairs.csv.gz": "b6ee97c95831c2a05b755db85817b48f6a3a1b2e1bc302cbe2be2d08206d0863"
+  },
+  "aoi_disclosure": "Analysis AOI: the 10,000 m buffer around the dissolved union of 14 leases (1,380.85 km\u00b2; 1,534,281 cells at 30 m). The lease union is approximately 196.72 km\u00b2 (14.25% of the AOI). Areas are 30 m cell-area equivalents, not surveyed or statutory areas; buffered-AOI percentages are not percentages of the lease union.",
+  "hand_disclaimer": "Flood-prone HAND screening proxy only; not a statutory flood extent, flood hazard map, or 0.5% AEP floodplain.",
+  "class_label": "rule-based adaptation, unvalidated, pending M4 supervised validation",
+  "catalog_snapshot_note": "OPEN:T2-CATALOG-METADATA-DRIFT; local static M3 rasters are analyzed read-only; no live catalog lookup or Earth Engine request is performed."
+}
