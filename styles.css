@@ -152,7 +152,7 @@ header nav a:focus-visible {
 
 .featured-demo {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(240px, 0.9fr);
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: clamp(24px, 5vw, 56px);
   overflow: hidden;
@@ -232,6 +232,8 @@ header nav a:focus-visible {
   align-items: center;
   justify-content: center;
   min-width: 0;
+  width: 276px;
+  max-width: 100%;
   padding: 12px;
   background: rgb(255 255 255 / 5%);
   border: 1px solid rgb(220 232 223 / 18%);
@@ -241,15 +243,17 @@ header nav a:focus-visible {
 
 .featured-visual img {
   display: block;
-  width: 100%;
-  max-height: 310px;
-  object-fit: contain;
+  width: 250px;
+  max-width: 100%;
+  height: auto;
 }
 
 .featured-visual span {
+  display: block;
   margin-top: 8px;
   color: #dce8df;
   font-size: 0.76rem;
+  text-align: center;
 }
 
 .page-hero {
@@ -654,10 +658,6 @@ footer a:hover {
 
   .featured-demo {
     grid-template-columns: 1fr;
-  }
-
-  .featured-visual img {
-    max-height: 260px;
   }
 }
 
