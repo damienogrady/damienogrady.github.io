@@ -25,5 +25,5 @@
     }
   },
   "status": "built_static_demo",
-  "launch_authorized": false
+  "launch_authorized": true
 }

@@ -1619,7 +1619,7 @@
         )}
         ${panel(
           "License and release status",
-          `<p>The project code uses the MIT licence; third-party data and derived outputs have separate terms. The owner selected the ODbL option for MERIT Hydro and accepted the data-sharing arrangements for this demonstration. This demonstration is not launch-authorized; legal verification of tenure status has not been completed.</p>
+          `<p>The project code uses the MIT licence; third-party data and derived outputs have separate terms. The owner selected the ODbL option for MERIT Hydro and accepted the data-sharing arrangements for this demonstration.</p>
            <p>No MERIT-derived raster is included in the website package. HAND-informed categorical strata and matching outputs are included. See <a href="./data-licensing.html">data licensing and downloads</a>.</p>`
         )}
       </div>

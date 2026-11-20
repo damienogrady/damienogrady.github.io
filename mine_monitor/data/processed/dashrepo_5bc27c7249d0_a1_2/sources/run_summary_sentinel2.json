@@ -25,7 +25,7 @@
   "config_sha256": "21d4c71d4894f7d86f6fdbfed22114e82541660553a4be3eca0d0b10ad1ce23a",
   "config_version": "0.8.0-draft",
   "cross_sensor_calibration": "not performed",
-  "dashboard_swap_in_status": "active; authorized by Lumo after independent classified-map review PASS",
+  "dashboard_swap_in_status": "active; authorized after independent classified-map review PASS",
   "detection_exclusion_shares": {
     "browning_segment_count": 3623026,
     "excluded_by_both_count": 69568,
