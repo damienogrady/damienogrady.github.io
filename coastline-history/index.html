@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore changing coastlines and sea levels around Australia over the last 125,000 years.">
+  <meta name="theme-color" content="#102522">
+  <title>Australia's Changing Coastline — Damien O'Grady</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="./coastline.css">
+  <script src="./sea_level_data.js" defer></script>
+  <script src="./coastline.js" defer></script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1><a href="../index.html"><img src="../favicon.svg" alt="">Damien O&rsquo;Grady</a></h1>
+    <nav aria-label="Main navigation">
+      <a href="../services.html">Services</a>
+      <a href="../mine_monitor/">Mine monitor</a>
+      <a href="../index.html#demonstrations">Demonstrations</a>
+      <a href="../index.html#live">Live tools</a>
+      <a href="../index.html#heritage">Earlier work</a>
+      <a href="../background.html">Background</a>
+      <a href="../publications.html">Publications</a>
+      <a href="https://github.com/damienogrady">GitHub</a>
+      <a href="mailto:damien.ogrady@proton.me">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap coastline-page">
+  <div class="coastline-heading">
+    <p class="coastline-kicker">Interactive exploration &middot; 125,000 years</p>
+    <h2>Australia&rsquo;s changing coastline</h2>
+    <p>How did the coastline change over time? Drag the slider to explore for yourself.</p>
+  </div>
+
+  <div class="coastline-layout">
+    <div class="explorer">
+      <div class="video-container">
+        <video id="videoPlayer" src="./coastline_full_web.mp4" preload="metadata" playsinline
+          aria-label="Map of changing coastlines around Australia">
+          Your browser does not support video.
+        </video>
+        <div class="odometer-container">
+          <div>
+            <div class="odometer-label">Age</div>
+            <div class="odometer-display" id="odoDisplay">0</div>
+            <div class="odometer-unit">years BP</div>
+          </div>
+          <div class="sea-level">
+            <div class="odometer-label">Sea level</div>
+            <div class="odometer-display" id="seaLevelDisplay">--</div>
+            <div class="odometer-unit">metres relative to present</div>
+          </div>
+        </div>
+      </div>
+      <p class="status" id="status" role="status">Loading video and sea-level data&hellip;</p>
+      <div class="slider-container">
+        <label for="timeSlider">Explore by age</label>
+        <input type="range" id="timeSlider" min="0" max="125000" value="0" step="125"
+          aria-label="Age in years before present" disabled>
+        <div class="time-labels" aria-hidden="true">
+          <span>Present (0 BP)</span>
+          <span>125,000 years BP</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="coastline-story">
+      <h3>A changing landscape</h3>
+      <p>Watch the basins of Lake Carpentaria and Lake Bass appear and disappear as sea levels change.
+        In the north-west, compare the shifting coastline of Borneo with the islands of Indonesia to its east.</p>
+      <p>These changing landscapes help give context to the Wallace Line, which runs between Borneo and Sulawesi
+        and marks a boundary between the distinct faunal regions of Asia and Australasia.</p>
+      <p>At times of lower sea level, people could walk between what are now Papua New Guinea and mainland Australia.
+        How the first people made the journey across the islands from Asia to Sahul remains a subject of research.
+        I was fortunate to contribute to the study
+        <a href="https://www.nature.com/articles/s41598-019-42946-9">Early human settlement of Sahul was not an accident</a>.</p>
+      <p>This map set grew out of work to create the background for
+        <a href="https://www.youtube.com/watch?v=p_cM1sxTz7s">And now for the weather &hellip; 130,000 years ago</a>.
+        In that video, land colours represent predicted vegetation; in this map, they represent height above
+        the changing sea level.</p>
+      <p class="coastline-note">BP means years before present. Sea level is relative to modern sea level;
+        values between the 1,000-year observations are linearly interpolated. The coastline is shown
+        using 142 video frames, so it is approximate between frames.</p>
+    </div>
+  </div>
+</main>
+</body>
+</html>
