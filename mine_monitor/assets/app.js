@@ -748,13 +748,6 @@
       </tr>`
     );
     const audit = item.control_audit;
-    const sensitivityRows = Object.entries(item.class_map.sensitivity_90_95_99)
-      .map(([percentile, record]) => ({ percentile, ...record }));
-    const sensitivity = table(
-      ["Threshold percentile", "Band width", "NVG", "NVF", "NVB", "Population"],
-      sensitivityRows,
-      (row) => `<tr><td>${escapeHtml(row.percentile)}th</td><td>${Number(row.band_width_absolute_net_fitted_ndvi_change).toFixed(6)}</td><td>${number(row.NVG_count)}</td><td>${number(row.NVF_count)}</td><td>${number(row.NVB_count)}</td><td>${number(row.population_count)}</td></tr>`
-    );
     const caliperTable = table(
       ["Year", "Matching arm", "Floor", "Band", "HAND label", "Excluded", ">0.02 differences"],
       item.matching_metrics.caliper_exclusion_preview,
@@ -777,12 +770,13 @@
         <span><strong>Damien O’Grady</strong>
           <small>Independent remote sensing and GIS consultant</small></span>
       </a>
-      <div class="page-purpose"><strong>Why these tables matter</strong><p>Cohort summaries show which mapped years and tiers are represented. Threshold sensitivities show how classification responds to alternative settings. Control gates show whether a comparison met pre-set quality requirements. Together, they let a reviewer trace a conclusion back to its limits instead of relying on a map alone.</p></div>
+      <div class="page-purpose"><strong>Why these tables matter</strong><p>Cohort summaries show which mapped years and tiers are represented. Threshold sensitivities (on the Annual timing &amp; thresholds page) show how classification responds to alternative settings. Control gates show whether a comparison met pre-set quality requirements. Together, they let a reviewer trace a conclusion back to its limits instead of relying on a map alone.</p></div>
       <div class="notice warning">All figures below are copied or counted from hash-pinned entities. No new analysis or synthesized result is presented.</div>
       <div class="spacer"></div>
       ${panel("Cohort ledger · fixed 2-cell display floor", `${cohortLedger}<p>${escapeHtml(item.timeline.fragility_note)}</p>`)}
       <div class="spacer"></div>
-      ${panel("Sensitivity by threshold", `${sensitivity}<p>Population: ${number(item.class_map.population_count)} valid observations. Sensitivity values are copied from the pinned sensor run summary; this page performs no classification or threshold calculation.</p>`)}
+      ${panel("Threshold sensitivity", `<p>The sensitivity-by-threshold table (90th, 95th and 99th percentile stability bands) is kept on one page only.
+        <button type="button" class="text-action" data-go-view="timing">Open Annual timing &amp; thresholds →</button></p>`)}
       <div class="spacer"></div>
       <div class="grid four">
         ${metric("Matching cells", number(audit.rows), "Pinned control-summary rows")}
