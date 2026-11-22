@@ -232,7 +232,7 @@ header nav a:focus-visible {
   align-items: center;
   justify-content: center;
   min-width: 0;
-  width: min(100%, 440px);
+  width: min(100%, 300px);
   max-width: 100%;
   padding: 12px;
   background: rgb(255 255 255 / 5%);
@@ -691,4 +691,21 @@ footer a:hover {
   margin-left: 12px;
   color: var(--muted);
   font-size: 0.86rem;
+}
+
+.featured-visual .legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin-top: 6px;
+  font-size: 0.68rem;
+}
+
+.featured-visual .legend i {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 4px;
+  border-radius: 2px;
+  vertical-align: baseline;
 }
