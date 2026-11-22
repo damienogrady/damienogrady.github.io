@@ -152,7 +152,7 @@ header nav a:focus-visible {
 
 .featured-demo {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) 372px;
   align-items: center;
   gap: clamp(24px, 5vw, 56px);
   overflow: hidden;
@@ -232,7 +232,7 @@ header nav a:focus-visible {
   align-items: center;
   justify-content: center;
   min-width: 0;
-  width: 160px;
+  width: 100%;
   max-width: 100%;
   padding: 12px;
   background: rgb(255 255 255 / 5%);
@@ -243,7 +243,8 @@ header nav a:focus-visible {
 
 .featured-visual img {
   display: block;
-  width: 90px;
+  width: 100%;
+  image-rendering: pixelated;
   max-width: 100%;
   height: auto;
 }
@@ -659,6 +660,10 @@ footer a:hover {
   .featured-demo {
     grid-template-columns: 1fr;
   }
+
+  .featured-visual {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -670,4 +675,63 @@ footer a:hover {
     padding-left: 36px;
     overflow-wrap: anywhere;
   }
+}
+
+.cta a {
+  display: inline-block;
+  padding: 10px 18px;
+  background: var(--forest-2);
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.cta a:hover,
+.cta a:focus-visible {
+  background: var(--forest);
+}
+
+.cta-note {
+  margin-left: 12px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.featured-visual .visual-row {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  width: 100%;
+}
+
+.featured-visual .visual-row img {
+  flex: 0 0 55%;
+  width: 55%;
+  align-self: flex-start;
+}
+
+.featured-visual .legend {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-width: 0;
+  font-size: 0.72rem;
+  text-align: left;
+  line-height: 1.25;
+  color: #dce8df;
+}
+
+.featured-visual .legend b {
+  display: block;
+}
+
+.featured-visual .legend i {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 5px;
+  border-radius: 2px;
 }
