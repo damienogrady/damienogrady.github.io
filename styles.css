@@ -671,3 +671,24 @@ footer a:hover {
     overflow-wrap: anywhere;
   }
 }
+
+.cta a {
+  display: inline-block;
+  padding: 10px 18px;
+  background: var(--forest-2);
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.cta a:hover,
+.cta a:focus-visible {
+  background: var(--forest);
+}
+
+.cta-note {
+  margin-left: 12px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
