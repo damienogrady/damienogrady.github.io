@@ -232,7 +232,7 @@ header nav a:focus-visible {
   align-items: center;
   justify-content: center;
   min-width: 0;
-  width: 160px;
+  width: min(100%, 440px);
   max-width: 100%;
   padding: 12px;
   background: rgb(255 255 255 / 5%);
@@ -243,7 +243,7 @@ header nav a:focus-visible {
 
 .featured-visual img {
   display: block;
-  width: 90px;
+  width: 100%;
   max-width: 100%;
   height: auto;
 }
