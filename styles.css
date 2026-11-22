@@ -152,7 +152,7 @@ header nav a:focus-visible {
 
 .featured-demo {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) 244px;
   align-items: center;
   gap: clamp(24px, 5vw, 56px);
   overflow: hidden;
@@ -232,7 +232,7 @@ header nav a:focus-visible {
   align-items: center;
   justify-content: center;
   min-width: 0;
-  width: min(100%, 300px);
+  width: 100%;
   max-width: 100%;
   padding: 12px;
   background: rgb(255 255 255 / 5%);
@@ -244,6 +244,7 @@ header nav a:focus-visible {
 .featured-visual img {
   display: block;
   width: 100%;
+  image-rendering: pixelated;
   max-width: 100%;
   height: auto;
 }
@@ -658,6 +659,10 @@ footer a:hover {
 
   .featured-demo {
     grid-template-columns: 1fr;
+  }
+
+  .featured-visual {
+    max-width: 260px;
   }
 }
 
