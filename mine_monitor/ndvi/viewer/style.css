@@ -20,7 +20,7 @@ input[type=range] { width: 100%; accent-color: #236d52; }
 h2 { font-size: 1.15rem; margin: .2rem 0 1rem; }
 .section-title span, .muted { color: #60766a; }
 .section-title span, .small { font-size: .8rem; }
-.map-wrap { background: #25352f; border-radius: 8px; overflow: hidden; max-height: 78vh; display: flex; justify-content: center; }
+.map-wrap { background: transparent; border-radius: 8px; overflow: hidden; max-height: 78vh; display: flex; justify-content: center; }
 #map { width: auto; height: auto; max-width: 100%; max-height: 78vh; image-rendering: pixelated; cursor: crosshair; }
 .legend { display: flex; align-items: center; gap: .6rem; font-size: .75rem; margin-top: .8rem; }
 .gradient { height: 9px; flex: 1; border-radius: 6px; background: linear-gradient(90deg, #3f365f 0%, #986746 50%, #d3b767 62.5%, #83af5b 75%, #2b7d5b 87.5%, #0a4a41 100%); }

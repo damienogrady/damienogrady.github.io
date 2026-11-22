@@ -5,41 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="Static, Curragh-only demonstration of mine rehabilitation monitoring outputs."
+      content="Real output from a working mine rehabilitation monitoring pipeline, still under development: a pinned, Curragh-only historical snapshot."
     >
     <meta name="theme-color" content="#102522">
     <title>Curragh | Mine Rehabilitation Monitoring</title>
-    <link rel="icon" href="./branding/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="./branding/favicon.ico" sizes="any">
-    <link rel="icon" href="./branding/icon-32.png" type="image/png" sizes="32x32">
-    <link rel="icon" href="./branding/icon-192.png" type="image/png" sizes="192x192">
-    <link rel="apple-touch-icon" href="./branding/apple-touch-icon.png" sizes="180x180">
-    <link rel="stylesheet" href="./assets/styles.css?v=footer-links-1">
-    <link rel="stylesheet" href="./assets/map-navigation.css">
+    <link rel="icon" href="./branding/favicon.svg?v=d4a4e5f5d2" type="image/svg+xml">
+    <link rel="icon" href="./branding/favicon.ico?v=56e69f1ad1" sizes="any">
+    <link rel="icon" href="./branding/icon-32.png?v=ce9d59063b" type="image/png" sizes="32x32">
+    <link rel="icon" href="./branding/icon-192.png?v=06c747ec3c" type="image/png" sizes="192x192">
+    <link rel="apple-touch-icon" href="./branding/apple-touch-icon.png?v=5661745055" sizes="180x180">
+    <link rel="stylesheet" href="./assets/styles.css?v=7ee693e230">
+    <link rel="stylesheet" href="./assets/map-navigation.css?v=cffec1f8df">
+    <link rel="stylesheet" href="./assets/map-explorer.css?v=a0d20ab77f">
     <script>
       window.DASH_DATA_URL =
-        "./data/processed/dashrepo_5bc27c7249d0_a1_2/dashboard/dashboard.json";
+        "./data/processed/dashrepo_5bc27c7249d0_a1_3/dashboard/dashboard.json";
     </script>
-    <script src="./assets/app.js?v=tenure-review-1" defer></script>
+    <script src="./assets/map-explorer.js?v=9c5c9f7461" defer></script>
+    <script src="./assets/app.js?v=53565c2f8f" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="masthead">
       <a class="author-brand" href="https://damienogrady.github.io/" aria-label="Damien O’Grady portfolio">
-        <img class="brand-logo-screen" src="./branding/favicon-white.svg" alt="">
-        <img class="brand-logo-print" src="./branding/favicon.svg" alt="">
+        <img class="brand-logo-screen" src="./branding/favicon-white.svg?v=b5da51ebc1" alt="">
+        <img class="brand-logo-print" src="./branding/favicon.svg?v=d4a4e5f5d2" alt="">
         <span>Damien O’Grady</span>
       </a>
       <a class="brand" href="./" aria-label="Curragh demonstration home">
         <span class="brand-mark" aria-hidden="true">M</span>
         <span>
           <strong>Mine Rehabilitation Monitor</strong>
-          <small>Static demonstration · Curragh only</small>
+          <small>Working pipeline, in development · Curragh only</small>
         </span>
       </a>
       <div class="snapshot-tag">
         <span class="status-dot" aria-hidden="true"></span>
-        Pinned data snapshot
+        Pinned snapshot of pipeline output
       </div>
     </header>
 
@@ -47,26 +49,42 @@
       <aside class="sidebar">
         <p class="eyebrow">Demonstration</p>
         <nav class="primary-nav" aria-label="Dashboard sections">
-          <button type="button" class="nav-link active" data-view="overview">Monitor your site</button>
-          <button type="button" class="nav-link" data-view="ndvi">Explore fitted NDVI</button>
-          <button type="button" class="nav-link" data-view="manage">Manage a problem</button>
-          <button type="button" class="nav-link" data-view="reporting">Regulator reporting</button>
-          <button type="button" class="nav-link" data-view="maps">Class & timing maps</button>
-          <button type="button" class="nav-link" data-view="science">Science & references</button>
-          <button type="button" class="nav-link" data-view="events">Event records</button>
-          <button type="button" class="nav-link" data-view="cohorts">Cohort ledger</button>
-          <button type="button" class="nav-link" data-view="bands">Administrative distance strata</button>
-          <button type="button" class="nav-link" data-view="controls">Control audit</button>
-          <button type="button" class="nav-link" data-view="methods">Data quality & provenance</button>
+          <div class="nav-group" role="group" aria-label="Home">
+            <button type="button" class="nav-link active" data-view="home">Demo Home</button>
+          </div>
+          <div class="nav-group" role="group" aria-label="Monitor rehabilitation">
+            <p class="nav-group-title">Monitor rehabilitation</p>
+            <button type="button" class="nav-link" data-view="mapexplorer">Map explorer</button>
+          </div>
+          <div class="nav-group" role="group" aria-label="Investigate problems">
+            <p class="nav-group-title">Investigate problems</p>
+            <button type="button" class="nav-link" data-view="events">Event records</button>
+          </div>
+          <div class="nav-group" role="group" aria-label="Demonstrate compliance">
+            <p class="nav-group-title">Demonstrate compliance</p>
+            <button type="button" class="nav-link" data-view="reporting">Reporting & evidence</button>
+            <button type="button" class="nav-link" data-view="cohorts">Cohort ledger</button>
+            <a class="nav-link" href="./curragh-case-study.html">Curragh case study</a>
+          </div>
+          <div class="nav-group" role="group" aria-label="Technical evidence">
+            <p class="nav-group-title">Technical evidence</p>
+            <a class="nav-link" href="./methodology.html">Methodology & provenance</a>
+            <a class="nav-link" href="./approach-report.html">Approach & research</a>
+            <button type="button" class="nav-link" data-view="methods">Hash-gate & lineage checks</button>
+            <button type="button" class="nav-link" data-view="controls">Control audit</button>
+            <button type="button" class="nav-link" data-view="bands">Administrative distance strata</button>
+            <button type="button" class="nav-link" data-view="timing">Annual timing & thresholds</button>
+            <button type="button" class="nav-link" data-view="ndvi">Standalone NDVI viewer</button>
+          </div>
         </nav>
         <div class="sidebar-note">
           <span class="eyebrow">Scope</span>
-          <p>One real site. Two separate sensor products. Static and pinned.</p>
+          <p>One real site. Two separate sensor products. Real pipeline output, pinned as a historical snapshot.</p>
         </div>
       </aside>
 
       <main id="main" class="main-content" tabindex="-1">
-        <div id="loading" class="loading-card" role="status">Loading the pinned demonstration data…</div>
+        <div id="loading" class="loading-card" role="status">Loading the pinned pipeline output…</div>
         <div id="app" hidden></div>
         <div id="error" class="error-card" role="alert" hidden></div>
       </main>
@@ -100,7 +118,7 @@
         <p>Trajectory-rate labels only: DHR/DLR fragility is 24.26% for Landsat and 7.19% for Sentinel-2; these are not rehabilitation-quality or completion-criteria verdicts.</p>
         <p class="rd-caption">disturbance-class onset, 2022 — attribution under investigation (flood/wet-season confounding active at this site)</p>
       </details>
-      <p class="footer-meta">Static, versioned demonstration · No Earth Engine or live catalog requests.</p>
+      <p class="footer-meta">Pinned, versioned snapshot of output from the <a href="https://github.com/damienogrady/mine-rehab-monitor">mine-rehab-monitor</a> pipeline (under development) · This web demo makes no Earth Engine or live catalog requests.</p>
       <p class="footer-meta">
         Sources: Landsat data courtesy of the <a href="https://www.usgs.gov/centers/eros/data-citation">U.S. Geological Survey</a>;
         contains modified <a href="https://ecds.ecmwf.int/licences/ec-sentinel">Copernicus Sentinel data</a> 2016–2026.
@@ -117,6 +135,13 @@
         Methods underpinned by my own peer-reviewed publications; commercial client work delivered
         traceable, defensible and reproducible.
         <a href="https://github.com/damienogrady">github.com/damienogrady</a>
+      </p>
+      <p class="footer-branding footer-links">
+        Credentials and services on the main site:
+        <a href="../publications.html">Publications</a> ·
+        <a href="../background.html">Background</a> ·
+        <a href="../services.html">Services</a> ·
+        <a href="mailto:damien.ogrady@proton.me?subject=Monitoring%20project%20enquiry">Discuss a monitoring project</a>
       </p>
     </footer>
   </body>

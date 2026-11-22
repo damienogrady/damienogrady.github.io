@@ -1,0 +1,12 @@
+{
+  "artifact": "cohort_timeline_sentinel2.json",
+  "artifact_sha256": "5a3b6abb467ad79e510cad1ac5c6567593dc62fbe5cafca8a9e9af632ba88818",
+  "namespace": "dashrepo_5bc27c7249d0_a1_3",
+  "source_phase4_manifest_sha256": "5bc27c7249d09ec02ada51fb95ff7b0971aa90a72dc4c3c666cbe9cbb00beb86",
+  "derived_from_phase4_outputs_sha256": {
+    "trajectory_events_sentinel2.parquet": "c3b8346a4037b64a3e2c23414daec0ca5f1efd8cb3f40e0be84fd54649a0b6fb",
+    "cohorts_sentinel2.parquet": "769dd129e9755f0da68b040cc7a15c5cbfee8e84420ac421cb72fd808295cf37",
+    "control_pairs_summary_sentinel2.parquet": "2da9f3692c2bf40fe510ce2861271ea3a01b242b32f75c191b3cf6f377d6ff79"
+  },
+  "derivation": "Year/tier counts and status copied or counted from pinned event, cohort, and control-summary entities; 900 m² cell-area equivalents and row-count gate summaries."
+}

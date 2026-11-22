@@ -1,0 +1,11 @@
+{
+  "artifact": "interactive_events_landsat.bin",
+  "artifact_sha256": "d971ace6e912c5bd2cafa4443686094ea5a1ef930b2552929905dc3f1d082775",
+  "namespace": "dashrepo_5bc27c7249d0_a1_3",
+  "source_phase4_manifest_sha256": "5bc27c7249d09ec02ada51fb95ff7b0971aa90a72dc4c3c666cbe9cbb00beb86",
+  "derived_from_phase4_outputs_sha256": {
+    "trajectory_events_landsat.parquet": "735c7b6d27a5d32cb0dab729649a63593bbd6d7f78fdf6a1e0927867a6ab5b8a",
+    "distance_bands_landsat.gpkg": "ba1c669215c3d223417655bc62a0537ee11b74b5e2ae41fe789e9f76b1fc80f2"
+  },
+  "derivation": "Compact fixed-width centroid point records for the complete Phase 4 event population, with floor-2 R4 band membership."
+}

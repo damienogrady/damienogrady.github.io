@@ -8,18 +8,18 @@
       content="Plain-language report on the purpose and methods of the Curragh mine rehabilitation monitoring demonstration."
     >
     <title>Monitoring approach | Curragh Mine Rehabilitation Monitor</title>
-    <link rel="icon" href="./branding/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="./branding/favicon.ico" sizes="any">
-    <link rel="icon" href="./branding/icon-32.png" type="image/png" sizes="32x32">
-    <link rel="icon" href="./branding/icon-192.png" type="image/png" sizes="192x192">
-    <link rel="apple-touch-icon" href="./branding/apple-touch-icon.png" sizes="180x180">
-    <link rel="stylesheet" href="./assets/styles.css?v=footer-links-1">
+    <link rel="icon" href="./branding/favicon.svg?v=d4a4e5f5d2" type="image/svg+xml">
+    <link rel="icon" href="./branding/favicon.ico?v=56e69f1ad1" sizes="any">
+    <link rel="icon" href="./branding/icon-32.png?v=ce9d59063b" type="image/png" sizes="32x32">
+    <link rel="icon" href="./branding/icon-192.png?v=06c747ec3c" type="image/png" sizes="192x192">
+    <link rel="apple-touch-icon" href="./branding/apple-touch-icon.png?v=5661745055" sizes="180x180">
+    <link rel="stylesheet" href="./assets/styles.css?v=7ee693e230">
   </head>
   <body>
     <header class="masthead">
       <a class="author-brand" href="https://damienogrady.github.io/" aria-label="Damien O’Grady portfolio">
-        <img class="brand-logo-screen" src="./branding/favicon-white.svg" alt="">
-        <img class="brand-logo-print" src="./branding/favicon.svg" alt="">
+        <img class="brand-logo-screen" src="./branding/favicon-white.svg?v=b5da51ebc1" alt="">
+        <img class="brand-logo-print" src="./branding/favicon.svg?v=d4a4e5f5d2" alt="">
         <span>Damien O’Grady</span>
       </a>
       <a class="brand" href="./" aria-label="Return to dashboard">
@@ -41,18 +41,18 @@
         <p class="eyebrow">Purpose, principles and limits</p>
         <h1>What this monitoring demonstration is for</h1>
         <a class="report-author" href="https://damienogrady.github.io/">
-          <img src="./branding/favicon.svg" width="32" height="32" alt="">
+          <img src="./branding/favicon.svg?v=d4a4e5f5d2" width="32" height="32" alt="">
           <span><strong>Damien O’Grady</strong>
             <small>Independent remote sensing and GIS consultant</small></span>
         </a>
         <p class="report-lead">This project explores how long satellite records can help mine rehabilitation teams see where vegetation patterns change, when those changes occur, and which places may deserve closer investigation.</p>
-        <p class="report-meta">Curragh, Queensland · Static, pinned demonstration</p>
+        <p class="report-meta">Curragh, Queensland · Pinned snapshot of output from a working pipeline, still under development</p>
 
         <h2>In brief</h2>
         <p>Satellite imagery provides repeated observations over large areas. This demonstration turns those observations into maps and records of vegetation trajectory: areas that appear stable, areas with a disturbance signal, and areas with a later recovery signal. It is designed to make it easier to find patterns, follow up locations on the ground, and review how evidence was assembled.</p>
         <p>The demonstration focuses on Curragh in Queensland. We chose Curragh because pinned monitoring outputs provide a concrete dataset to examine, and peer-reviewed research has already applied Landsat and LandTrendr to vegetation disturbance and recovery at the site. This gives the demonstration a locally relevant, research-informed starting point; its results and thresholds are specific to Curragh and should not be assumed to transfer to other mines.</p>
         <p>The intended outcome is a practical monitoring aid for mine rehabilitation and monitoring managers and a transparent evidence interface for regulators. The longer-term aim is to support site-specific, repeatable monitoring that can direct attention and help organize evidence—not to replace field assessment or statutory completion criteria.</p>
-        <p><strong>Beyond mine sites:</strong> the underlying approach could be adapted relatively quickly to monitor vegetation in other landscapes, subject to suitable imagery, local configuration and validation. This website is a static Curragh demonstration: it does not currently run analyses for new areas, and Curragh's thresholds and results should not be assumed to apply elsewhere.</p>
+        <p><strong>Beyond mine sites:</strong> the underlying approach could be adapted relatively quickly to monitor vegetation in other landscapes, subject to suitable imagery, local configuration and validation. This website shows a pinned snapshot of Curragh output from the working (but still developing) mine-rehab-monitor pipeline: the page itself does not run analyses for new areas, and Curragh's thresholds and results should not be assumed to apply elsewhere.</p>
         <p><strong>Closer inspection:</strong> a future extension could combine the broad-area monitoring with higher-resolution imagery to help scrutinise locations flagged for management. Such imagery is not included here and would complement rather than replace field checks.</p>
         <div class="report-note"><strong>What it does not establish:</strong> a mapped disturbance is not proof that mining caused it; a vegetation recovery label is not a rehabilitation-quality verdict; and this demonstration does not determine legal completion or compliance.</div>
 
@@ -95,18 +95,19 @@
         </div>
         <p class="report-meta">Widths are absolute net fitted NDVI changes in the pinned sensor runs. The calibration populations are sensor-specific subsets, not the full area of interest. Landsat and Sentinel-2 thresholds are not cross-calibrated. These values apply to this Curragh demonstration only and must not be treated as universal defaults or regulatory thresholds.</p>
 
-        <h2>Important boundaries</h2>
+        <h2 id="limitations">Important boundaries</h2>
+        <p>Specialists: the <a href="./methodology.html">Methodology &amp; data provenance</a> page tabulates method status, parameters, sensor comparability, 2022 confounding and the tenure disclosure.</p>
         <ul>
-          <li>This is a static, versioned Curragh demonstration using pinned outputs; it does not run live analysis or Earth Engine requests.</li>
+          <li>The outputs are real results from a working analysis pipeline that is still under development. This web demo shows a pinned, versioned historical snapshot of them; it does not run live analysis or make Earth Engine requests, and nothing is recalculated here.</li>
           <li>The two sensors remain separate. Their thresholds and products are not combined or cross-calibrated.</li>
           <li>Disturbance and recovery classes describe satellite-observed trajectory patterns. They do not attribute cause or certify rehabilitation quality.</li>
           <li>The 2022/T3 cohort is QA-only because attribution is under investigation; it is not evidence for mining impact.</li>
           <li>Distance bands are administrative strata, not ecological boundaries. Areas are 30 m cell-area equivalents, not surveyed or statutory areas.</li>
-          <li>Lease-union and nested locator geometries are absent from accepted display inputs. Fitted-NDVI time series are provided in a separate static viewer; they are not observed values or an impact estimate.</li>
+          <li>Lease-union and nested locator geometries are absent from accepted display inputs. Fitted-NDVI time series are provided in a separate standalone viewer; they are not observed values or an impact estimate.</li>
           <li>Curragh thresholds are not general defaults. The frozen 15 November 2026 tenure snapshot remains in use: a 19 November comparison found one 30 m cell outside the refreshed analysis area that appears as a control in eight matching records, including four primary floor-2 records. Results were not recalculated; lease renewal status is not legally verified. This is not a current-tenure or regulatory determination.</li>
           <li>This demonstration uses the ODbL option for MERIT Hydro; derived data and source notices are available via the data-licensing page. Future operational use requires its own assessment.</li>
         </ul>
-        <p class="report-meta">For data lineage and hash checks, return to the dashboard and open “Data quality &amp; provenance.”</p>
+        <p class="report-meta">For data lineage and hash checks, return to the dashboard and open “Data quality &amp; provenance.” For worked examples, see the <a href="./curragh-case-study.html">Curragh case study</a>.</p>
       </article>
     </main>
     <footer class="site-footer">
@@ -126,6 +127,13 @@
         Methods underpinned by my own peer-reviewed publications; commercial client work delivered
         traceable, defensible and reproducible.
         <a href="https://github.com/damienogrady">github.com/damienogrady</a>
+      </p>
+      <p class="footer-branding footer-links">
+        Credentials and services on the main site:
+        <a href="../publications.html">Publications</a> ·
+        <a href="../background.html">Background</a> ·
+        <a href="../services.html">Services</a> ·
+        <a href="mailto:damien.ogrady@proton.me?subject=Monitoring%20project%20enquiry">Discuss a monitoring project</a>
       </p>
     </footer>
   </body>

@@ -1,0 +1,1278 @@
+{
+  "aoi": {
+    "cell_area_km2": 0.0009,
+    "definition": "10,000 m buffer around dissolved union of all 14 lease geometries; not the union, an envelope, or a bounding box",
+    "rasterized_area_equivalent_km2": 1380.8528999999999,
+    "rasterized_cell_count": 1534281,
+    "source": "data/processed/tenure/curragh_ml_tenure.gpkg, buffered_aoi",
+    "vector_area_km2": 1380.8455062588203
+  },
+  "aoi_display_disclosure": "Analysis AOI: the 10,000 m buffer around the dissolved union of 14 leases (1,380.85 km²; 1,534,281 cells at 30 m). The lease union is approximately 196.72 km² (14.25% of the AOI). Areas are 30 m cell-area equivalents, not surveyed or statutory areas; buffered-AOI percentages are not percentages of the lease union.",
+  "catalog_snapshot": {
+    "effective_scene_count_query_date_utc": "2026-11-16",
+    "historical_catalog_retrieved_at_utc": "2026-11-15T09:26:56.242154+00:00",
+    "version": "Earth Engine live catalog has no immutable version identifier; fitted annual composites are pinned by saved asset IDs and historical-summary SHA-256."
+  },
+  "class_counts": {
+    "DHR": 56123,
+    "DLR": 176982,
+    "DNR": 659397,
+    "NVB": 1145,
+    "NVF": 609690,
+    "NVG": 30944
+  },
+  "completed_at_utc": "2026-11-16T02:48:22.547351+00:00",
+  "config_sha256": "21d4c71d4894f7d86f6fdbfed22114e82541660553a4be3eca0d0b10ad1ce23a",
+  "config_version": "0.8.0-draft",
+  "cross_sensor_calibration": "not performed",
+  "dashboard_swap_in_status": "active; authorized after independent classified-map review PASS",
+  "detection_exclusion_shares": {
+    "browning_segment_count": 1907970,
+    "excluded_by_both_count": 17487,
+    "excluded_by_magnitude_count": 525964,
+    "excluded_by_magnitude_share": 0.2756668081783257,
+    "excluded_by_start_ndvi_count": 23827,
+    "excluded_by_start_ndvi_share": 0.012488141847094032,
+    "qualified_disturbance_segment_count": 1375666
+  },
+  "diagnostics": {
+    "Q4_accepted_recovery_pixel_count": 233105,
+    "T_eq_0_candidate_pair_count": 0,
+    "T_ge_1_candidate_pair_count": 243892,
+    "T_lt_0_candidate_pair_count": 254164,
+    "browning_segment_count": 1907970,
+    "class_counts": {
+      "0": 436115,
+      "1": 30944,
+      "2": 609690,
+      "3": 1145,
+      "4": 659397,
+      "5": 56123,
+      "6": 176982
+    },
+    "disturbance_by_year": {
+      "1999": 4250,
+      "2000": 0,
+      "2012": 0,
+      "2013": 60082,
+      "2021": 1405,
+      "2022": 271965
+    },
+    "excluded_by_both_count": 17487,
+    "excluded_by_magnitude_count": 525964,
+    "excluded_by_start_ndvi_count": 23827,
+    "low_observation_valid_pixels": 0,
+    "qualified_disturbance_pixel_count": 892502,
+    "qualified_disturbance_segment_count": 1375666,
+    "rate_magnitude_disagreement_count": 56554,
+    "same_year_candidate_pixel_count": 0,
+    "same_year_flagged_DNR_pixel_count": 0,
+    "valid_observation_distribution": {
+      "21": 2,
+      "22": 2,
+      "23": 50,
+      "24": 139,
+      "25": 394,
+      "26": 1172,
+      "27": 6132,
+      "28": 50723,
+      "29": 188360,
+      "30": 383492,
+      "31": 450392,
+      "32": 295855,
+      "33": 121204,
+      "34": 31828,
+      "35": 4535,
+      "36": 1
+    },
+    "valid_pixel_count": 1534281,
+    "vanilla_fastest_T_lt_1_pixel_count": 202836
+  },
+  "effective_scene_count_distributions_by_year": {
+    "1988": {
+      "0": 8,
+      "1": 1363,
+      "2": 15110,
+      "3": 199321,
+      "4": 707583,
+      "5": 474153,
+      "6": 136743
+    },
+    "1989": {
+      "1": 36,
+      "2": 99402,
+      "3": 1081044,
+      "4": 339032,
+      "5": 14767
+    },
+    "1990": {
+      "1": 2,
+      "2": 12117,
+      "3": 171013,
+      "4": 547168,
+      "5": 750184,
+      "6": 53797
+    },
+    "1991": {
+      "1": 19,
+      "2": 350,
+      "3": 1518,
+      "4": 1091735,
+      "5": 440139,
+      "6": 520
+    },
+    "1992": {
+      "2": 1,
+      "3": 5,
+      "4": 342,
+      "5": 70658,
+      "6": 427725,
+      "7": 1035550
+    },
+    "1993": {
+      "3": 1174,
+      "4": 55498,
+      "5": 280155,
+      "6": 862932,
+      "7": 308975,
+      "8": 25547
+    },
+    "1994": {
+      "1": 3,
+      "2": 92,
+      "3": 223,
+      "4": 176,
+      "5": 42874,
+      "6": 1278281,
+      "7": 212632
+    },
+    "1995": {
+      "0": 98437,
+      "1": 41736,
+      "2": 433755,
+      "3": 520776,
+      "4": 439011,
+      "5": 566
+    },
+    "1996": {
+      "2": 3,
+      "3": 15,
+      "4": 118,
+      "5": 721,
+      "6": 1339433,
+      "7": 185727,
+      "8": 8264
+    },
+    "1997": {
+      "2": 1023,
+      "3": 279760,
+      "4": 947120,
+      "5": 306378
+    },
+    "1998": {
+      "2": 2128,
+      "3": 21331,
+      "4": 411605,
+      "5": 988981,
+      "6": 110236
+    },
+    "1999": {
+      "3": 121,
+      "4": 7211,
+      "5": 46497,
+      "6": 240636,
+      "7": 1239816
+    },
+    "2000": {
+      "1": 503,
+      "2": 1076329,
+      "3": 457449
+    },
+    "2001": {
+      "2": 1,
+      "3": 7,
+      "4": 31927,
+      "5": 1485633,
+      "6": 16713
+    },
+    "2002": {
+      "0": 1,
+      "1": 5,
+      "2": 4,
+      "3": 5,
+      "4": 377,
+      "5": 202138,
+      "6": 1331751
+    },
+    "2003": {
+      "3": 28878,
+      "4": 566208,
+      "5": 921678,
+      "6": 17517
+    },
+    "2004": {
+      "10": 479607,
+      "11": 105436,
+      "12": 13992,
+      "13": 533,
+      "6": 72,
+      "7": 27711,
+      "8": 282743,
+      "9": 624187
+    },
+    "2005": {
+      "10": 268910,
+      "11": 171288,
+      "12": 25171,
+      "13": 244,
+      "2": 4,
+      "3": 1264,
+      "4": 10268,
+      "5": 54536,
+      "6": 165283,
+      "7": 292336,
+      "8": 242886,
+      "9": 302091
+    },
+    "2006": {
+      "10": 351919,
+      "11": 234436,
+      "12": 9519,
+      "13": 1,
+      "5": 3896,
+      "6": 70741,
+      "7": 201348,
+      "8": 298185,
+      "9": 364236
+    },
+    "2007": {
+      "10": 465764,
+      "11": 208577,
+      "12": 2361,
+      "6": 102,
+      "7": 10925,
+      "8": 239107,
+      "9": 607445
+    },
+    "2008": {
+      "2": 26,
+      "3": 5417,
+      "4": 111218,
+      "5": 641590,
+      "6": 468024,
+      "7": 296343,
+      "8": 11663
+    },
+    "2009": {
+      "1": 1,
+      "10": 54741,
+      "11": 3,
+      "3": 9,
+      "4": 15,
+      "5": 1354,
+      "6": 132544,
+      "7": 405485,
+      "8": 447778,
+      "9": 492351
+    },
+    "2010": {
+      "0": 56,
+      "1": 783,
+      "2": 123525,
+      "3": 414249,
+      "4": 505244,
+      "5": 332681,
+      "6": 129858,
+      "7": 27885
+    },
+    "2011": {
+      "0": 1,
+      "10": 17989,
+      "2": 11,
+      "3": 92,
+      "4": 2222,
+      "5": 118330,
+      "6": 448179,
+      "7": 498078,
+      "8": 332602,
+      "9": 116777
+    },
+    "2012": {
+      "0": 2673,
+      "1": 400065,
+      "2": 1012594,
+      "3": 118341,
+      "4": 608
+    },
+    "2013": {
+      "1": 6,
+      "10": 120,
+      "2": 44,
+      "3": 4645,
+      "4": 86839,
+      "5": 344093,
+      "6": 340138,
+      "7": 427896,
+      "8": 303156,
+      "9": 27344
+    },
+    "2014": {
+      "10": 288426,
+      "11": 251331,
+      "12": 171098,
+      "13": 90420,
+      "14": 2989,
+      "3": 6,
+      "4": 19,
+      "5": 810,
+      "6": 21050,
+      "7": 142472,
+      "8": 277644,
+      "9": 288016
+    },
+    "2015": {
+      "1": 6,
+      "10": 232233,
+      "11": 152827,
+      "12": 93034,
+      "13": 17359,
+      "14": 135,
+      "2": 11,
+      "3": 32,
+      "4": 324,
+      "5": 35697,
+      "6": 147088,
+      "7": 249705,
+      "8": 301638,
+      "9": 304192
+    },
+    "2016": {
+      "10": 417675,
+      "11": 210739,
+      "12": 40663,
+      "3": 8,
+      "4": 51,
+      "5": 91,
+      "6": 2803,
+      "7": 137938,
+      "8": 283286,
+      "9": 441027
+    },
+    "2017": {
+      "10": 575151,
+      "11": 277129,
+      "12": 49142,
+      "13": 4578,
+      "3": 7,
+      "4": 29,
+      "5": 145,
+      "6": 348,
+      "7": 7678,
+      "8": 111300,
+      "9": 508774
+    },
+    "2018": {
+      "1": 8,
+      "10": 360978,
+      "11": 232602,
+      "12": 114898,
+      "13": 29419,
+      "2": 9,
+      "3": 25,
+      "4": 55,
+      "5": 679,
+      "6": 30081,
+      "7": 129214,
+      "8": 237145,
+      "9": 399168
+    },
+    "2019": {
+      "10": 562198,
+      "11": 360343,
+      "12": 43404,
+      "13": 100,
+      "3": 7,
+      "4": 42,
+      "5": 388,
+      "6": 3264,
+      "7": 22104,
+      "8": 92472,
+      "9": 449959
+    },
+    "2020": {
+      "10": 370950,
+      "11": 146709,
+      "12": 22243,
+      "2": 1,
+      "3": 10,
+      "4": 135,
+      "5": 875,
+      "6": 2546,
+      "7": 57657,
+      "8": 293496,
+      "9": 639659
+    },
+    "2021": {
+      "10": 162065,
+      "11": 34833,
+      "12": 489,
+      "13": 5,
+      "2": 589,
+      "3": 13100,
+      "4": 63157,
+      "5": 130589,
+      "6": 200265,
+      "7": 278124,
+      "8": 339505,
+      "9": 311560
+    },
+    "2022": {
+      "0": 4,
+      "1": 3,
+      "10": 417157,
+      "11": 388615,
+      "12": 245536,
+      "13": 120988,
+      "14": 44690,
+      "15": 6278,
+      "2": 1,
+      "3": 13,
+      "4": 31,
+      "5": 46,
+      "6": 170,
+      "7": 7970,
+      "8": 57741,
+      "9": 245038
+    },
+    "2023": {
+      "0": 1,
+      "1": 2,
+      "10": 101582,
+      "11": 117181,
+      "12": 341164,
+      "13": 791741,
+      "14": 169889,
+      "15": 10569,
+      "16": 9,
+      "2": 2,
+      "3": 27,
+      "4": 28,
+      "5": 40,
+      "6": 71,
+      "7": 67,
+      "8": 109,
+      "9": 1799
+    },
+    "2024": {
+      "0": 10,
+      "1": 33,
+      "10": 773720,
+      "11": 381184,
+      "2": 60,
+      "3": 69,
+      "4": 108,
+      "5": 168,
+      "6": 186,
+      "7": 9237,
+      "8": 73839,
+      "9": 295667
+    },
+    "2025": {
+      "0": 5,
+      "1": 27,
+      "10": 615804,
+      "11": 783495,
+      "12": 31395,
+      "2": 49,
+      "3": 45,
+      "4": 71,
+      "5": 90,
+      "6": 159,
+      "7": 160,
+      "8": 3199,
+      "9": 99782
+    },
+    "2026": {
+      "0": 47,
+      "1": 55,
+      "10": 15870,
+      "11": 86901,
+      "12": 341903,
+      "13": 561074,
+      "14": 442943,
+      "15": 84300,
+      "2": 37,
+      "3": 65,
+      "4": 77,
+      "5": 99,
+      "6": 110,
+      "7": 146,
+      "8": 160,
+      "9": 494
+    }
+  },
+  "fit_profile": {
+    "fit_count": 1,
+    "name": "hui_cheng_table2_reference_parameters",
+    "parameter_source": "trajectory.temporal_constraint.hui_cheng_table2_reference_parameters",
+    "parameters": {
+      "bestModelProportion": 0.75,
+      "maxSegments": 8,
+      "minObservationsNeeded": 2,
+      "preventOneYearRecovery": false,
+      "pvalThreshold": 0.05,
+      "recoveryThreshold": 1.0,
+      "spikeThreshold": 1.0,
+      "vertexCountOvershoot": 3
+    }
+  },
+  "grid": {
+    "aoi_pixel_count": 1534281,
+    "crs": "EPSG:7855",
+    "height": 1873,
+    "pixel_size_m": 30,
+    "source": "data/processed/tenure/curragh_distance_bands_30m.tif",
+    "transform": [
+      30.0,
+      0.0,
+      674460.0,
+      0.0,
+      -30.0,
+      7437060.0
+    ],
+    "width": 1052
+  },
+  "grid_sampling": {
+    "information_content": "Landsat red/NIR inputs are native 30 m on the 30 m grid.",
+    "method": "Earth Engine default nearest-neighbour sampling on the 30 m EPSG:7855 output grid; no explicit bilinear resampling or spatial aggregation was applied.",
+    "output_resolution_m": 30,
+    "source_resolution_m": {
+      "qa_mask_m": 30,
+      "red_nir_m": 30
+    }
+  },
+  "historical_summary_path": "data/processed/gee_historical/ccc3430282c6_a81c7632fd5b/historical_pull_summary.json",
+  "historical_summary_sha256": "18811cfa4284f7a88f8457f4a720adc0587b419020dd02e53d5936dda38b88de",
+  "masked_seasons": [
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 923385,
+      "masked_pixel_share": 0.6018356480983601,
+      "raw_scene_count": 7,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 1988
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 1519514,
+      "masked_pixel_share": 0.9903752963114318,
+      "raw_scene_count": 6,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 1989
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 730300,
+      "masked_pixel_share": 0.47598842715252293,
+      "raw_scene_count": 6,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 1990
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 1093622,
+      "masked_pixel_share": 0.7127912031759501,
+      "raw_scene_count": 7,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 1991
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 348,
+      "masked_pixel_share": 0.00022681633937981374,
+      "raw_scene_count": 8,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 1992
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 56672,
+      "masked_pixel_share": 0.0369371712222207,
+      "raw_scene_count": 8,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 1993
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 494,
+      "masked_pixel_share": 0.000321974918544908,
+      "raw_scene_count": 7,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 1994
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 1533715,
+      "masked_pixel_share": 0.9996310975629628,
+      "raw_scene_count": 6,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 1995
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 136,
+      "masked_pixel_share": 8.864086826337548e-05,
+      "raw_scene_count": 8,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 1996
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 1227903,
+      "masked_pixel_share": 0.8003116769353202,
+      "raw_scene_count": 6,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 1997
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 435064,
+      "masked_pixel_share": 0.2835621375745382,
+      "raw_scene_count": 7,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 1998
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 7332,
+      "masked_pixel_share": 0.004778785633140214,
+      "raw_scene_count": 7,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 1999
+    },
+    {
+      "count_basis": "raw",
+      "masked_pixel_count": 1534281,
+      "raw_scene_count": 3,
+      "retrospective_review_required": true,
+      "status": "MASKED",
+      "total_aoi_pixels": 1534281,
+      "warning": "Raw scene count below five; season masked with no interpolation.",
+      "year": 2000
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 31935,
+      "masked_pixel_share": 0.020814309764638942,
+      "raw_scene_count": 6,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2001
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 392,
+      "masked_pixel_share": 0.0002554942673473764,
+      "raw_scene_count": 6,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2002
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 595086,
+      "masked_pixel_share": 0.38785985096602255,
+      "raw_scene_count": 6,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2003
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 11536,
+      "masked_pixel_share": 0.007518831296222791,
+      "raw_scene_count": 14,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2005
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 116661,
+      "masked_pixel_share": 0.07603626715054153,
+      "raw_scene_count": 8,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2008
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 25,
+      "masked_pixel_share": 1.6294277254296965e-05,
+      "raw_scene_count": 11,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2009
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 1043857,
+      "masked_pixel_share": 0.6803558148735467,
+      "raw_scene_count": 9,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2010
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 2326,
+      "masked_pixel_share": 0.0015160195557397894,
+      "raw_scene_count": 11,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2011
+    },
+    {
+      "count_basis": "raw",
+      "masked_pixel_count": 1534281,
+      "raw_scene_count": 4,
+      "retrospective_review_required": true,
+      "status": "MASKED",
+      "total_aoi_pixels": 1534281,
+      "warning": "Raw scene count below five; season masked with no interpolation.",
+      "year": 2012
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 91534,
+      "masked_pixel_share": 0.05965921496779273,
+      "raw_scene_count": 12,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2013
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 25,
+      "masked_pixel_share": 1.6294277254296965e-05,
+      "raw_scene_count": 15,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2014
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 373,
+      "masked_pixel_share": 0.0002431106166341107,
+      "raw_scene_count": 15,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2015
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 59,
+      "masked_pixel_share": 3.845449432014083e-05,
+      "raw_scene_count": 15,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2016
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 36,
+      "masked_pixel_share": 2.3463759246187627e-05,
+      "raw_scene_count": 15,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2017
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 97,
+      "masked_pixel_share": 6.322179574667222e-05,
+      "raw_scene_count": 13,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2018
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 49,
+      "masked_pixel_share": 3.193678341842205e-05,
+      "raw_scene_count": 14,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2019
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 146,
+      "masked_pixel_share": 9.515857916509427e-05,
+      "raw_scene_count": 15,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2020
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 76846,
+      "masked_pixel_share": 0.05008600119534818,
+      "raw_scene_count": 14,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2021
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 52,
+      "masked_pixel_share": 3.3892096688937686e-05,
+      "raw_scene_count": 18,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2022
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 60,
+      "masked_pixel_share": 3.9106265410312714e-05,
+      "raw_scene_count": 18,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2023
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 280,
+      "masked_pixel_share": 0.000182495905248126,
+      "raw_scene_count": 13,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2024
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 197,
+      "masked_pixel_share": 0.00012839890476386008,
+      "raw_scene_count": 14,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2025
+    },
+    {
+      "count_basis": "effective",
+      "masked_pixel_count": 281,
+      "masked_pixel_share": 0.00018314767633829788,
+      "raw_scene_count": 15,
+      "retrospective_review_required": false,
+      "status": "MASKED_SOME_PIXELS",
+      "total_aoi_pixels": 1534281,
+      "warning": "Effective QA-valid scene count below five; affected pixels masked.",
+      "year": 2026
+    }
+  ],
+  "pipeline_sha256": "0c45935c0979ec099f2e5a31cf629549feee2a24a0231259b90c38debfca5297",
+  "presentation_disclosure_addendum": "Added R-E buffered-AOI wording to map previews, manifests, and provenance metadata; analytical raster values and classifications unchanged.",
+  "products": {
+    "disturbance_year_landsat.tif": {
+      "provenance_sidecar": "disturbance_year_landsat.tif.provenance.json",
+      "provenance_sidecar_sha256": "bef7deb5ec4856dd2add856cf58620287da5fa156e94aab5e372f1f588bb2ec7",
+      "sha256": "1968fc507267b03aff616623cef2a2b33de1f2e58aa00b388da82362a5ee5536"
+    },
+    "effective_scene_counts_landsat.tif": {
+      "provenance_sidecar": "effective_scene_counts_landsat.tif.provenance.json",
+      "provenance_sidecar_sha256": "36fd04bbb393047f47ea59806588b67c91c6b9cd801154d27fa17cb6cde0cbc6",
+      "sha256": "5ceb93053f6a6ee3293cca31c5b2ae71c0c7117d0637579b3c618b1f4d3ac484"
+    },
+    "fitted_negated_ndvi_landsat.tif": {
+      "provenance_sidecar": "fitted_negated_ndvi_landsat.tif.provenance.json",
+      "provenance_sidecar_sha256": "78e9a9e1897ef308318bb1fdd3baa0c7f07951505af5889d602e79a013b15e88",
+      "sha256": "e2f0fa98a4d88d47efd1bce97a64c5a6ffd1b2e54c2f4e8691df14bff1ed103b"
+    },
+    "landtrendr_vertex_flags_landsat.tif": {
+      "provenance_sidecar": "landtrendr_vertex_flags_landsat.tif.provenance.json",
+      "provenance_sidecar_sha256": "b9a7310b1d98b5835c33ab73eb717ef175964b17bbbd36bb69fd3e1a96291797",
+      "sha256": "248710c72e898223c0bf59ac7c8c86a624e82d38bec7980ec0b5f102b69ce780"
+    },
+    "recovery_onset_landsat.tif": {
+      "provenance_sidecar": "recovery_onset_landsat.tif.provenance.json",
+      "provenance_sidecar_sha256": "8e72e19417491da406a889036a9cfacfd9f19ccb01f52d238071ef5cbf4efc8e",
+      "sha256": "8a30e183868d0b1af71ada6fc4a970d77755c7a634603cecad832c2094867c23"
+    },
+    "same_year_flag_landsat.tif": {
+      "provenance_sidecar": "same_year_flag_landsat.tif.provenance.json",
+      "provenance_sidecar_sha256": "214ba913775aaa2cae6413a12e010090bef998002f7ba507c3b37795ddcb2fe0",
+      "sha256": "f6dbe7ca82726dfc325e8fd18bb21572d32c73c28fef88476d5386cabb601d7c"
+    },
+    "six_class_map_landsat.png": {
+      "provenance_sidecar": "six_class_map_landsat.png.provenance.json",
+      "provenance_sidecar_sha256": "2219e083fd7b43f262c66916018ae1c540f637835ad647cd1f6d14aab3487ee1",
+      "sha256": "ddeba6898ae34eb60f23147ae6dfc1658e0a545eb093f0a9a8d9871b9fa5c8f4"
+    },
+    "six_class_map_landsat.tif": {
+      "provenance_sidecar": "six_class_map_landsat.tif.provenance.json",
+      "provenance_sidecar_sha256": "5da60a9afcd6c2806052f422256fb0774f054a9bc36eb7b27228224cc6276c44",
+      "sha256": "eaccf56069994ae1c5f4bae4f942184b4543b637110a28cf07dba4471fea125a"
+    },
+    "violations_landsat.csv": {
+      "provenance_sidecar": "violations_landsat.csv.provenance.json",
+      "provenance_sidecar_sha256": "5638ff60a483f04f3cea6e6aa63c5c928eee73ef234590ac5d568e4258d12476",
+      "sha256": "f677fde9587e7eee181b4d2bfe7fd431d80f7ffa0fa5b99f046cf9d180fd0ebd"
+    }
+  },
+  "read_only_asset_validation": {
+    "metadata_validation": "PASS",
+    "recorded_asset_count": 39,
+    "recorded_ids_used_without_reconstruction": true
+  },
+  "recovery_rate_vs_magnitude_sensitivity": {
+    "disturbed_with_accepted_recovery_count": 233105,
+    "slope_vs_magnitude_disagreement_count": 56554,
+    "slope_vs_magnitude_disagreement_fraction": 0.2426116985907638
+  },
+  "same_year_recovery": {
+    "flag_product": "same_year_flag_landsat.tif",
+    "map_flagged_DNR_pixel_count": 0,
+    "same_year_flagged_violation_row_count": 0,
+    "same_year_violation_row_count": 0,
+    "violations_product": "violations_landsat.csv",
+    "violations_row_count": 254164
+  },
+  "sensor": "landsat",
+  "sensor_era_composition_by_year": {},
+  "sensor_era_composition_per_year": {
+    "1988": {
+      "landsat_tm": 7
+    },
+    "1989": {
+      "landsat_tm": 6
+    },
+    "1990": {
+      "landsat_tm": 6
+    },
+    "1991": {
+      "landsat_tm": 7
+    },
+    "1992": {
+      "landsat_tm": 8
+    },
+    "1993": {
+      "landsat_tm": 8
+    },
+    "1994": {
+      "landsat_tm": 7
+    },
+    "1995": {
+      "landsat_tm": 6
+    },
+    "1996": {
+      "landsat_tm": 8
+    },
+    "1997": {
+      "landsat_tm": 6
+    },
+    "1998": {
+      "landsat_tm": 7
+    },
+    "1999": {
+      "landsat_tm": 7
+    },
+    "2000": {
+      "landsat_etm_plus": 3
+    },
+    "2001": {
+      "landsat_etm_plus": 6
+    },
+    "2002": {
+      "landsat_etm_plus": 6
+    },
+    "2003": {
+      "landsat_etm_plus": 4,
+      "landsat_tm": 2
+    },
+    "2004": {
+      "landsat_etm_plus": 5,
+      "landsat_tm": 8
+    },
+    "2005": {
+      "landsat_etm_plus": 7,
+      "landsat_tm": 7
+    },
+    "2006": {
+      "landsat_etm_plus": 7,
+      "landsat_tm": 7
+    },
+    "2007": {
+      "landsat_etm_plus": 7,
+      "landsat_tm": 6
+    },
+    "2008": {
+      "landsat_etm_plus": 6,
+      "landsat_tm": 2
+    },
+    "2009": {
+      "landsat_etm_plus": 6,
+      "landsat_tm": 5
+    },
+    "2010": {
+      "landsat_etm_plus": 7,
+      "landsat_tm": 2
+    },
+    "2011": {
+      "landsat_etm_plus": 7,
+      "landsat_tm": 4
+    },
+    "2012": {
+      "landsat_etm_plus": 4
+    },
+    "2013": {
+      "landsat_etm_plus": 6,
+      "landsat_oli": 6
+    },
+    "2014": {
+      "landsat_etm_plus": 7,
+      "landsat_oli": 8
+    },
+    "2015": {
+      "landsat_etm_plus": 7,
+      "landsat_oli": 8
+    },
+    "2016": {
+      "landsat_etm_plus": 7,
+      "landsat_oli": 8
+    },
+    "2017": {
+      "landsat_etm_plus": 8,
+      "landsat_oli": 7
+    },
+    "2018": {
+      "landsat_etm_plus": 6,
+      "landsat_oli": 7
+    },
+    "2019": {
+      "landsat_etm_plus": 7,
+      "landsat_oli": 7
+    },
+    "2020": {
+      "landsat_etm_plus": 7,
+      "landsat_oli": 8
+    },
+    "2021": {
+      "landsat_etm_plus": 7,
+      "landsat_oli": 7
+    },
+    "2022": {
+      "landsat_etm_plus": 4,
+      "landsat_oli": 6,
+      "landsat_oli2": 8
+    },
+    "2023": {
+      "landsat_etm_plus": 3,
+      "landsat_oli": 7,
+      "landsat_oli2": 8
+    },
+    "2024": {
+      "landsat_oli": 7,
+      "landsat_oli2": 6
+    },
+    "2025": {
+      "landsat_oli": 7,
+      "landsat_oli2": 7
+    },
+    "2026": {
+      "landsat_oli": 8,
+      "landsat_oli2": 7
+    }
+  },
+  "sensor_span": [
+    1988,
+    2026
+  ],
+  "source_historical_namespace": {
+    "config_sha256": "ccc3430282c6663c96e3953288e77c0bb9df639e12320d3cd263a65ed8dbce8d",
+    "pipeline_sha256": "a81c7632fd5b95b335cdd3aa6911caaff3dc638a945a2f83f0ad92a6ff10ea23"
+  },
+  "stability_band_calibration": {
+    "band_width_absolute_net_fitted_ndvi_change": 0.25630210936069486,
+    "estimator": "numpy.percentile(q=95, method='linear') over absolute net fitted NDVI change",
+    "minimum_observations": 2,
+    "near_minimum_observation_floor_count": 0,
+    "near_minimum_observation_floor_flag": false,
+    "near_minimum_observation_floor_share": 0.0,
+    "net_change_definition": "same-fit last-valid-fitted-vertex NDVI minus first-valid-fitted-vertex NDVI",
+    "percentile": 95,
+    "population_count": 641779,
+    "population_definition": "valid same-sensor pixels with valid_observation_count >= minimum_observations, no Yang-qualified disturbance, and no Q4-accepted Yang-filtered recovery; T=0 pixels are excluded because they have a qualified disturbance",
+    "population_observation_counts": {
+      "22": 2,
+      "23": 36,
+      "24": 120,
+      "25": 359,
+      "26": 900,
+      "27": 3668,
+      "28": 32260,
+      "29": 107140,
+      "30": 185255,
+      "31": 177445,
+      "32": 98103,
+      "33": 31081,
+      "34": 5145,
+      "35": 265
+    },
+    "sensitivity": {
+      "90": {
+        "NVB_count": 1352,
+        "NVB_share": 0.0021066441874851,
+        "NVF_count": 577601,
+        "NVF_share": 0.8999998441831222,
+        "NVG_count": 62826,
+        "NVG_share": 0.09789351162939268,
+        "band_width_absolute_net_fitted_ndvi_change": 0.21522458195686345,
+        "population_count": 641779
+      },
+      "95": {
+        "NVB_count": 1145,
+        "NVB_share": 0.0017841032504958873,
+        "NVF_count": 609690,
+        "NVF_share": 0.9499999220915611,
+        "NVG_count": 30944,
+        "NVG_share": 0.048215974657943,
+        "band_width_absolute_net_fitted_ndvi_change": 0.25630210936069486,
+        "population_count": 641779
+      },
+      "99": {
+        "NVB_count": 475,
+        "NVB_share": 0.0007401301694196913,
+        "NVF_count": 635361,
+        "NVF_share": 0.9899996727845567,
+        "NVG_count": 5943,
+        "NVG_share": 0.00926019704602363,
+        "band_width_absolute_net_fitted_ndvi_change": 0.39577380180358795,
+        "population_count": 641779
+      }
+    },
+    "sensor": "landsat",
+    "source_namespace": {
+      "config_sha256": "21d4c71d4894f7d86f6fdbfed22114e82541660553a4be3eca0d0b10ad1ce23a",
+      "pipeline_sha256": "0c45935c0979ec099f2e5a31cf629549feee2a24a0231259b90c38debfca5297"
+    },
+    "span": [
+      1988,
+      2026
+    ],
+    "status": "data-calibrated, unvalidated"
+  },
+  "static_pack_v1_manifest": "21d4c71d4894_0c45935c0979/static_pack_v1_candidate/static_pack_v1_manifest.json",
+  "status": "COMPLETE",
+  "status_note": "Landsat and Sentinel-2 runs are complete; reviewed static pack v1 is active. M3b is unblocked for design-session scheduling; no M3b analysis is included.",
+  "valid_observation_distribution": {
+    "21": 2,
+    "22": 2,
+    "23": 50,
+    "24": 139,
+    "25": 394,
+    "26": 1172,
+    "27": 6132,
+    "28": 50723,
+    "29": 188360,
+    "30": 383492,
+    "31": 450392,
+    "32": 295855,
+    "33": 121204,
+    "34": 31828,
+    "35": 4535,
+    "36": 1
+  },
+  "vanilla_vs_constrained": {
+    "Q4_accepted_recovery_pixel_count": 233105,
+    "T_eq_0_candidate_pair_count": 0,
+    "T_ge_1_candidate_pair_count": 243892,
+    "T_lt_0_candidate_pair_count": 254164,
+    "eliminated_T_lt_1_pixel_count": 202836,
+    "fit_count": 1,
+    "label_passes": [
+      "vanilla_candidate_pairs",
+      "Q4_constrained"
+    ],
+    "vanilla_fastest_T_lt_1_pixel_count": 202836
+  },
+  "active_static_pack_v1_manifest": "data/processed/dashboard_static/v1/static_pack_v1_manifest.json"
+}

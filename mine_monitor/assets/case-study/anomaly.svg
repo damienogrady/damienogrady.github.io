@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" role="img" aria-label="Anomalous trajectory: median fitted NDVI of event 81243 (1,521 cells), 1988 to 2026" font-family="system-ui,sans-serif" font-size="11">
+<rect width="640" height="300" fill="#fff"/>
+<text x="52" y="16" font-size="12" font-weight="600" fill="#1f2d3a">Event 81243 · 1,521 cells · Landsat</text>
+<line x1="52" x2="624" y1="251.8" y2="251.8" stroke="#e3e8ec"/><text x="46" y="255.8" text-anchor="end" fill="#52606d">-0.0</text>
+<line x1="52" x2="624" y1="210.9" y2="210.9" stroke="#e3e8ec"/><text x="46" y="214.9" text-anchor="end" fill="#52606d">0.1</text>
+<line x1="52" x2="624" y1="170.0" y2="170.0" stroke="#e3e8ec"/><text x="46" y="174.0" text-anchor="end" fill="#52606d">0.2</text>
+<line x1="52" x2="624" y1="129.1" y2="129.1" stroke="#e3e8ec"/><text x="46" y="133.1" text-anchor="end" fill="#52606d">0.3</text>
+<line x1="52" x2="624" y1="88.2" y2="88.2" stroke="#e3e8ec"/><text x="46" y="92.2" text-anchor="end" fill="#52606d">0.4</text>
+<line x1="52" x2="624" y1="47.3" y2="47.3" stroke="#e3e8ec"/><text x="46" y="51.3" text-anchor="end" fill="#52606d">0.5</text>
+<text x="82.1" y="276" text-anchor="middle" fill="#52606d">1990</text>
+<text x="157.4" y="276" text-anchor="middle" fill="#52606d">1995</text>
+<text x="232.6" y="276" text-anchor="middle" fill="#52606d">2000</text>
+<text x="307.9" y="276" text-anchor="middle" fill="#52606d">2005</text>
+<text x="383.2" y="276" text-anchor="middle" fill="#52606d">2010</text>
+<text x="458.4" y="276" text-anchor="middle" fill="#52606d">2015</text>
+<text x="533.7" y="276" text-anchor="middle" fill="#52606d">2020</text>
+<text x="608.9" y="276" text-anchor="middle" fill="#52606d">2025</text>
+<text x="14" y="144.0" transform="rotate(-90 14 144.0)" text-anchor="middle" fill="#52606d">Fitted NDVI (median, IQR)</text>
+<line x1="473.5" x2="473.5" y1="28" y2="260" stroke="#b42318" stroke-dasharray="4 3"/><text x="477.5" y="40" text-anchor="start" fill="#b42318">mapped onset 2016</text>
+<polygon points="52.0,67.1 82.1,51.8 97.2,89.6 112.2,95.9 127.3,99.7 142.3,100.6 172.4,101.9 202.5,100.7 217.6,100.5 247.7,99.1 262.7,99.1 277.8,102.0 292.8,99.4 307.9,97.3 322.9,97.3 338.0,96.0 353.1,93.3 368.1,92.5 383.2,96.4 398.2,48.5 428.3,70.9 443.4,75.2 458.4,73.8 473.5,63.4 488.5,154.0 503.6,179.5 518.6,189.2 533.7,191.8 548.7,193.1 563.8,194.4 578.8,195.5 593.9,195.2 608.9,193.1 624.0,191.2 624.0,206.8 608.9,205.4 593.9,203.9 578.8,202.7 563.8,202.7 548.7,203.5 533.7,204.4 518.6,205.5 503.6,206.3 488.5,204.4 473.5,106.7 458.4,110.9 443.4,108.5 428.3,104.1 398.2,109.9 383.2,135.2 368.1,139.9 353.1,140.9 338.0,142.8 322.9,143.6 307.9,142.7 292.8,141.6 277.8,140.9 262.7,138.4 247.7,136.8 217.6,133.2 202.5,131.9 172.4,129.1 142.3,127.1 127.3,126.6 112.2,125.0 97.2,131.9 82.1,95.2 52.0,101.5" fill="#2f6f9f" fill-opacity="0.18"/>
+<polyline points="52.0,87.3 82.1,74.8 97.2,115.0 112.2,110.8 127.3,113.4 142.3,115.0 172.4,118.8 202.5,122.0 217.6,123.2 247.7,125.1 262.7,125.2 277.8,125.4 292.8,125.7 307.9,124.7 322.9,124.1 338.0,123.8 353.1,121.6 368.1,119.4 383.2,115.4 398.2,76.6 428.3,89.1 443.4,93.0 458.4,95.9 473.5,86.3 488.5,186.9 503.6,199.8 518.6,200.7 533.7,200.1 548.7,199.4 563.8,199.0 578.8,199.6 593.9,200.0 608.9,199.8 624.0,199.8" fill="none" stroke="#1d5a87" stroke-width="2"/>
+<circle cx="52.0" cy="87.3" r="2.5" fill="#1d5a87"/>
+<circle cx="82.1" cy="74.8" r="2.5" fill="#1d5a87"/>
+<circle cx="97.2" cy="115.0" r="2.5" fill="#1d5a87"/>
+<circle cx="112.2" cy="110.8" r="2.5" fill="#1d5a87"/>
+<circle cx="127.3" cy="113.4" r="2.5" fill="#1d5a87"/>
+<circle cx="142.3" cy="115.0" r="2.5" fill="#1d5a87"/>
+<circle cx="172.4" cy="118.8" r="2.5" fill="#1d5a87"/>
+<circle cx="202.5" cy="122.0" r="2.5" fill="#1d5a87"/>
+<circle cx="217.6" cy="123.2" r="2.5" fill="#1d5a87"/>
+<circle cx="247.7" cy="125.1" r="2.5" fill="#1d5a87"/>
+<circle cx="262.7" cy="125.2" r="2.5" fill="#1d5a87"/>
+<circle cx="277.8" cy="125.4" r="2.5" fill="#1d5a87"/>
+<circle cx="292.8" cy="125.7" r="2.5" fill="#1d5a87"/>
+<circle cx="307.9" cy="124.7" r="2.5" fill="#1d5a87"/>
+<circle cx="322.9" cy="124.1" r="2.5" fill="#1d5a87"/>
+<circle cx="338.0" cy="123.8" r="2.5" fill="#1d5a87"/>
+<circle cx="353.1" cy="121.6" r="2.5" fill="#1d5a87"/>
+<circle cx="368.1" cy="119.4" r="2.5" fill="#1d5a87"/>
+<circle cx="383.2" cy="115.4" r="2.5" fill="#1d5a87"/>
+<circle cx="398.2" cy="76.6" r="2.5" fill="#1d5a87"/>
+<circle cx="428.3" cy="89.1" r="2.5" fill="#1d5a87"/>
+<circle cx="443.4" cy="93.0" r="2.5" fill="#1d5a87"/>
+<circle cx="458.4" cy="95.9" r="2.5" fill="#1d5a87"/>
+<circle cx="473.5" cy="86.3" r="2.5" fill="#1d5a87"/>
+<circle cx="488.5" cy="186.9" r="2.5" fill="#1d5a87"/>
+<circle cx="503.6" cy="199.8" r="2.5" fill="#1d5a87"/>
+<circle cx="518.6" cy="200.7" r="2.5" fill="#1d5a87"/>
+<circle cx="533.7" cy="200.1" r="2.5" fill="#1d5a87"/>
+<circle cx="548.7" cy="199.4" r="2.5" fill="#1d5a87"/>
+<circle cx="563.8" cy="199.0" r="2.5" fill="#1d5a87"/>
+<circle cx="578.8" cy="199.6" r="2.5" fill="#1d5a87"/>
+<circle cx="593.9" cy="200.0" r="2.5" fill="#1d5a87"/>
+<circle cx="608.9" cy="199.8" r="2.5" fill="#1d5a87"/>
+<circle cx="624.0" cy="199.8" r="2.5" fill="#1d5a87"/>
+</svg>

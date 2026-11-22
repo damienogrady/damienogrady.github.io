@@ -1,0 +1,12 @@
+{
+  "artifact": "cohort_timeline_landsat.json",
+  "artifact_sha256": "f34db4e2c73da9ce88c2916493b21fbac7ca0ec9b579a9257c32c6d59e910c5c",
+  "namespace": "dashrepo_5bc27c7249d0_a1_3",
+  "source_phase4_manifest_sha256": "5bc27c7249d09ec02ada51fb95ff7b0971aa90a72dc4c3c666cbe9cbb00beb86",
+  "derived_from_phase4_outputs_sha256": {
+    "trajectory_events_landsat.parquet": "735c7b6d27a5d32cb0dab729649a63593bbd6d7f78fdf6a1e0927867a6ab5b8a",
+    "cohorts_landsat.parquet": "c33c85a4561945c6c2cf0c15c4dc1ea353427b4943bd5348e07c0c7086566010",
+    "control_pairs_summary_landsat.parquet": "bdc9a4e16db9cb273552a65ee583abbf26e99ef520d57a1429bb5b51a0c714e9"
+  },
+  "derivation": "Year/tier counts and status copied or counted from pinned event, cohort, and control-summary entities; 900 m² cell-area equivalents and row-count gate summaries."
+}

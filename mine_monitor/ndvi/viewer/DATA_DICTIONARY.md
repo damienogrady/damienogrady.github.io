@@ -84,6 +84,4 @@ record. The source rasters, Phase 4 events and Phase 3 pair table are verified
 against their recorded hashes before building. The builder checks grid
 alignment, event identity, pair identity, QA policy and fitted ranges.
 
-The underlying sources remain subject to licensing, tenure revalidation and
-other public-release gates. This bundle must not be published merely because
-its hashes verify.
+The underlying sources remain subject to licensing and tenure revalidation.

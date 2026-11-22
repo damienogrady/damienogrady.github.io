@@ -1,0 +1,28 @@
+.methodology { max-width: 70rem; }
+.methodology h2 { margin-top: 2.2rem; scroll-margin-top: 1rem; }
+.methodology code { font-size: 0.78em; word-break: break-all; }
+.methodology .small { font-size: 0.86rem; color: #62706c; }
+.mt-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.mt-table th, .mt-table td { border: 1px solid #dce5df; padding: 0.45rem 0.6rem; text-align: left; vertical-align: top; }
+.mt-table th { background: #eef3ee; }
+.mt-badge { display: inline-block; padding: 0.1rem 0.5rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600; white-space: nowrap; border: 1px solid transparent; }
+.mt-established { background: #d8eee4; color: #173c34; border-color: #a8d5c0; }
+.mt-prototype { background: #f6e7bd; color: #5c4208; border-color: #e3c36c; }
+.mt-design { background: #e4eaf3; color: #26364f; border-color: #b9c7de; }
+.mt-presentation { background: #ecebe6; color: #3b3a34; border-color: #cfcdc3; }
+.mt-none { background: #f6d9d5; color: #7a2119; border-color: #e0a79f; }
+.mt-callout { margin: 1rem 0; padding: 0.8rem 1rem; border-left: 4px solid #173c34; background: #eef3ee; border-radius: 4px; }
+.mt-callout.mt-warn { border-left-color: #b9473d; background: #fbeeec; }
+.mt-callout.mt-gaps { border-left-color: #c9962e; background: #fbf4e1; }
+.mt-callout ul { margin: 0.4rem 0 0; }
+.mt-toc { margin: 1.2rem 0; padding: 0.8rem 1rem; border: 1px solid #dce5df; border-radius: 6px; background: #fff; }
+.mt-toc ol { columns: 2; margin: 0.4rem 0; padding-left: 1.2rem; }
+.mt-details { margin: 0.8rem 0; }
+.mt-details summary { cursor: pointer; font-weight: 600; }
+.mt-steps li, .mt-gaps-list li { margin: 0.4rem 0; }
+@media (max-width: 640px) { .mt-toc ol { columns: 1; } }
+@media print {
+  .mt-toc, .report-nav { display: none; }
+  .mt-callout { break-inside: avoid; }
+  .mt-table tr { break-inside: avoid; }
+}

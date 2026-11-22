@@ -19,7 +19,7 @@ async function digest(bytes) {
 async function fetchChecked(path) {
   const record = manifest.files[path];
   if (!record) throw new Error(`Missing manifest entry: ${path}`);
-  const response = await fetch(path);
+  const response = await fetch(path, { cache: "no-cache" });
   if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
   const bytes = await response.arrayBuffer();
   if (bytes.byteLength !== record.bytes || await digest(bytes) !== record.sha256)
@@ -213,7 +213,7 @@ function drawChart() {
 
 async function start() {
   if (!crypto.subtle) throw new Error("Open via localhost or HTTPS for hash verification.");
-  const [response, checksum] = await Promise.all([fetch("manifest.json"), fetch("manifest.sha256")]);
+  const [response, checksum] = await Promise.all([fetch("manifest.json", { cache: "no-cache" }), fetch("manifest.sha256", { cache: "no-cache" })]);
   if (!response.ok || !checksum.ok) throw new Error("Manifest is unavailable.");
   const bytes = await response.arrayBuffer(), expected = (await checksum.text()).trim().split(/\s+/)[0];
   if (await digest(bytes) !== expected) throw new Error("Manifest hash mismatch.");

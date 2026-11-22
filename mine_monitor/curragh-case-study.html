@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Case study: three vegetation trajectories at Curragh, Queensland, from Landsat and Sentinel-2 time-series analysis, with their limitations."
+    >
+    <title>Curragh case study | Curragh Mine Rehabilitation Monitor</title>
+    <link rel="icon" href="./branding/favicon.svg?v=d4a4e5f5d2" type="image/svg+xml">
+    <link rel="icon" href="./branding/favicon.ico?v=56e69f1ad1" sizes="any">
+    <link rel="icon" href="./branding/icon-32.png?v=ce9d59063b" type="image/png" sizes="32x32">
+    <link rel="icon" href="./branding/icon-192.png?v=06c747ec3c" type="image/png" sizes="192x192">
+    <link rel="apple-touch-icon" href="./branding/apple-touch-icon.png?v=5661745055" sizes="180x180">
+    <link rel="stylesheet" href="./assets/styles.css?v=7ee693e230">
+  </head>
+  <body>
+    <header class="masthead">
+      <a class="author-brand" href="https://damienogrady.github.io/" aria-label="Damien O’Grady portfolio">
+        <img class="brand-logo-screen" src="./branding/favicon-white.svg?v=b5da51ebc1" alt="">
+        <img class="brand-logo-print" src="./branding/favicon.svg?v=d4a4e5f5d2" alt="">
+        <span>Damien O’Grady</span>
+      </a>
+      <a class="brand" href="./" aria-label="Return to dashboard">
+        <span class="brand-mark" aria-hidden="true">M</span>
+        <span>
+          <strong>Mine Rehabilitation Monitor</strong>
+          <small>Curragh demonstration · Case study</small>
+        </span>
+      </a>
+      <span class="snapshot-tag report-tag">Case study</span>
+    </header>
+
+    <main class="main-content">
+      <article class="approach-report case-study">
+        <nav class="report-nav" aria-label="Case study navigation">
+          <a href="./">← Return to the dashboard</a>
+          <a href="#" onclick="window.print(); return false;">Print or save as PDF</a>
+        </nav>
+        <p class="eyebrow">Case study · Demonstrate compliance</p>
+        <h1>Reading vegetation trajectories at Curragh</h1>
+        <a class="report-author" href="https://damienogrady.github.io/">
+          <img src="./branding/favicon.svg?v=d4a4e5f5d2" width="32" height="32" alt="">
+          <span><strong>Damien O’Grady</strong>
+            <small>Independent remote sensing and GIS consultant</small></span>
+        </a>
+        <p class="report-lead">Three real locations from the pinned Curragh data, chosen to show what satellite time-series analysis can reveal, what it can flag for investigation, and where it should say “this is ambiguous”.</p>
+        <p class="report-meta">Curragh, Queensland · Historical, unreconciled demonstration snapshot</p>
+
+        <div class="report-note"><strong>Read this first:</strong> satellite analysis helps decide where to look and builds a traceable record. It does not replace field verification or statutory assessment, and none of the examples below is a rehabilitation-quality verdict, a compliance finding or proof of cause.</div>
+
+        <h2 id="site">1. The site</h2>
+        <p>Curragh is a coal mining area in Queensland’s Bowen Basin. The analysis area is a 10 km buffer around the dissolved union of 14 mining leases: 1,380.85 km², or 1,534,281 cells at 30 m. The lease union itself is approximately 196.72 km² (14.25% of that area). Areas in this study are 30 m cell-area equivalents, not surveyed or statutory areas, and the buffered area is not the mine footprint.</p>
+        <p>Curragh was chosen because published research has already applied Landsat and LandTrendr there (Yang et al., 2018), giving the work a relevant precedent. That paper is not a validation of this implementation. The scope here is one site, one pinned snapshot.</p>
+
+        <h2 id="challenge">2. The challenge</h2>
+        <p>Rehabilitation is monitored across large areas and over decades. Visiting every part of a site on a regular basis is impractical, and a single before-and-after comparison can miss when a change happened, whether it persisted, or whether it was a one-off. Managers and regulators need a repeatable way to see <em>where</em> vegetation has changed, <em>when</em>, and which locations deserve inspection, with a record of how each conclusion was reached.</p>
+
+        <h2 id="approach">3. The approach</h2>
+        <ul>
+          <li><strong>Landsat and Sentinel-2.</strong> Landsat provides a record from 1988; Sentinel-2 provides a record from 2016. The two products are analysed separately and are not cross-calibrated. The examples below use Landsat because its record is long enough to show recovery.</li>
+          <li><strong>GIS.</strong> Everything is held on a shared 30 m grid (EPSG:7855, MGA2020 Zone 55), so pixels, lease context, distance strata and flood-proneness strata can be combined and traced.</li>
+          <li><strong>Trajectory analysis.</strong> A LandTrendr-style temporal fit of annual NDVI identifies disturbance onset and, where present, recovery. A rule-based adaptation then labels each mapped disturbance, for example <em>DNR</em> (disturbed, no accepted recovery), <em>DHR</em> and <em>DLR</em> (disturbance with higher-rate or lower-rate recovery).</li>
+        </ul>
+        <p>The figures below summarise the fitted NDVI of one mapped event component: the line is the median across its cells and the shaded band is the inter-quartile range. They are generated from the pinned data by <code>tools/case_study_figures.py</code>; no new analysis was run.</p>
+
+        <h3>Four kinds of statement</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th scope="col">Kind</th><th scope="col">Meaning here</th><th scope="col">Example</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Observation</strong></td><td>A value measured by the satellite sensor (NDVI from scenes).</td><td>Landsat NDVI in a given year. This website’s pinned bundle does not republish the per-scene values.</td></tr>
+              <tr><td><strong>Derived measurement</strong></td><td>A quantity computed from observations by the fitting method.</td><td>Fitted annual NDVI, shown in the figures.</td></tr>
+              <tr><td><strong>Classification</strong></td><td>A rule-based label applied to a trajectory.</td><td>DNR, DHR or DLR. Unvalidated, pending supervised validation.</td></tr>
+              <tr><td><strong>Interpretation</strong></td><td>A reading of what the pattern might mean.</td><td>“Possible disturbance”. A hypothesis to check, not a finding.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="report-meta">Only fitted NDVI is held in this repository, so the figures show derived measurements. Observed per-scene values would be needed to compare observations directly against the fit.</p>
+
+        <h2 id="findings">4. Findings: three examples</h2>
+        <p>Each example is a mapped Landsat event component (a group of adjacent cells sharing an onset year). They were chosen to illustrate three different situations, not as typical or representative results.</p>
+
+        <section class="cs-example" aria-labelledby="ex-improvement">
+          <h3 id="ex-improvement">A. Sustained vegetation improvement</h3>
+          <figure>
+            <img src="./assets/case-study/improvement.svg?v=ad78eb6116" width="640" height="300" alt="Line chart of median fitted NDVI for Landsat event 16085, falling from about 0.48 in 1990 to 0.16 in 1993, then rising steadily to about 0.44 in 2026.">
+            <figcaption>Landsat event 16085: 170 cells (about 15.3 ha, cell-area equivalent), centred near E 692,004, N 7,430,861 (MGA2020 Zone 55).</figcaption>
+          </figure>
+          <dl class="cs-kinds">
+            <dt>Derived measurement</dt><dd>Median fitted NDVI falls from 0.475 (1990) to 0.162 (1993), then rises almost every year to 0.440 (2026).</dd>
+            <dt>Classification</dt><dd>Onset 1990, accepted recovery 1993; 168 of 170 cells are DLR (lower-rate recovery) and 2 are DNR. This is a T1 cohort and the window is not gapped.</dd>
+            <dt>Interpretation</dt><dd>A sustained, multi-decade increase in vegetation greenness after a disturbance. It is consistent with vegetation re-establishing, but NDVI cannot say whether the vegetation is the intended species, structure or land use.</dd>
+          </dl>
+          <p>The fitted NDVI in 2026 is still below its 1990 level, and “lower-rate recovery” is a trajectory-rate label, not a quality verdict.</p>
+        </section>
+
+        <section class="cs-example" aria-labelledby="ex-anomaly">
+          <h3 id="ex-anomaly">B. An anomalous trajectory: possible disturbance</h3>
+          <figure>
+            <img src="./assets/case-study/anomaly.svg?v=b25f37fd93" width="640" height="300" alt="Line chart of median fitted NDVI for Landsat event 81243, near 0.40 until 2016, dropping to about 0.16 in 2017 and staying near 0.13 through 2026.">
+            <figcaption>Landsat event 81243: 1,521 cells (about 136.9 ha, cell-area equivalent), centred near E 693,262, N 7,404,789 (MGA2020 Zone 55).</figcaption>
+          </figure>
+          <dl class="cs-kinds">
+            <dt>Derived measurement</dt><dd>Median fitted NDVI is 0.405 in 2016, 0.159 in 2017 and about 0.13 in every year from 2018 to 2026.</dd>
+            <dt>Classification</dt><dd>Mapped onset 2016; 1,474 of 1,521 cells are DNR (disturbed, no accepted recovery), 25 DHR and 22 DLR. T1 cohort, window not gapped.</dd>
+            <dt>Interpretation</dt><dd>A sharp, persistent loss of vegetation greenness that has not reversed. It is a <em>potential disturbance</em> that merits a closer look, for example a site visit or higher-resolution imagery.</dd>
+          </dl>
+          <p>The analysis does not say why the drop occurred. Clearing, earthworks, fire, a change of land use or a data artefact would all need to be ruled in or out from other evidence, and mining is not assumed to be the cause.</p>
+        </section>
+
+        <section class="cs-example" aria-labelledby="ex-ambiguity">
+          <h3 id="ex-ambiguity">C. Where conditions complicate interpretation</h3>
+          <figure>
+            <img src="./assets/case-study/ambiguity.svg?v=4b0430a535" width="640" height="300" alt="Line chart of median fitted NDVI for Landsat event 103724, flat near 0.31 until 2021, spiking to about 0.59 in 2022, then returning to about 0.30 in 2023 and rising slowly to 0.35 by 2026.">
+            <figcaption>Landsat event 103724 (2022 T3 cohort): 17,183 cells (about 1,546 ha, cell-area equivalent), centred near E 681,175, N 7,395,066 (MGA2020 Zone 55).</figcaption>
+          </figure>
+          <dl class="cs-kinds">
+            <dt>Derived measurement</dt><dd>Median fitted NDVI is about 0.31 for 2019–2021, jumps to 0.589 in 2022, and returns to 0.297 in 2023.</dd>
+            <dt>Classification</dt><dd>Mapped as a 2022 disturbance onset; 17,070 of 17,183 cells are DNR. The 2022 cohort is held as T3 (QA-only).</dd>
+            <dt>Interpretation</dt><dd>This is not read as a disturbance. The dominant feature is a one-year <em>rise</em> across a very large area, followed by a return to the previous level. That is the signature of a transient condition, not of vegetation loss.</dd>
+          </dl>
+          <p>The data pipeline flags the 2022 cohort because flood and wet-season confounding is active at this site: attribution is under investigation (<a href="./methodology.html#confounding">methodology: confounding</a>). A transient, widespread 2022 signal fits that concern, but this analysis has not established the cause. The method’s value here is that it makes the ambiguity visible and withholds the cohort from impact evidence, instead of reporting 17,183 cells as disturbed.</p>
+        </section>
+
+        <h2 id="limitations">5. Limitations</h2>
+        <ul>
+          <li><strong>Flooding and flood-prone ground.</strong> Flood-prone areas are a HAND screening proxy only, not a statutory flood extent, flood hazard map or 0.5% AEP floodplain.</li>
+          <li><strong>Seasonal and wet-season effects.</strong> Annual NDVI can respond to rainfall timing, as example C shows. The two sensors’ thresholds are not cross-calibrated.</li>
+          <li><strong>Classification uncertainty.</strong> Classes are a rule-based adaptation, unvalidated, pending supervised (M4) validation. Trajectory-rate label fragility is 24.26% for Landsat and 7.19% for Sentinel-2. Event components can mix classes (examples A and B each contain a minority of cells in other classes).</li>
+          <li><strong>Fitted, not observed.</strong> The figures use fitted NDVI summarised over cells; they conceal within-component variation beyond the inter-quartile band.</li>
+          <li><strong>Historical, unreconciled snapshot.</strong> The demonstration keeps its 15 November 2026 tenure snapshot. A 19 November comparison found one 30 m cell outside the refreshed analysis area, and results have not been recalculated. It is not a current-tenure or regulatory determination.</li>
+          <li><strong>Local, not general.</strong> Curragh thresholds are not general defaults, and these results should not be assumed to transfer to other sites.</li>
+        </ul>
+        <p class="report-meta">See the <a href="./approach-report.html#limitations">monitoring approach report</a> for the full list of boundaries, and <a href="./methodology.html">Methodology &amp; data provenance</a> for method status, sensor comparability and reproducibility gaps.</p>
+
+        <h2 id="value">6. Practical value for mine operators and consultants</h2>
+        <ul>
+          <li><strong>Targeting.</strong> Rank locations for inspection using trajectories, so field time goes where the signal is strongest or most uncertain (examples A to C each lead to a different action).</li>
+          <li><strong>Timing.</strong> Show when a change started and whether it persisted, a question a single image pair cannot answer.</li>
+          <li><strong>Honest uncertainty.</strong> Separate clear patterns from ambiguous ones before they reach a report.</li>
+          <li><strong>Traceable records.</strong> Every output in this demonstration is hash-pinned and linked to its provenance, so an evidence trail can be reviewed and repeated.</li>
+          <li><strong>Complement to field work.</strong> The output is a lead for ground-truthing and a context layer for assessments, never a substitute for field verification or statutory criteria.</li>
+        </ul>
+
+        <section class="enquiry" aria-labelledby="cs-enquiry-title">
+          <h2 id="cs-enquiry-title">Interested in monitoring a site?</h2>
+          <p>Tell me about your site and monitoring questions.</p>
+          <a class="cta-primary" href="mailto:damien.ogrady@proton.me?subject=Monitoring%20project%20enquiry">Discuss a monitoring project</a>
+          <p class="report-meta">Or explore further: <a href="./?view=mapexplorer">map explorer</a> · <a href="./?view=reporting">reporting &amp; evidence</a>. About the work: <a href="../services.html">services</a> · <a href="../publications.html">publications</a> · <a href="../background.html">background</a>.</p>
+        </section>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <p class="footer-meta">
+        Sources: Landsat data courtesy of the <a href="https://www.usgs.gov/centers/eros/data-citation">U.S. Geological Survey</a>;
+        contains modified <a href="https://ecds.ecmwf.int/licences/ec-sentinel">Copernicus Sentinel data</a> 2016–2026.
+        Tenure context adapted from <a href="https://qldspatial.information.qld.gov.au/catalogue/catalog/search/resource/details.page?uuid=%7BA36B4591-EE8F-46CF-A23E-0397A1F9A1A4%7D">Queensland mining and exploration tenure data</a>,
+        © State of Queensland (Department of Natural Resources and Mines, Manufacturing and Regional and Rural Development) 2026,
+        <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+        HAND strata derive from <a href="https://developers.google.com/earth-engine/datasets/catalog/MERIT_Hydro_v1_0_1">MERIT Hydro</a>
+        (<a href="https://doi.org/10.1029/2019WR024873">Yamazaki et al., 2019</a>), available under the
+        <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License (ODbL) 1.0</a>.
+        <a href="./data-licensing.html">Data licensing and downloads</a>.
+      </p>
+      <p class="footer-branding">
+        <strong>Damien O’Grady</strong> — independent remote sensing and GIS consultant, Melbourne, Australia.
+        Methods underpinned by my own peer-reviewed publications; commercial client work delivered
+        traceable, defensible and reproducible.
+        <a href="https://github.com/damienogrady">github.com/damienogrady</a>
+      </p>
+      <p class="footer-branding footer-links">
+        Credentials and services on the main site:
+        <a href="../publications.html">Publications</a> ·
+        <a href="../background.html">Background</a> ·
+        <a href="../services.html">Services</a> ·
+        <a href="mailto:damien.ogrady@proton.me?subject=Monitoring%20project%20enquiry">Discuss a monitoring project</a>
+      </p>
+    </footer>
+  </body>
+</html>

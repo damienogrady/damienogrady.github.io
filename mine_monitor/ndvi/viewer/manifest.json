@@ -258,20 +258,20 @@
   "builder_sha256": "a1c61f73467a7edb6b387d2f06a89343bfa1e485e90a755e338cd0df49b70ff0",
   "files": {
     "DATA_DICTIONARY.md": {
-      "sha256": "bb9e0f6f047d393533c802c4b13435a1719f4b50a67978fa3ac28eda05e1b081",
-      "bytes": 5251
+      "sha256": "ba4a46a250335fcc45ab2c0b735d3ebafbd2422ef3e1babb6db0e9fbf6881ca3",
+      "bytes": 5155
     },
     "app.js": {
-      "sha256": "6cf293418277e1b03e9edf81b26906f34197dcfe34e3c0c80d66d91362326d25",
-      "bytes": 12418
+      "sha256": "0a1c37f5e8c03941b8d35892f6d482bdac92ca3d3f681e5afba67d79332f3bc7",
+      "bytes": 12487
     },
     "examples.json": {
       "sha256": "3164db67cf8ac5cc3ead98e978cbaeab35627ddc6d20346a6c24b59eb90259f3",
       "bytes": 819
     },
     "index.html": {
-      "sha256": "afc106e21e4e830e7313f7693ee193b953b955bfde1156f51eb43ebe491a22e2",
-      "bytes": 4416
+      "sha256": "eeb97d214a01e0a461f4bdb4c18dc1b709d11c1929e3e7beacbe6ebb18ad4d0e",
+      "bytes": 4332
     },
     "landsat/frames/1988.png": {
       "sha256": "9b37918bf5770a71cc84c642a9845dae6a90ee5300f2b0c8000c48825b2eba9d",
@@ -2474,8 +2474,8 @@
       "bytes": 123165
     },
     "style.css": {
-      "sha256": "fd4b02899b5716467c579bc34070686152fda06be8f58e45666e58ff6d6956bb",
-      "bytes": 3122
+      "sha256": "ce7099055cf192aede8b8dbcfc11d781d3aa2282c49dfb9dc4cc28a71202604f",
+      "bytes": 3126
     }
   }
 }

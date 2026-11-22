@@ -9,11 +9,10 @@
   const tenureReview = "The frozen 15 November 2026 tenure snapshot is retained for this demonstration. A 19 November comparison found one 30 m cell outside the refreshed analysis area that appears as a control in eight matching records, including four primary floor-2 records. Results were not recalculated. Lease renewal status is not legally verified; this is not a current-tenure or regulatory determination.";
   const dashboardDataUrl = new URL(window.DASH_DATA_URL, document.baseURI);
   const validViews = new Set([
-    "overview",
-    "manage",
+    "home",
+    "mapexplorer",
     "reporting",
-    "maps",
-    "science",
+    "timing",
     "events",
     "cohorts",
     "bands",
@@ -21,16 +20,23 @@
     "methods",
     "ndvi",
   ]);
-  const requestedView = new URLSearchParams(window.location.search).get("view");
-  const mapAssetCache = new Map();
+  // Retired views whose content now lives in the newer pages; keeps old deep links working.
+  const legacyViews = {
+    overview: "home",
+    manage: "mapexplorer",
+    maps: "mapexplorer",
+  };
+  const requestedParam = new URLSearchParams(window.location.search).get("view");
+  if (requestedParam === "science") window.location.replace("./approach-report.html#research-foundations");
+  const requestedView = legacyViews[requestedParam] ?? requestedParam;
   let intakeManifestPromise;
   let ndviResizeObserver;
   let mapNavigationObserver;
   let ndviMapObserver;
+  let destroyMapExplorer;
   let data;
-  let currentView = validViews.has(requestedView) ? requestedView : "overview";
+  let currentView = validViews.has(requestedView) ? requestedView : "home";
   let currentSensor = "landsat";
-  let selectedEvent = null;
 
   const escapeHtml = (value) =>
     String(value ?? "")
@@ -45,7 +51,7 @@
   const year = (value) => escapeHtml(value);
   const updateViewUrl = () => {
     const url = new URL(window.location.href);
-    if (currentView === "overview") url.searchParams.delete("view");
+    if (currentView === "home") url.searchParams.delete("view");
     else url.searchParams.set("view", currentView);
     window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
   };
@@ -172,11 +178,23 @@
     };
   };
 
+  const renderMapExplorer = () => `
+    ${pageHeading(
+      "Map explorer",
+      "Start from the map",
+      "Switch between the pinned outputs, step through the years and click any 30 m cell to read its fitted trajectory, mapped disturbance history and rule-based class together."
+    )}
+    <div class="notice warning demo-flag" role="note">
+      <p><strong>Real pipeline output, pinned as a historical, unreconciled snapshot.</strong> These maps come from a working analysis pipeline that is still under development; this page only displays its pinned output (15 November 2026 tenure snapshot; results not recalculated after the 19 November discrepancy). ${escapeHtml(data.disclosures.generalisation_caveat)} This view supports targeting and record-keeping; it does not replace field verification or statutory assessment, and it is not a current-tenure or regulatory determination. Areas are 30 m cell equivalents.</p>
+    </div>
+    <div id="map-explorer" class="map-explorer"></div>
+    <p class="muted small">Related technical evidence: <button type="button" class="text-action" data-go-view="ndvi">Standalone NDVI viewer</button> · <button type="button" class="text-action" data-go-view="events">Event records</button> · <button type="button" class="text-action" data-go-view="timing">Annual timing &amp; thresholds</button> · <button type="button" class="text-action" data-go-view="methods">Hash-gate &amp; lineage checks</button> · <a href="./methodology.html">Methodology &amp; provenance</a></p>`;
+
   const renderNdvi = () => `
     ${pageHeading(
       "Fitted vegetation through time",
       "Explore annual NDVI patterns",
-      "Select a season, map cell and event pixel to inspect the fitted vegetation signal. This static, pinned view does not estimate a mining impact."
+      "Select a season, map cell and event pixel to inspect the fitted vegetation signal. This standalone viewer shows pinned pipeline output and does not estimate a mining impact. The Map explorer offers the same fitted values with the other layers."
     )}
     <div class="notice">
       <p><strong>What is NDVI?</strong> The Normalised Difference Vegetation Index is a satellite-based indicator of vegetation condition. Healthy vegetation typically absorbs red light for photosynthesis and reflects much of the near-infrared light, largely due to leaf structure. NDVI compares these reflected wavelengths on a scale from −1 to +1; higher values generally indicate more vigorous or denser vegetation. Changes can highlight areas worth investigating, but NDVI alone cannot diagnose plant health, assess the whole ecosystem or establish the cause of change.</p>
@@ -542,24 +560,6 @@
     };
   };
 
-  const renderTrajectorySchematic = () => `
-    <figure class="trajectory-schematic">
-      <svg viewBox="0 0 760 220" role="img" aria-labelledby="trajectory-title trajectory-desc">
-        <title id="trajectory-title">Conceptual disturbance and recovery trajectory</title>
-        <desc id="trajectory-desc">A method schematic, not a Curragh data series, showing a disturbance decline, recovery start, and relative magnitude.</desc>
-        <path class="schematic-axis" d="M58 25V176H724"></path>
-        <path class="schematic-guide" d="M58 76H724"></path>
-        <path class="schematic-line" d="M72 74H245L294 150L342 158L388 144L438 116L500 94L580 78L710 69"></path>
-        <path class="schematic-mark" d="M294 147V181M388 139V181M294 190H388"></path>
-        <text x="66" y="52">NDVI (conceptual)</text>
-        <text x="66" y="205">time</text>
-        <text x="250" y="205">disturbance onset</text>
-        <text x="365" y="205">recovery start</text>
-        <text x="309" y="183">magnitude</text>
-      </svg>
-      <figcaption>Method schematic only — not Curragh data; no measured series or values are shown.</figcaption>
-    </figure>`;
-
   const renderAnnualChart = (item) => {
     const onset = item.timeline.cohorts.filter((row) => row.cohort_tier === "T1");
     const recovery = item.timeline.recovery_onset_years.filter(
@@ -620,644 +620,82 @@
       <p class="caption">T1 onset and recovery-onset areas are shown as hectares of 30 m cell-area equivalents; these are not surveyed or statutory areas. T2 and T3 remain separate.</p>`;
   };
 
-  const renderMapWorkspace = (management = false) => {
-    const item = sensor();
-    const grid = item.class_map.grid;
-    const mapUrl = new URL(item.class_map.path, dashboardDataUrl).href;
-    const bandLabels = item.distance_bands.edges
-      .map((edge) => {
-        const upper = edge.upper_m_exclusive == null
-          ? "and beyond"
-          : `to ${number(edge.upper_m_exclusive)} m`;
-        return `<span><i class="band-key ${escapeHtml(edge.band)}"></i>${escapeHtml(edge.band)} · ${number(edge.lower_m_inclusive)} m ${upper}</span>`;
-      }).join("");
-    const exemplarMarkers = grid.exemplars.map((entry) => `
-      <button
-        type="button"
-        class="exemplar-marker class-${entry.code}"
-        data-exemplar="${entry.code}"
-        style="left:${((entry.pixel_col + 0.5) / grid.width) * 100}%;top:${((entry.pixel_row + 0.5) / grid.height) * 100}%"
-        aria-label="Open class ${entry.code} example: ${escapeHtml(entry.plain_language)}"
-        title="Class ${entry.code} example"
-      >${entry.code}</button>`).join("");
-    const classes = item.class_map.legend.map((entry) => `
-      <li><span class="swatch" style="background:rgb(${entry.color.join(",")})"></span>
-        <span><strong>${escapeHtml(entry.label.split(" - ")[0])}</strong> — ${escapeHtml(entry.plain_language)}
-          ${entry.code === 5 || entry.code === 6 ? `<small>${escapeHtml(item.fragility.interpretation)} Fragility: Landsat ${number(data.sensors.landsat.fragility.percent)}%; Sentinel-2 ${number(data.sensors.sentinel2.fragility.percent)}%.</small>` : ""}
-        </span>
-      </li>`).join("");
-    const years = [...new Set(item.timeline.cohorts
-      .filter((row) => row.cohort_tier === "T1")
-      .map((row) => row.onset_year))].sort((a, b) => a - b);
-    const sizeMb = (item.events.interactive_bytes / (1024 * 1024)).toFixed(1);
-    return `
-      <div class="map-workspace">
-        <div class="map-controls" aria-label="Map controls">
-          <div class="map-sensor-control"><span>Sensor</span>${renderSensorSelector()}</div>
-          <label>Tier
-            <select id="map-tier">
-              <option value="1" selected>T1 · primary</option>
-              <option value="2">T2 · provisional</option>
-              <option value="3">T3 · QA only</option>
-            </select>
-          </label>
-          <label>Onset cohort
-            <select id="map-year">
-              <option value="all">All T1 cohorts</option>
-              ${years.map((value) => `<option value="${value}">${value}</option>`).join("")}
-            </select>
-          </label>
-          <label>View
-            <select id="map-mode">
-              <option value="class" ${management ? "" : "selected"}>Canonical class map</option>
-              <option value="events" ${management ? "selected" : ""}>Class-coded event locations</option>
-              <option value="onset">Onset-year gradient</option>
-              <option value="recovery">Recovery-onset gradient</option>
-            </select>
-          </label>
-          <label>Map zoom
-            <input id="map-zoom" type="range" min="1" max="3" step="any" value="1" aria-label="Zoom the map">
-          </label>
-        </div>
-        <p class="caption fixed-floor-note">Click the map to centre the location at one 30 m grid cell per screen pixel. Use the zoom slider and scroll to explore. Display floor: 2 cells, fixed; floors 4 and 9 are sensitivities.</p>
-        <p id="map-status" class="map-status" role="status">Loading the full pinned event population…</p>
-        <div class="grid map-layout">
-          <section>
-            <div class="map-nav-window">
-            <div class="map-viewport">
-              <div class="map-scroll-content">
-              <div class="map-stage" style="aspect-ratio:${grid.width}/${grid.height}">
-                <img class="map-raster" src="${escapeHtml(mapUrl)}" alt="${escapeHtml(item.label)} canonical six-class map of the Curragh analysis AOI">
-                <canvas id="band-layer" width="${grid.width}" height="${grid.height}" aria-hidden="true"></canvas>
-                <canvas id="event-layer" width="${grid.width}" height="${grid.height}" aria-label="Interactive pinned event locations"></canvas>
-                <canvas id="footprint-layer" width="${grid.width}" height="${grid.height}" aria-hidden="true"></canvas>
-                <div class="exemplar-markers">${exemplarMarkers}</div>
-                <div class="map-north" aria-label="North">N<span>↑</span></div>
-                <div class="map-click-marker" hidden aria-hidden="true"></div>
-              </div>
-              </div>
-            </div>
-            <div class="map-scale" aria-label="Map distance scale"><span></span><strong></strong></div>
-            </div>
-            <ul class="legend map-legend">${classes}</ul>
-            <div class="map-key">${bandLabels}</div>
-            <p class="caption">Distance-band outlines show dissolved floor-2 administrative geometries across cohorts; these are strata only, not ecological boundaries or lease limits. Grid references use MGA2020 Zone 55.</p>
-            <div class="notice warning geometry-disclosure">
-              Lease-union outline and Queensland/region locator geometry are not present in the accepted pinned inputs, so they are not drawn here.
-            </div>
-          </section>
-          <aside class="map-side-panel">
-            <section class="panel selected-cohort" aria-live="polite">
-              <h2>Selected cohort</h2>
-              <div id="cohort-details"></div>
-            </section>
-            <section class="panel selected-location" aria-live="polite">
-              <h2>${management ? "Selected location" : "Map inspection"}</h2>
-              <div id="location-details"><p>Select a point or a class example on the map.</p></div>
-            </section>
-            ${management ? `
-              <section class="panel referral-panel">
-                <h2>Field follow-up checklist</h2>
-                <ol>
-                  <li>Record the selected point's grid reference and mapped cohort.</li>
-                  <li>Check the location on the ground and document what is actually present.</li>
-                  <li>Compare the observation with later monitoring and other site evidence.</li>
-                </ol>
-                <p class="caption">Detect → locate → inspect → re-assess. This display does not send an email, raise an alert, or connect to a live system.</p>
-              </section>` : `
-              <section class="panel">
-                <h2>Class examples</h2>
-                <p>Each marker is an actual pixel selected from the pinned class raster; it is a class-pattern example, not a separate event or field observation.</p>
-                <div class="exemplar-list">${grid.exemplars.map((entry) => `
-                  <button type="button" class="exemplar-link" data-exemplar="${entry.code}">
-                    <span class="swatch" style="background:rgb(${item.class_map.legend.find((row) => row.code === entry.code).color.join(",")})"></span>
-                    ${escapeHtml(entry.label.split(" - ")[0])}: ${escapeHtml(entry.plain_language)}
-                  </button>`).join("")}
-                </div>
-              </section>`}
-            <section class="panel capability-panel">
-              <h2>Inspect fitted NDVI through time</h2>
-              <p>The separate fitted-NDVI viewer lets you select a map cell and inspect an exact event pixel through the annual record. Choose the same sensor and event pixel to continue from this view. The chart shows fitted values, keeps gaps explicit, and is not an impact estimate.</p>
-              <button type="button" class="text-action" data-go-view="ndvi">Open the fitted NDVI viewer →</button>
-            </section>
-          </aside>
-        </div>
-        <p class="payload-note">Full population: ${number(item.events.interactive_records)} event pixels · ${sizeMb} MiB static point payload for this sensor. Counts are preserved; no population subset is used.</p>
-      </div>`;
-  };
-
-  const loadMapAssets = (item) => {
-    const sensorKey = currentSensor;
-    if (!mapAssetCache.has(sensorKey)) {
-      const eventUrl = new URL(`${item.events.interactive_path}.gz`, dashboardDataUrl);
-      const orientationUrl = new URL(item.orientation_path, dashboardDataUrl);
-      const promise = Promise.all([
-        fetch(eventUrl).then((response) => {
-          if (!response.ok) throw new Error(`Event payload request failed (${response.status}).`);
-          if (typeof DecompressionStream === "undefined") {
-            throw new Error("This browser does not support gzip decompression.");
-          }
-          return new Response(response.body.pipeThrough(new DecompressionStream("gzip"))).arrayBuffer();
-        }),
-        fetch(orientationUrl).then((response) => {
-          if (!response.ok) throw new Error(`Orientation payload request failed (${response.status}).`);
-          return response.json();
-        }),
-      ]).then(([buffer, orientation]) => {
-        const view = new DataView(buffer);
-        const magic = new TextDecoder().decode(new Uint8Array(buffer, 0, 8));
-        const count = view.getUint32(8, true);
-        const recordBytes = view.getUint16(12, true);
-        if (magic !== "DASH-EV1" || recordBytes !== eventRecordBytes) {
-          throw new Error("The pinned event payload has an unknown binary format.");
-        }
-        if (buffer.byteLength !== 16 + count * recordBytes || count !== item.events.interactive_records) {
-          throw new Error("The pinned event payload length does not match its verified record count.");
-        }
-        return { buffer, view, count, orientation };
-      });
-      mapAssetCache.set(sensorKey, promise);
-    }
-    return mapAssetCache.get(sensorKey);
-  };
-
-  const eventAt = (view, index) => {
-    const offset = 16 + index * eventRecordBytes;
-    return {
-      eventId: view.getUint32(offset, true),
-      row: view.getUint16(offset + 4, true),
-      col: view.getUint16(offset + 6, true),
-      onsetYear: view.getUint16(offset + 8, true),
-      recoveryYear: view.getUint16(offset + 10, true),
-      classCode: view.getUint8(offset + 12),
-      tier: view.getUint8(offset + 13),
-      flags: view.getUint8(offset + 14),
-      componentCells: view.getUint32(offset + 15, true),
-      band: view.getUint8(offset + 19),
-    };
-  };
-
-  const drawBandGeometry = (canvas, features, grid) => {
-    const context = canvas.getContext("2d");
-    const [a, b, c, d, e, f] = grid.transform;
-    const determinant = a * e - b * d;
-    const point = ([x, y]) => ({
-      x: (e * (x - c) - b * (y - f)) / determinant,
-      y: (-d * (x - c) + a * (y - f)) / determinant,
-    });
-    const polygon = (rings) => {
-      for (const ring of rings) {
-        if (!ring.length) continue;
-        const first = point(ring[0]);
-        context.moveTo(first.x, first.y);
-        for (let index = 1; index < ring.length; index += 1) {
-          const next = point(ring[index]);
-          context.lineTo(next.x, next.y);
-        }
-        context.closePath();
-      }
-    };
-    context.clearRect(0, 0, grid.width, grid.height);
-    for (const feature of features) {
-      context.beginPath();
-      const geometry = feature.geometry;
-      if (geometry.type === "Polygon") polygon(geometry.coordinates);
-      if (geometry.type === "MultiPolygon") {
-        geometry.coordinates.forEach(polygon);
-      }
-      context.strokeStyle = {
-        near: "#e9ab4e",
-        transition: "#3d8e82",
-        far: "#5578a8",
-      }[feature.properties.band];
-      context.lineWidth = 2;
-      context.stroke();
-    }
-  };
-
-  const yearColor = (value, min, max) => {
-    const ratio = max === min ? 0.5 : (value - min) / (max - min);
-    const hue = 225 - Math.max(0, Math.min(1, ratio)) * 190;
-    return [Math.round(45 + ratio * 170), Math.round(103 + (1 - ratio) * 55), Math.round(205 - ratio * 145)];
-  };
-
-  const drawEvents = (assets, item, controls) => {
-    const canvas = document.getElementById("event-layer");
-    const status = document.getElementById("map-status");
-    if (!canvas || !status) return;
-    const { grid } = item.class_map;
-    const context = canvas.getContext("2d");
-    const image = context.createImageData(grid.width, grid.height);
-    const view = assets.view;
-    const tier = Number(controls.tier.value);
-    const selectedYear = controls.year.value;
-    const mode = controls.mode.value;
-    const observedYears = mode === "recovery"
-      ? item.timeline.recovery_onset_years.filter((row) => row.cohort_tier === tierNames[tier].slice(0, 2)).map((row) => row.recovery_onset_year)
-      : item.timeline.cohorts.filter((row) => row.cohort_tier === tierNames[tier].slice(0, 2)).map((row) => row.onset_year);
-    const minYear = Math.min(...(observedYears.length ? observedYears : [0]));
-    const maxYear = Math.max(...(observedYears.length ? observedYears : [0]));
-    const colorByClass = new Map(item.class_map.legend.map((entry) => [
-      entry.code,
-      entry.color,
-    ]));
-    let visible = 0;
-    let matchingRecords = 0;
-
-    for (let index = 0; index < assets.count; index += 1) {
-      const record = eventAt(view, index);
-      if (record.tier !== tier) continue;
-      if (selectedYear !== "all" && record.onsetYear !== Number(selectedYear)) continue;
-      matchingRecords += 1;
-      if (mode === "class") continue;
-      const colorYear = mode === "recovery" ? record.recoveryYear : record.onsetYear;
-      if (mode === "recovery" && colorYear === 0) continue;
-      const pixelOffset = (record.row * grid.width + record.col) * 4;
-      const color = mode === "class"
-        ? colorByClass.get(record.classCode)
-        : yearColor(colorYear, minYear, maxYear);
-      image.data[pixelOffset] = color[0];
-      image.data[pixelOffset + 1] = color[1];
-      image.data[pixelOffset + 2] = color[2];
-      image.data[pixelOffset + 3] = 220;
-      visible += 1;
-    }
-    context.putImageData(image, 0, 0);
-    drawBandGeometry(
-      document.getElementById("band-layer"),
-      assets.orientation.features,
-      grid
-    );
-    status.textContent = mode === "class"
-      ? `Canonical six-class raster shown. ${number(matchingRecords)} ${tierNames[tier]} event pixels are available; choose an event or timing overlay to render them from the full pinned population.`
-      : `${number(visible)} matching event pixels shown from the full pinned population.`;
-    if (tier === 2) status.textContent += " T2/2013 is provisional and is not mixed with T1.";
-    if (tier === 3) status.textContent += ` ${data.disclosures.r_d_caption}`;
-    if (mode === "onset" || mode === "recovery") {
-      status.textContent += ` Gradient range follows the observed ${mode === "onset" ? "cohort onset" : "recovery onset"} years for ${tierNames[tier]}.`;
-    }
-    status.dataset.baseMessage = status.textContent;
-  };
-
-  const drawSelectedFootprint = (record, assets, item, zoom) => {
-    const canvas = document.getElementById("footprint-layer");
-    const status = document.getElementById("map-status");
-    if (!canvas) return;
-    const context = canvas.getContext("2d");
-    const { width, height } = item.class_map.grid;
-    context.clearRect(0, 0, width, height);
-    if (status?.dataset.baseMessage) {
-      status.textContent = status.dataset.baseMessage;
-    }
-    if (!record || record.isExemplar || zoom < 2) {
-      if (record && !record.isExemplar && zoom < 2 && status) {
-        status.textContent += " Zoom to 2× or more to view the selected component footprint.";
-      }
-      return;
-    }
-
-    const cells = new Set();
-    for (let index = 0; index < assets.count; index += 1) {
-      const candidate = eventAt(assets.view, index);
-      if (candidate.eventId === record.eventId) {
-        cells.add(candidate.row * width + candidate.col);
-      }
-    }
-    if (cells.size !== record.componentCells) {
-      throw new Error(
-        `Selected event ${record.eventId} has ${cells.size} pixel records; expected ${record.componentCells}.`
-      );
-    }
-    context.beginPath();
-    for (const cell of cells) {
-      const row = Math.floor(cell / width);
-      const col = cell % width;
-      if (row === 0 || !cells.has((row - 1) * width + col)) {
-        context.moveTo(col, row);
-        context.lineTo(col + 1, row);
-      }
-      if (col === width - 1 || !cells.has(row * width + col + 1)) {
-        context.moveTo(col + 1, row);
-        context.lineTo(col + 1, row + 1);
-      }
-      if (row === height - 1 || !cells.has((row + 1) * width + col)) {
-        context.moveTo(col + 1, row + 1);
-        context.lineTo(col, row + 1);
-      }
-      if (col === 0 || !cells.has(row * width + col - 1)) {
-        context.moveTo(col, row + 1);
-        context.lineTo(col, row);
-      }
-    }
-    context.strokeStyle = "#b9473d";
-    context.lineWidth = 2;
-    context.stroke();
-    if (status) {
-      status.textContent += " Selected component outline follows its pinned 30 m event pixels.";
-    }
-  };
-
-  const renderEventDetails = (record, item) => {
-    const details = document.getElementById("location-details");
-    if (!details) return;
-    if (!record) {
-      details.innerHTML = "<p>Select a point or a class example on the map.</p>";
-      return;
-    }
-    const coord = coordinateFor(record.row, record.col, item.class_map.grid);
-    const classInfo = item.class_map.legend.find(
-      (entry) => entry.code === record.classCode
-    );
-    if (record.isExemplar) {
-      details.innerHTML = `
-        <p><strong>Class ${record.classCode}</strong> · ${escapeHtml(record.plainLanguage)}</p>
-        <p>${escapeHtml(classInfo.label)}. This is a real class-raster pixel selected as an example, not an event, field check, or independent observation.</p>
-        <p class="mono">MGA2020 Zone 55 · E ${number(Math.round(coord.easting))} m · N ${number(Math.round(coord.northing))} m</p>`;
-      return;
-    }
-    const flags = [
-      record.flags & 2 ? "same-year flag" : "",
-      record.flags & 4 ? "window gap" : "",
-      record.flags & 8 ? "overlaps prior cohort" : "",
-    ].filter(Boolean);
-    const floors = [2, 4, 9].filter((value) => record.componentCells >= value);
-    details.innerHTML = `
-      <p><strong>Event ${number(record.eventId)}</strong> · ${escapeHtml(classInfo.label)}</p>
-      <p>${escapeHtml(classInfo.plain_language)} · cohort ${record.onsetYear} · <span class="badge ${record.tier === 3 ? "qa" : ""}">${escapeHtml(tierNames[record.tier])}</span></p>
-      <p>Distance stratum: ${escapeHtml(bandNames[record.band])}. Component: ${number(record.componentCells)} event pixels; included at floors ${floors.join(", ") || "none"}.</p>
-      <p>MGA2020 Zone 55 · E ${number(Math.round(coord.easting))} m · N ${number(Math.round(coord.northing))} m</p>
-      <p>Recovery onset: ${record.recoveryYear ? year(record.recoveryYear) : "not recorded"} · QA flags: ${flags.length ? escapeHtml(flags.join(", ")) : "none recorded"}.</p>
-      ${record.tier === 3 ? `<div class="caption-box">${escapeHtml(data.disclosures.r_d_caption)}</div>` : ""}
-      <p class="caption">No mining-attribution or causal claim is made. These are pinned trajectory records, not field observations.</p>`;
-  };
-
-  const renderCohortDetails = (item, controls) => {
-    const target = document.getElementById("cohort-details");
-    if (!target) return;
-    const tier = tierNames[Number(controls.tier.value)].slice(0, 2);
-    const matchingTier = item.timeline.cohorts.filter(
-      (row) => row.cohort_tier === tier
-    );
-    if (controls.year.value === "all") {
-      target.innerHTML = `
-        <p>${number(matchingTier.length)} ${escapeHtml(tier)} cohort years are available. Choose a year to inspect its event/pixel counts, window status and matched-control gate rows; gate results are not pooled across years.</p>
-        <p class="caption">${escapeHtml(item.timeline.matching_gate_note)}</p>
-        <p class="caption">${escapeHtml(item.timeline.fragility_note)}</p>`;
-      return;
-    }
-    const row = matchingTier.find(
-      (entry) => entry.onset_year === Number(controls.year.value)
-    );
-    if (!row) {
-      target.textContent = `No pinned cohort record is available for ${tier}/${controls.year.value}.`;
-      return;
-    }
-    const arms = Object.entries(row.matching_gate.by_matching_arm).map(
-      ([matchingArm, values]) => ({
-        matchingArm,
-        ...values,
-      })
-    );
-    const armTable = table(
-      ["Matching arm", "Gate rows", "Eligible", "Flagged", "Evidence permitted"],
-      arms,
-      (arm) => `<tr><td>${escapeHtml(arm.matchingArm)}</td><td>${number(arm.matching_cell_rows)}</td><td>${number(arm.gate_eligible_rows)}</td><td>${number(arm.flagged_rows)}</td><td>${number(arm.evidence_permitted_rows)}</td></tr>`
-    );
-    target.innerHTML = `
-      <p><strong>${year(row.onset_year)} · ${escapeHtml(row.cohort_tier)}</strong>${row.provisional ? " · provisional" : ""}${row.qa_only ? " · QA only" : ""}</p>
-      <p>${number(row.event_components)} event components · ${number(row.event_pixels)} event pixels · ${number(row.event_pixel_area_equivalent_m2)} m² cell-area equivalent.</p>
-      <p>Window: ${row.window_gapped ? `gapped (${escapeHtml(row.window_gapped_years)})` : "complete"} · cohort status: ${escapeHtml(row.tier_status)} · matching participation references: ${number(row.matching_participation_reference_count)}.</p>
-      <p>Matched-control gate rows at floor 2: ${number(row.matching_gate.gate_eligible_rows)} eligible, ${number(row.matching_gate.flagged_rows)} flagged, ${number(row.matching_gate.evidence_permitted_rows)} evidence-permitted of ${number(row.matching_gate.matching_cell_rows)} source rows. Results are reported by arm, not pooled across years.</p>
-      ${armTable}
-      ${row.qa_only ? `<div class="caption-box">${escapeHtml(row.r_d_caption)}</div>` : ""}
-      <p class="caption">${escapeHtml(item.timeline.fragility_note)}</p>`;
-  };
-
-  const bindMapWorkspace = () => {
-    const sensorKey = currentSensor;
-    const item = sensor();
-    const controls = {
-      tier: document.getElementById("map-tier"),
-      year: document.getElementById("map-year"),
-      mode: document.getElementById("map-mode"),
-    };
-    if (!controls.tier) return;
-    controls.tier.addEventListener("change", () => {
-      const validYears = item.timeline.cohorts
-        .filter((row) => row.cohort_tier === tierNames[Number(controls.tier.value)].slice(0, 2))
-        .map((row) => row.onset_year);
-      controls.year.innerHTML = `<option value="all">All ${escapeHtml(tierNames[Number(controls.tier.value)])} cohorts</option>${[...new Set(validYears)].sort((a, b) => a - b).map((value) => `<option value="${value}">${value}</option>`).join("")}`;
-      renderCohortDetails(item, controls);
-    });
-    controls.year.addEventListener("change", () => renderCohortDetails(item, controls));
-    for (const control of Object.values(controls)) {
-      control.addEventListener("change", () => {
-        selectedEvent = null;
-        renderEventDetails(null, item);
-        const footprint = document.getElementById("footprint-layer");
-        if (footprint) footprint.getContext("2d").clearRect(0, 0, footprint.width, footprint.height);
-        if (window.currentMapAssets) drawEvents(window.currentMapAssets, item, controls);
-      });
-    }
-    const zoomControl = document.getElementById("map-zoom");
-    const navigation = setupMapNavigation({
-      viewport: document.querySelector(".map-viewport"),
-      content: document.querySelector(".map-scroll-content"),
-      stage: document.querySelector(".map-stage"),
-      scale: document.querySelector(".map-scale"),
-      marker: document.querySelector(".map-click-marker"),
-      zoom: zoomControl,
-      grid: item.class_map.grid,
-      onZoom: (zoom) => {
-        if (!window.currentMapAssets || !selectedEvent) return;
-        try {
-          drawSelectedFootprint(selectedEvent, window.currentMapAssets, item, zoom);
-        } catch (cause) {
-          const status = document.getElementById("map-status");
-          if (status) status.textContent = `The selected footprint could not be drawn: ${cause.message}`;
-        }
-      },
-    });
-    document.getElementById("event-layer").addEventListener("click", (event) => {
-      const canvas = event.currentTarget;
-      const bounds = canvas.getBoundingClientRect();
-      const x = (event.clientX - bounds.left) / bounds.width;
-      const y = (event.clientY - bounds.top) / bounds.height;
-      requestAnimationFrame(() => {
-        if (canvas.isConnected) navigation.zoomTo(x, y);
-      });
-    });
-    document.querySelectorAll(".exemplar-marker").forEach((marker) => {
-      marker.addEventListener("click", () => {
-        const exemplar = item.class_map.grid.exemplars.find(
-          (entry) => entry.code === Number(marker.dataset.exemplar)
-        );
-        navigation.zoomTo(
-          (exemplar.pixel_col + 0.5) / item.class_map.grid.width,
-          (exemplar.pixel_row + 0.5) / item.class_map.grid.height
-        );
-      });
-    });
-    renderCohortDetails(item, controls);
-    loadMapAssets(item).then((assets) => {
-      if (currentSensor !== sensorKey || !document.getElementById("event-layer")) return;
-      window.currentMapAssets = assets;
-      drawEvents(assets, item, controls);
-      document.querySelectorAll("[data-exemplar]").forEach((button) => {
-        button.addEventListener("click", () => {
-          const exemplar = item.class_map.grid.exemplars.find(
-            (entry) => entry.code === Number(button.dataset.exemplar)
-          );
-          selectedEvent = {
-            row: exemplar.pixel_row,
-            col: exemplar.pixel_col,
-            classCode: exemplar.code,
-            plainLanguage: exemplar.plain_language,
-            isExemplar: true,
-          };
-          drawSelectedFootprint(
-            selectedEvent,
-            assets,
-            item,
-            Number(zoomControl.value)
-          );
-          renderEventDetails(selectedEvent, item);
-          document.querySelectorAll(".exemplar-marker").forEach((marker) => {
-            marker.classList.toggle(
-              "selected",
-              Number(marker.dataset.exemplar) === exemplar.code
-            );
-          });
-        });
-      });
-      document.getElementById("event-layer").addEventListener("click", (event) => {
-        const canvas = event.currentTarget;
-        const bounds = canvas.getBoundingClientRect();
-        const col = Math.floor(((event.clientX - bounds.left) / bounds.width) * item.class_map.grid.width);
-        const row = Math.floor(((event.clientY - bounds.top) / bounds.height) * item.class_map.grid.height);
-        let nearest = null;
-        let distance = 64;
-        for (let index = 0; index < assets.count; index += 1) {
-          const candidate = eventAt(assets.view, index);
-          if (candidate.tier !== Number(controls.tier.value)) continue;
-          if (controls.year.value !== "all" && candidate.onsetYear !== Number(controls.year.value)) continue;
-          if (controls.mode.value === "recovery" && candidate.recoveryYear === 0) continue;
-          const candidateDistance = (candidate.row - row) ** 2 + (candidate.col - col) ** 2;
-          if (candidateDistance < distance) {
-            nearest = candidate;
-            distance = candidateDistance;
-          }
-        }
-        selectedEvent = nearest;
-        renderEventDetails(nearest, item);
-        try {
-          drawSelectedFootprint(
-            nearest,
-            assets,
-            item,
-            Number(zoomControl.value)
-          );
-        } catch (cause) {
-          const status = document.getElementById("map-status");
-          if (status) status.textContent = `The selected footprint could not be drawn: ${cause.message}`;
-        }
-      });
-    }).catch((cause) => {
-      if (currentSensor !== sensorKey) return;
-      const status = document.getElementById("map-status");
-      if (status) {
-        status.classList.add("error-text");
-        status.textContent = `The pinned map interaction data could not be loaded: ${cause.message}`;
-      }
-    });
-  };
-
-  const renderOverview = () => {
-    return `
-      ${pageHeading(
-        "Welcome",
-        "Satellite monitoring to guide rehabilitation decisions",
-        "Mine rehabilitation spans large areas and many years. This demonstration uses satellite time series to show where vegetation patterns change and when, helping managers target follow-up and helping regulators inspect the evidence. It is a monitoring aid—not proof of cause or a pass/fail test of rehabilitation."
-      )}
-      <div class="notice site-selection-note">
-        <p><strong>Why Curragh?</strong> Curragh coal mine, in Queensland’s Bowen Basin, was selected deliberately as a research-informed case study. Yang et al. (2018) analysed Landsat-based disturbance and recovery at Curragh, providing a relevant published precedent—not direct validation or a like-for-like comparison of this dashboard. The pinned data include Landsat events reaching back to 1988 and Sentinel-2 events from 2016, allowing the demonstration to examine vegetation trajectories over time. The paper’s published accuracy results may inform a future validation plan, but they are not accuracy benchmarks for this monitoring demonstration; validation here requires its own reference data and assessment. <a href="https://doi.org/10.1016/j.jclepro.2018.01.050">Read Yang et al. (2018)</a>.</p>
+  const enquiryEmail = "damien.ogrady@proton.me";
+  const renderHome = () => `
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="eyebrow">Independent remote sensing and GIS consultancy · Damien O’Grady</p>
+      <h1 id="hero-title">Independent evidence for mine rehabilitation.</h1>
+      <p class="hero-sub">Monitor vegetation recovery, identify potential disturbances and build a traceable record of change, using satellite remote sensing and spatial analysis.</p>
+      <ul class="chip-row" aria-label="Methods and data">
+        <li>Landsat</li><li>Sentinel-2</li><li>GIS</li><li>Time-series analysis</li>
+      </ul>
+      <div class="hero-actions">
+        <button type="button" class="cta-primary" data-go-view="mapexplorer">Explore the Curragh map →</button>
+        <a class="cta-secondary" href="mailto:${enquiryEmail}?subject=Monitoring%20project%20enquiry">Discuss a monitoring project</a>
       </div>
-      <section class="orientation-panel" aria-labelledby="orientation-title">
-        <div class="orientation-intro">
-          <p class="eyebrow">Executive summary · Curragh, Queensland</p>
-          <h2 id="orientation-title">A clearer view of where to look next</h2>
-          <p>Satellite records can reveal patterns of vegetation disturbance and later change across large areas. The goal is to help rehabilitation teams decide <strong>where to look, what to investigate, and how to track change over time</strong>—with evidence that managers and regulators can inspect.</p>
-          <p>This is a static, hash-pinned demonstration for one site. It does not prove that mining caused a change, verify rehabilitation on the ground, or replace field checks and regulatory criteria.</p>
-          <p>Beyond mining, the underlying approach could be adapted relatively quickly to monitor vegetation in other areas, subject to suitable imagery, site-specific configuration and validation. This site displays Curragh only; it does not run a new analysis on demand.</p>
-          <p>As a future enhancement, higher-resolution imagery could help scrutinise locations flagged for management. It is not included in this demonstration and would complement, not replace, field assessment.</p>
-        </div>
-        <div class="orientation-actions">
-          <h2>Where would you like to go?</h2>
-          <button type="button" class="start-action" data-go-view="maps"><span>01</span><strong>Explore the maps</strong><small>See vegetation classes and when mapped events begin.</small></button>
-          <button type="button" class="start-action" data-go-view="manage"><span>02</span><strong>Follow up a location</strong><small>Select an event point to guide ground-truthing.</small></button>
-          <button type="button" class="start-action" data-go-view="reporting"><span>03</span><strong>Review the evidence</strong><small>Inspect cohort summaries, control gates and audit tables.</small></button>
-          <button type="button" class="start-action" data-go-view="ndvi"><span>04</span><strong>Explore fitted NDVI</strong><small>Scrub annual maps and inspect an event pixel through time.</small></button>
-        </div>
-      </section>
-      <section class="page-purpose ndvi-promotion" aria-label="Fitted NDVI time-series viewer">
-        <strong>See the signal behind a mapped event</strong>
-        <p>Explore annual fitted-NDVI maps and inspect a selected event pixel alongside an available matched control. This is a separate, static viewer of fitted values—not observed NDVI, an impact estimate, or a rehabilitation verdict.</p>
-        <button type="button" class="text-action" data-go-view="ndvi">Open the fitted NDVI time-series viewer →</button>
-      </section>
-      <section class="research-foundations" aria-labelledby="research-foundations-title">
-        <div class="research-foundations-heading">
-          <div>
-            <p class="eyebrow">The science behind the demonstration</p>
-            <h2 id="research-foundations-title">Built from research, tested with site data</h2>
-          </div>
-          <button type="button" class="text-action" data-go-view="science">See how the research is used →</button>
-        </div>
-        <div class="citation-grid">
-          <article class="citation-card">
-            <span>Study design</span>
-            <a href="https://doi.org/10.2307/1942110"><strong>Underwood (1994)</strong><cite>On Beyond BACI: Sampling Designs that Might Reliably Detect Environmental Disturbances</cite></a>
-            <small>Why suitable controls and replication matter.</small>
-          </article>
-          <article class="citation-card">
-            <span>Satellite time series</span>
-            <a href="https://doi.org/10.1016/j.rse.2010.07.008"><strong>Kennedy, Yang & Cohen (2010)</strong><cite>LandTrendr temporal segmentation algorithms</cite></a>
-            <small>Foundation for summarizing long-term change trajectories.</small>
-          </article>
-          <article class="citation-card">
-            <span>Curragh precedent</span>
-            <a href="https://doi.org/10.1016/j.jclepro.2018.01.050"><strong>Yang et al. (2018)</strong><cite>Landsat disturbance and recovery at the Curragh coal mine</cite></a>
-            <small>A peer-reviewed mining-landscape case study at this site.</small>
-          </article>
-          <article class="citation-card">
-            <span>Mining trajectories</span>
-            <a href="https://doi.org/10.1016/j.envres.2026.123868"><strong>Hui & Cheng (2026)</strong><cite>Time-series framework for disturbance and recovery in mining landscapes</cite></a>
-            <small>Informs event ordering and trajectory-based interpretation.</small>
-          </article>
-        </div>
-        <p class="citation-caveat">These papers inform the design; they do not validate this implementation or transfer their accuracy results to this dashboard. <a href="./approach-report.html#research-foundations">Full references and explanation</a>.</p>
-      </section>
-      <section class="plain-methods" aria-label="How the monitoring works">
-        <details>
-          <summary>How does the before-and-after comparison work?</summary>
-          <p><strong>BACI</strong> means Before–After, Control–Impact. In plain terms, compare vegetation change before and after a time of interest in the area being monitored, then compare that change with suitable control areas. This helps separate a local pattern from changes that may also happen across the wider landscape or over time.</p>
-          <p>Good controls, enough independent locations, and checks for other causes matter. This demonstration shows matched-control eligibility and quality gates; it does not present a causal effect estimate or prove a mining impact.</p>
-        </details>
-        <details>
-          <summary>How was the vegetation stability threshold chosen?</summary>
-          <p>NDVI is a satellite-based indicator of vegetation condition, not a direct measure of species, overall ecological condition, or rehabilitation success. For each sensor separately, the pipeline measures the absolute net change across fitted NDVI histories for a selected calibration group of pixels without an accepted disturbance or recovery event. The 95th percentile of that movement sets the width of the stability band; 90th and 99th percentile alternatives are also checked.</p>
-          <p>For this pinned run, the 95th-percentile band widths are 0.2563 for Landsat and 0.2439 for Sentinel-2. They are data-derived, sensor-specific settings for this Curragh demonstration—not universal or regulatory thresholds.</p>
-        </details>
-        <p class="approach-link"><a href="./approach-report.html">Read the monitoring approach report</a> for the purpose, BACI principles, research foundations, threshold method and limitations.</p>
-      </section>
-      <div class="spacer"></div>
-      ${renderTrajectorySchematic()}
-      ${renderMapWorkspace()}
-      <div class="spacer"></div>
-      ${panel(`${sensor().label} annual disturbance and recovery timing`, renderAnnualChart(sensor()))}
-    `;
-  };
+    </section>
+    <div class="notice warning demo-flag" role="note">
+      <p><strong>Real output from a working monitoring pipeline, still under development.</strong> This demo shows a pinned, historical snapshot of that output (<a href="https://github.com/damienogrady/mine-rehab-monitor">mine-rehab-monitor</a>): the web page does not run the analysis or query Earth Engine, and the classes are unvalidated. It retains a 15 November 2026 tenure snapshot; a 19 November comparison found a discrepancy (one 30 m cell outside the refreshed analysis area) and results have <strong>not been recalculated</strong>. Not for current-tenure or regulatory use.</p>
+    </div>
+    <section class="overview-block" aria-labelledby="overview-block-title">
+      <h2 id="overview-block-title">Demonstration at a glance</h2>
+      <dl class="stat-row">
+        <div><dt>Tenure areas</dt><dd>14</dd></div>
+        <div><dt>Observation record</dt><dd>Sentinel-2 2016–26<br><small>Landsat from 1988</small></dd></div>
+        <div><dt>Satellite products</dt><dd>2<br><small>analysed separately</small></dd></div>
+        <div><dt>Analysis grid</dt><dd>30 m</dd></div>
+      </dl>
+    </section>
+    <section aria-labelledby="entry-title">
+      <h2 id="entry-title">Start here</h2>
+      <div class="entry-cards">
+        <button type="button" class="start-action" data-go-view="mapexplorer"><span>01</span><strong>Map explorer</strong><small>Start from the map: fitted NDVI, potential-disturbance onset and rule-based classes by year, with a cell's history on click.</small></button>
+        <a class="start-action" href="./curragh-case-study.html"><span>02</span><strong>Curragh case study</strong><small>Three real trajectories, with the limits of each.</small></a>
+        <button type="button" class="start-action" data-go-view="reporting"><span>03</span><strong>Evidence and reporting</strong><small>Inspect cohort summaries, control gates and a traceable record.</small></button>
+        <a class="start-action" href="./methodology.html"><span>04</span><strong>Methodology &amp; provenance</strong><small>Sources, parameters, versions and known limitations.</small></a>
+      </div>
+    </section>
+    <section class="case-study-card" aria-labelledby="case-study-title">
+      <h2 id="case-study-title">Case study: three trajectories at Curragh</h2>
+      <p>A sustained improvement, a possible disturbance and an ambiguous 2022 signal, drawn from the pinned data, with the limits of each.</p>
+      <a class="cta-secondary" href="./curragh-case-study.html">Read the Curragh case study →</a>
+    </section>
+    <section class="audience" aria-labelledby="audience-title">
+      <h2 id="audience-title">Who it is for</h2>
+      <p>Mining companies, environmental consultants, regulators and closure specialists who want an independent, traceable view of vegetation change. Satellite analysis supports targeting and record-keeping; it does not replace field verification or statutory assessment.</p>
+    </section>
+    <section class="limits-summary" aria-labelledby="limits-title">
+      <h2 id="limits-title">Method and limitations in brief</h2>
+      <ul>
+        <li>One site (Curragh); thresholds are not general defaults and results do not transfer to other sites.</li>
+        <li>Vegetation classes are a rule-based adaptation, unvalidated, pending supervised validation.</li>
+        <li>NDVI-based patterns are monitoring signals, not proof of cause or a pass/fail rehabilitation verdict. 2022 attribution is under investigation (flood/wet-season confounding).</li>
+        <li>Flood-prone areas are a HAND screening proxy, not a statutory flood extent. Areas are 30 m cell equivalents, not surveyed areas.</li>
+        <li>Landsat and Sentinel-2 are not cross-calibrated; Sentinel-2 matched-control capacity is limited.</li>
+      </ul>
+      <p>
+        <a href="./approach-report.html#limitations">Full monitoring approach and limitations</a> ·
+        <button type="button" class="text-action" data-go-view="methods">Hash-gate &amp; lineage checks</button> ·
+        <a href="./methodology.html">Methodology &amp; data provenance</a> ·
+        <a href="./data-licensing.html">Data licensing</a> · full disclosures in the page footer.
+      </p>
+    </section>
+    <section class="credentials" aria-labelledby="credentials-title">
+      <h2 id="credentials-title">Why this approach</h2>
+      <ul>
+        <li><strong>Scientific foundation.</strong> Methods informed by peer-reviewed research; see the <a href="../publications.html">publications</a> and <a href="../background.html">background</a> on the main site.</li>
+        <li><strong>Technical independence.</strong> Built on public satellite datasets (Landsat and Sentinel-2), with no dependence on proprietary imagery.</li>
+        <li><strong>Auditability.</strong> Documented, reproducible and traceable outputs: see the <a href="./methodology.html">methodology and provenance</a>.</li>
+      </ul>
+    </section>
+    <section class="enquiry" aria-labelledby="enquiry-title">
+      <h2 id="enquiry-title">Interested in monitoring your mine site?</h2>
+      <p>Engagements are scoped to the site and questions, at one of three levels: <strong>assessment</strong>, <strong>monitoring</strong> or <strong>integrated monitoring</strong> alongside your existing programme. A preliminary site assessment is a low-commitment way to start. Satellite analysis complements field verification and statutory assessment; it does not replace them. More on the <a href="../services.html">services page</a>.</p>
+      <a class="cta-primary" href="mailto:${enquiryEmail}?subject=Monitoring%20project%20enquiry">Discuss a monitoring project</a>
+    </section>
+  `;
 
-  const renderMaps = () => {
+  const renderTiming = () => {
     const item = sensor();
     const rows = Object.entries(item.class_map.sensitivity_90_95_99).map(
       ([percentile, record]) => ({ percentile, ...record })
@@ -1276,36 +714,21 @@
     );
     return `
       ${pageHeading(
-        "Class and timing maps",
-        `${item.label} class and occurrence timing`,
-        "Use this page to understand the broad spatial pattern: what vegetation-trajectory class was mapped, and when disturbance or recovery signals began. Compare map modes and years before deciding which locations merit closer review."
+        "Technical evidence",
+        `${item.label} annual timing and class thresholds`,
+        "Site-wide annual disturbance and recovery timing, and how sensitive the rule-based classes are to alternative thresholds. The maps themselves are in the Map explorer.",
+        true
       )}
-      <div class="notice">The map answers “where and when is a pattern visible?” It does not establish cause or confirm field condition. The threshold table below shows how sensitive the vegetation classes are to alternative, sensor-specific settings.</div>
-      <p class="caption">A future version could use higher-resolution imagery to examine flagged locations more closely; this demonstration does not include that imagery.</p>
+      <div class="notice">These are summary tables for the whole analysis area. They do not establish cause or confirm field condition.
+        <button type="button" class="text-action" data-go-view="mapexplorer">Open the Map explorer →</button></div>
       <div class="spacer"></div>
-      ${renderMapWorkspace()}
+      ${panel(`${item.label} annual disturbance and recovery timing`, renderAnnualChart(item))}
       <div class="spacer"></div>
       ${panel("Sensitivity by threshold", `${sensitivity}<p>Population: ${number(item.class_map.population_count)} valid observations. Sensitivity values are copied from the pinned sensor run summary; this page performs no classification or threshold calculation.</p>`)}
       <div class="spacer"></div>
       ${panel("Classification limits", `<p>${escapeHtml(data.disclosures.class_label)}</p><p>DHR/DLR disagreement: ${number(item.fragility.disagreements)} of ${number(item.fragility.accepted_recoveries)} accepted recoveries (${item.fragility.percent.toFixed(2)}%). ${escapeHtml(item.fragility.interpretation)}</p><div class="caption-box">${escapeHtml(data.disclosures.r_d_caption)}</div>`)}
     `;
   };
-
-  const renderManage = () => `
-    ${pageHeading(
-      "Manage a problem",
-      "Turn a mapped signal into a field follow-up",
-      "This is the operational follow-up view, not another map-comparison page. Use it when a location has already caught your attention and you need to inspect a point and plan what to check on site."
-    )}
-    <section class="workflow-panel" aria-label="Suggested field follow-up workflow">
-      <div><span>1</span><strong>Choose a sensor and cohort</strong><small>Keep products separate and review the year/tier you need.</small></div>
-      <div><span>2</span><strong>Switch to event locations</strong><small>Select an event point to see its mapped class, timing, QA state and grid reference.</small></div>
-      <div><span>3</span><strong>Verify on the ground</strong><small>Use the point as a lead for inspection; record field observations through your normal process.</small></div>
-    </section>
-    <p class="notice warning">A satellite point is not a field observation or a confirmed rehabilitation problem. This demonstration does not create alerts, work orders or field records.</p>
-    <p class="caption">Higher-resolution imagery could be added in future to help scrutinise flagged areas before or alongside field follow-up. It is not available in this demonstration.</p>
-    ${renderMapWorkspace(true)}
-  `;
 
   const renderReporting = () => {
     const item = sensor();
@@ -1582,11 +1005,12 @@
       .join("");
     return `
       ${pageHeading(
-        "Data quality & provenance",
-        "Pinned inputs and boundaries",
-        "The displayed products are hash-linked to the accepted monitoring-pipeline Phase 4 manifest. No live analysis or catalog service is used."
+        "Technical evidence",
+        "Hash-gate and lineage checks",
+        "The displayed products are hash-linked to the accepted monitoring-pipeline Phase 4 manifest, and the checks below re-verify them in your browser. No live analysis or catalog service is used. Sources, parameters and limitations are in the Methodology page."
       )}
-      <div class="page-purpose"><strong>Why this page matters</strong><p>Managers need to know which data version a map came from; regulators and reviewers need to be able to check that the displayed files match their recorded sources. The hash-gate record below supports that traceability. The boundary notes explain what this demonstration cannot establish and which release conditions remain open.</p></div>
+      <p class="muted small">For methods, validation status, sensor comparability, 2022 confounding and reproducibility gaps, see the <a href="./methodology.html">Methodology &amp; data provenance</a> reference (downloadable).</p>
+      <div class="page-purpose"><strong>Why this page matters</strong><p>Managers need to know which data version a map came from; regulators and reviewers need to be able to check that the displayed files match their recorded sources. The hash-gate record below supports that traceability. The boundary notes explain what this demonstration cannot establish and which limitations remain open.</p></div>
       <div class="grid two">
         ${panel(
           "Pinned lineage",
@@ -1618,7 +1042,7 @@
           </ul>`
         )}
         ${panel(
-          "License and release status",
+          "Licensing and data status",
           `<p>The project code uses the MIT licence; third-party data and derived outputs have separate terms. The owner selected the ODbL option for MERIT Hydro and accepted the data-sharing arrangements for this demonstration.</p>
            <p>No MERIT-derived raster is included in the website package. HAND-informed categorical strata and matching outputs are included. See <a href="./data-licensing.html">data licensing and downloads</a>.</p>`
         )}
@@ -1648,58 +1072,17 @@
     `;
   };
 
-  const renderScience = () => `
-    ${pageHeading(
-      "Science & references",
-      "Research foundations and how they are used",
-      "The dashboard applies established ideas from remote sensing and environmental study design to a site-specific monitoring workflow. This page separates what the research contributes from what this demonstration itself has established."
-    )}
-    <div class="notice warning"><strong>Research is a foundation, not a validation stamp.</strong> The cited studies motivate methods and interpretation. They do not establish that this monitoring demonstration is accurate, that its mapped changes were caused by mining, or that rehabilitation meets a completion standard.</div>
-    <section class="science-principles">
-      <article>
-        <span>01 · Observe change</span>
-        <h2>Turn a long image record into trajectories</h2>
-        <p>Annual satellite observations can be summarized as a time trajectory. Temporal segmentation represents that record as periods and changes rather than treating every noisy observation as a separate event. The system uses a LandTrendr-style time-series process as an upstream method; this dashboard displays its pinned outputs and does not rerun it.</p>
-        <p><a href="https://doi.org/10.1016/j.rse.2010.07.008"><strong>Kennedy, Yang & Cohen (2010).</strong> “Detecting trends in forest disturbance and recovery using yearly Landsat time series: 1. LandTrendr — Temporal segmentation algorithms.” <em>Remote Sensing of Environment</em>, 114(12), 2897–2910.</a></p>
-      </article>
-      <article>
-        <span>02 · Compare fairly</span>
-        <h2>Use before/after and control/impact logic</h2>
-        <p>BACI asks whether change over time in an area of interest differs from change in suitable controls over the same period. The project organizes candidate matches by HAND stratum and applies a baseline-NDVI caliper (0.050 primary; 0.020 sensitivity). Appropriate controls, independent replication and a design matched to the possible scale of change remain essential. This dashboard exposes matching records and eligibility gates; it does not display a causal effect estimate.</p>
-        <p><a href="https://doi.org/10.2307/1942110"><strong>Underwood (1994).</strong> “On Beyond BACI: Sampling Designs that Might Reliably Detect Environmental Disturbances.” <em>Ecological Applications</em>, 4(1), 3–15.</a></p>
-      </article>
-      <article>
-        <span>03 · Apply in a mining landscape</span>
-        <h2>Build on mine-monitoring and Curragh research</h2>
-        <p>Published Landsat work at Curragh shows the relevance of long time series for describing disturbance and recovery patterns in a mining landscape. Hui and Cheng's six trajectory labels (NVG, NVF, NVB, DNR, DHR and DLR) are adapted here as rule-based classes, with recovery required to begin after disturbance. This adaptation is unvalidated pending M4 supervised validation. The studies are precedents and methodological inputs—not validation of the current maps.</p>
-        <p><a href="https://doi.org/10.1016/j.jclepro.2018.01.050"><strong>Yang, Erskine, Lechner, Mulligan, Zhang & Wang (2018).</strong> “Detecting the dynamics of vegetation disturbance and recovery in surface mining area via Landsat imagery and LandTrendr algorithm.” <em>Journal of Cleaner Production</em>, 178, 353–362.</a></p>
-        <p><a href="https://doi.org/10.1016/j.envres.2026.123868"><strong>Hui & Cheng (2026).</strong> “Detecting disturbance and recovery in mining landscapes: A novel time-series framework based on improved LandTrendr and machine learning.” <em>Environmental Research</em>, 295, article 123868.</a></p>
-      </article>
-      <article>
-        <span>04 · Set and test thresholds</span>
-        <h2>Calibrate stability to each sensor's fitted record</h2>
-        <p>For each sensor separately, the upstream run measures absolute net fitted NDVI movement in its eligible calibration population. The 95th percentile sets the stability-band width; 90th and 99th percentiles are reported as sensitivity checks. This is a data-derived, site-specific setting, not a threshold prescribed by any one paper or a regulatory limit.</p>
-        <p>At the 95th percentile the pinned widths are 0.2563 for Landsat and 0.2439 for Sentinel-2. The sensors are not cross-calibrated. See <a href="./approach-report.html#threshold-method">the report's plain-language threshold explanation and sensitivity table</a>.</p>
-      </article>
-    </section>
-    <p class="science-report-link"><a href="./approach-report.html">Read the full plain-language monitoring approach report →</a></p>
-    <div class="page-purpose">
-      <strong>What remains to be demonstrated</strong>
-      <p>The six-class output is a rule-based adaptation, unvalidated pending the planned M4 supervised validation. Satellite trajectories are indicators of vegetation change; they do not identify cause or directly measure ecological condition. Field observations and fit-for-purpose study design remain necessary for any impact or rehabilitation conclusion.</p>
-    </div>
-    <p class="approach-link"><a href="./approach-report.html#research-foundations">Open the full monitoring approach report and references →</a></p>
-  `;
-
   const render = () => {
     mapNavigationObserver?.disconnect();
     ndviMapObserver?.disconnect();
     ndviResizeObserver?.disconnect();
+    destroyMapExplorer?.();
+    destroyMapExplorer = null;
     const views = {
-      overview: renderOverview,
-      manage: renderManage,
+      home: renderHome,
+      mapexplorer: renderMapExplorer,
       reporting: renderReporting,
-      maps: renderMaps,
-      science: renderScience,
+      timing: renderTiming,
       bands: renderBands,
       events: renderEvents,
       cohorts: renderCohorts,
@@ -1725,19 +1108,17 @@
     app.querySelectorAll("[data-sensor]").forEach((button) => {
       button.addEventListener("click", () => {
         currentSensor = button.dataset.sensor;
-        selectedEvent = null;
-        window.currentMapAssets = null;
         render();
       });
     });
-    if (["overview", "manage", "maps"].includes(currentView)) {
-      bindMapWorkspace();
-    }
     if (currentView === "methods") {
       renderHashGateReport();
     }
     if (currentView === "ndvi") {
       prepareNdviViewer();
+    }
+    if (currentView === "mapexplorer") {
+      destroyMapExplorer = window.MapExplorer.mount(document.getElementById("map-explorer"), { data, dashboardUrl: dashboardDataUrl });
     }
   };
 

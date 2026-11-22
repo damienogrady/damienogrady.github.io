@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" role="img" aria-label="Ambiguous: 2022 wet-season spike: median fitted NDVI of event 103724 (17,183 cells), 1988 to 2026" font-family="system-ui,sans-serif" font-size="11">
+<rect width="640" height="300" fill="#fff"/>
+<text x="52" y="16" font-size="12" font-weight="600" fill="#1f2d3a">Event 103724 · 17,183 cells · Landsat</text>
+<line x1="52" x2="624" y1="253.4" y2="253.4" stroke="#e3e8ec"/><text x="46" y="257.4" text-anchor="end" fill="#52606d">-0.0</text>
+<line x1="52" x2="624" y1="220.1" y2="220.1" stroke="#e3e8ec"/><text x="46" y="224.1" text-anchor="end" fill="#52606d">0.1</text>
+<line x1="52" x2="624" y1="186.9" y2="186.9" stroke="#e3e8ec"/><text x="46" y="190.9" text-anchor="end" fill="#52606d">0.2</text>
+<line x1="52" x2="624" y1="153.7" y2="153.7" stroke="#e3e8ec"/><text x="46" y="157.7" text-anchor="end" fill="#52606d">0.3</text>
+<line x1="52" x2="624" y1="120.4" y2="120.4" stroke="#e3e8ec"/><text x="46" y="124.4" text-anchor="end" fill="#52606d">0.4</text>
+<line x1="52" x2="624" y1="87.2" y2="87.2" stroke="#e3e8ec"/><text x="46" y="91.2" text-anchor="end" fill="#52606d">0.5</text>
+<line x1="52" x2="624" y1="54.0" y2="54.0" stroke="#e3e8ec"/><text x="46" y="58.0" text-anchor="end" fill="#52606d">0.6</text>
+<text x="82.1" y="276" text-anchor="middle" fill="#52606d">1990</text>
+<text x="157.4" y="276" text-anchor="middle" fill="#52606d">1995</text>
+<text x="232.6" y="276" text-anchor="middle" fill="#52606d">2000</text>
+<text x="307.9" y="276" text-anchor="middle" fill="#52606d">2005</text>
+<text x="383.2" y="276" text-anchor="middle" fill="#52606d">2010</text>
+<text x="458.4" y="276" text-anchor="middle" fill="#52606d">2015</text>
+<text x="533.7" y="276" text-anchor="middle" fill="#52606d">2020</text>
+<text x="608.9" y="276" text-anchor="middle" fill="#52606d">2025</text>
+<text x="14" y="144.0" transform="rotate(-90 14 144.0)" text-anchor="middle" fill="#52606d">Fitted NDVI (median, IQR)</text>
+<line x1="563.8" x2="563.8" y1="28" y2="260" stroke="#b42318" stroke-dasharray="4 3"/><text x="559.8" y="40" text-anchor="end" fill="#b42318">mapped onset 2022</text>
+<polygon points="52.0,94.2 82.1,104.7 97.2,128.5 112.2,133.4 127.3,138.2 142.3,140.5 172.4,143.8 187.5,143.8 202.5,145.8 217.6,147.6 247.7,149.9 262.7,149.7 277.8,149.8 292.8,150.2 307.9,150.0 322.9,150.1 338.0,149.7 353.1,148.2 368.1,147.5 383.2,144.3 398.2,142.2 428.3,141.3 443.4,141.9 458.4,141.8 473.5,141.6 488.5,141.5 503.6,141.8 518.6,141.8 533.7,141.8 548.7,140.9 563.8,44.6 578.8,149.1 593.9,140.4 608.9,131.7 624.0,126.9 624.0,143.5 608.9,147.3 593.9,153.2 578.8,159.8 563.8,71.7 548.7,157.7 533.7,157.2 518.6,156.8 503.6,156.7 488.5,156.0 473.5,156.0 458.4,156.3 443.4,156.7 428.3,156.7 398.2,158.1 383.2,157.6 368.1,161.6 353.1,162.8 338.0,165.3 322.9,167.0 307.9,167.1 292.8,167.5 277.8,167.1 262.7,167.1 247.7,167.2 217.6,165.1 202.5,163.9 187.5,162.4 172.4,161.9 142.3,161.4 127.3,161.7 112.2,155.9 97.2,156.4 82.1,133.3 52.0,134.8" fill="#2f6f9f" fill-opacity="0.18"/>
+<polyline points="52.0,119.1 82.1,117.6 97.2,144.1 112.2,143.4 127.3,148.9 142.3,150.2 172.4,152.4 187.5,153.4 202.5,155.2 217.6,156.8 247.7,158.8 262.7,158.5 277.8,158.5 292.8,158.8 307.9,158.5 322.9,158.6 338.0,157.7 353.1,156.0 368.1,154.5 383.2,151.4 398.2,150.3 428.3,148.7 443.4,149.2 458.4,149.0 473.5,149.0 488.5,149.2 503.6,149.7 518.6,149.6 533.7,149.6 548.7,149.5 563.8,57.6 578.8,154.6 593.9,147.2 608.9,140.7 624.0,136.2" fill="none" stroke="#1d5a87" stroke-width="2"/>
+<circle cx="52.0" cy="119.1" r="2.5" fill="#1d5a87"/>
+<circle cx="82.1" cy="117.6" r="2.5" fill="#1d5a87"/>
+<circle cx="97.2" cy="144.1" r="2.5" fill="#1d5a87"/>
+<circle cx="112.2" cy="143.4" r="2.5" fill="#1d5a87"/>
+<circle cx="127.3" cy="148.9" r="2.5" fill="#1d5a87"/>
+<circle cx="142.3" cy="150.2" r="2.5" fill="#1d5a87"/>
+<circle cx="172.4" cy="152.4" r="2.5" fill="#1d5a87"/>
+<circle cx="187.5" cy="153.4" r="2.5" fill="#1d5a87"/>
+<circle cx="202.5" cy="155.2" r="2.5" fill="#1d5a87"/>
+<circle cx="217.6" cy="156.8" r="2.5" fill="#1d5a87"/>
+<circle cx="247.7" cy="158.8" r="2.5" fill="#1d5a87"/>
+<circle cx="262.7" cy="158.5" r="2.5" fill="#1d5a87"/>
+<circle cx="277.8" cy="158.5" r="2.5" fill="#1d5a87"/>
+<circle cx="292.8" cy="158.8" r="2.5" fill="#1d5a87"/>
+<circle cx="307.9" cy="158.5" r="2.5" fill="#1d5a87"/>
+<circle cx="322.9" cy="158.6" r="2.5" fill="#1d5a87"/>
+<circle cx="338.0" cy="157.7" r="2.5" fill="#1d5a87"/>
+<circle cx="353.1" cy="156.0" r="2.5" fill="#1d5a87"/>
+<circle cx="368.1" cy="154.5" r="2.5" fill="#1d5a87"/>
+<circle cx="383.2" cy="151.4" r="2.5" fill="#1d5a87"/>
+<circle cx="398.2" cy="150.3" r="2.5" fill="#1d5a87"/>
+<circle cx="428.3" cy="148.7" r="2.5" fill="#1d5a87"/>
+<circle cx="443.4" cy="149.2" r="2.5" fill="#1d5a87"/>
+<circle cx="458.4" cy="149.0" r="2.5" fill="#1d5a87"/>
+<circle cx="473.5" cy="149.0" r="2.5" fill="#1d5a87"/>
+<circle cx="488.5" cy="149.2" r="2.5" fill="#1d5a87"/>
+<circle cx="503.6" cy="149.7" r="2.5" fill="#1d5a87"/>
+<circle cx="518.6" cy="149.6" r="2.5" fill="#1d5a87"/>
+<circle cx="533.7" cy="149.6" r="2.5" fill="#1d5a87"/>
+<circle cx="548.7" cy="149.5" r="2.5" fill="#1d5a87"/>
+<circle cx="563.8" cy="57.6" r="2.5" fill="#1d5a87"/>
+<circle cx="578.8" cy="154.6" r="2.5" fill="#1d5a87"/>
+<circle cx="593.9" cy="147.2" r="2.5" fill="#1d5a87"/>
+<circle cx="608.9" cy="140.7" r="2.5" fill="#1d5a87"/>
+<circle cx="624.0" cy="136.2" r="2.5" fill="#1d5a87"/>
+</svg>
