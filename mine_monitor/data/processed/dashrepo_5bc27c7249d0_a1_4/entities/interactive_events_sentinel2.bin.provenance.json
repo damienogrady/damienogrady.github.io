@@ -1,0 +1,11 @@
+{
+  "artifact": "interactive_events_sentinel2.bin",
+  "artifact_sha256": "5ac843f41ea239910b51f6eaa80acbc61ac5974f17fedb18e5ff1193711c0ef0",
+  "namespace": "dashrepo_5bc27c7249d0_a1_4",
+  "source_phase4_manifest_sha256": "5bc27c7249d09ec02ada51fb95ff7b0971aa90a72dc4c3c666cbe9cbb00beb86",
+  "derived_from_phase4_outputs_sha256": {
+    "trajectory_events_sentinel2.parquet": "c3b8346a4037b64a3e2c23414daec0ca5f1efd8cb3f40e0be84fd54649a0b6fb",
+    "distance_bands_sentinel2.gpkg": "28dd0f2b31bf4724fc01ae5363f6847a3864148677625532aa6a115dd83fd8ad"
+  },
+  "derivation": "Compact fixed-width centroid point records for the complete Phase 4 event population, with floor-2 R4 band membership."
+}

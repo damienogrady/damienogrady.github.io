@@ -1,0 +1,34 @@
+{
+  "artifact": "2002.png",
+  "artifact_sha256": "22fca8b2ec88d181ca936b20234ead6cade0f5d82b09381403ff3f81033c76c7",
+  "namespace": "dashrepo_5bc27c7249d0_a1_4",
+  "source_phase4_namespace": "21d4c71d4894_0c45935c0979/phase4_e57f8763f340",
+  "source_phase4_manifest_sha256": "5bc27c7249d09ec02ada51fb95ff7b0971aa90a72dc4c3c666cbe9cbb00beb86",
+  "source_entity_sha256": "22fca8b2ec88d181ca936b20234ead6cade0f5d82b09381403ff3f81033c76c7",
+  "verified_upstream_provenance_sha256": null,
+  "verified_source_hashes_sha256": {
+    "landsat/run_summary.json": "9e8593ab7ab4f5125e63208ef7b069721f78d5e4867feda0ee18db2ebdbda99f",
+    "sentinel2/run_summary.json": "279bd0b51edef1a8baa2d58c173a5039ffc64cd71f33925e49df8c9d1fbb87fe",
+    "landsat/six_class_map_landsat.tif": "eaccf56069994ae1c5f4bae4f942184b4543b637110a28cf07dba4471fea125a",
+    "sentinel2/six_class_map_sentinel2.tif": "11b4f53e60ca02db7c1f14f1998169199d55f04a96eff9906b779941de193bb6",
+    "phase3_full_run_report.json": "9d3628a8faf51b109833242f7ab964baabccf139f57e6ad3f0f16e8e813a7e4e",
+    "phase3/full_run_caliper_exclusions.csv": "6a1c7e8cab469b40b8fca4fbb69694cf1bc424420448286ff715690db4231894",
+    "phase3/full_run_control_reuse.csv": "69f3348a0f7d5ea7ac3776563b5a575bc826234340fb856b277737e83848dad3",
+    "landsat/same_year_flag_landsat.tif": "f6dbe7ca82726dfc325e8fd18bb21572d32c73c28fef88476d5386cabb601d7c",
+    "sentinel2/same_year_flag_sentinel2.tif": "f6dbe7ca82726dfc325e8fd18bb21572d32c73c28fef88476d5386cabb601d7c"
+  },
+  "same_year_flag_layers": {
+    "landsat_sha256": "f6dbe7ca82726dfc325e8fd18bb21572d32c73c28fef88476d5386cabb601d7c",
+    "sentinel2_sha256": "f6dbe7ca82726dfc325e8fd18bb21572d32c73c28fef88476d5386cabb601d7c",
+    "byte_identical": true
+  },
+  "catalog_snapshot": {
+    "effective_scene_count_query_date_utc": "2026-11-16",
+    "historical_catalog_retrieved_at_utc": "2026-11-15T09:26:56.242154+00:00",
+    "version": "Earth Engine live catalog has no immutable version identifier; fitted annual composites are pinned by saved asset IDs and historical-summary SHA-256."
+  },
+  "catalog_determinism_note": "Determinism is relative to the pinned catalog snapshot. Catalog metadata is not a scene-selection filter.",
+  "derivation": "Byte-identical copy of a per-year class-map frame (palette PNG, code 0 transparent, exact legend colours). No resampling or re-encoding.",
+  "class_map_pack": "7dfd5308041a",
+  "class_map_index_sha256": "adb9edd87001b33c5ab4204ce65f21a9e44a7667bc05f4695288967bc994e622"
+}

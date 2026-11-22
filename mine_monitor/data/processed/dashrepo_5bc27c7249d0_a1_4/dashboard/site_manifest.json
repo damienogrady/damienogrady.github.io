@@ -1,0 +1,28 @@
+{
+  "namespace": "dashrepo_5bc27c7249d0_a1_4",
+  "source_phase4_manifest_sha256": "5bc27c7249d09ec02ada51fb95ff7b0971aa90a72dc4c3c666cbe9cbb00beb86",
+  "source_phase3_commit_sha": "e57f8763f340da048159eba11daa1902f239fcfb",
+  "assets_sha256": {
+    "dashboard.json": "e5a9dcbdd5091a0c0b9409cb0492cc15ac42d0422eeed6c5e6701a46f6626c19",
+    "dashboard.json.provenance.json": "50c1ab347fd739994b362fa0a5d723a5133821e053c1f7f61dd49bc7192fa98a",
+    "six_class_map_landsat.png": "7e89b31ea003d09310e6eff4db43f26024887a3b87d487056005f0c30be9af90",
+    "six_class_map_landsat.png.provenance.json": "1c14ee3e9ebd090f06e632545d82705525589ef00f28553df7a23cff58198052",
+    "six_class_map_sentinel2.png": "1b74beab29f85be8cf7628921a025b20c69a403d353c9cf751092c4e9692bce3",
+    "six_class_map_sentinel2.png.provenance.json": "c48df6f375f990b915169d223c4d6d7c33803f82b272989cc815ef9701202a31"
+  },
+  "catalog_snapshots": {
+    "landsat": {
+      "effective_scene_count_query_date_utc": "2026-11-16",
+      "historical_catalog_retrieved_at_utc": "2026-11-15T09:26:56.242154+00:00",
+      "version": "Earth Engine live catalog has no immutable version identifier; fitted annual composites are pinned by saved asset IDs and historical-summary SHA-256.",
+      "provenance_sidecar_sha256": "214ba913775aaa2cae6413a12e010090bef998002f7ba507c3b37795ddcb2fe0"
+    },
+    "sentinel2": {
+      "effective_scene_count_query_date_utc": "2026-11-16",
+      "historical_catalog_retrieved_at_utc": "2026-11-15T09:26:56.242154+00:00",
+      "version": "Earth Engine live catalog has no immutable version identifier; fitted annual composites are pinned by saved asset IDs and historical-summary SHA-256.",
+      "provenance_sidecar_sha256": "c06e4c64e1c8746fe7e6c477336894533d2841cfc1a48afca89c4efdca49c744"
+    }
+  },
+  "status": "built_static_demo"
+}

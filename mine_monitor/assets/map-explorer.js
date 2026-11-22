@@ -75,7 +75,7 @@
     return new Response(response.body.pipeThrough(new DecompressionStream("gzip"))).arrayBuffer();
   };
 
-  const shared = { manifest: null, tiles: new Map(), pairs: new Map(), frames: new Map(), sensors: new Map(), basemap: null };
+  const shared = { classIndex: null, classFrames: new Map(), manifest: null, tiles: new Map(), pairs: new Map(), frames: new Map(), sensors: new Map(), basemap: null };
 
   const getManifest = () => {
     shared.manifest ??= fetch(new URL("manifest.json", NDVI_BASE), { cache: "no-cache" }).then((r) => {
@@ -138,6 +138,41 @@
       }));
     }
     return shared.frames.get(key);
+  };
+
+  const CLASS_YEAR_CAVEATS = [
+    "Classes are rule-based and unvalidated (pending supervised validation) and are not mining attribution.",
+    "Each year is classified on its own using only data up to that year. Maps are not temporally consistent: a cell can change class purely because the trajectory was refitted, so differences between years are not evidence of change.",
+    "The stability band and class boundaries move each year; DHR/DLR rate splits are not comparable across years.",
+    "End-effect: the final years of each sensor sit at the end of a truncated series, where fitted vertices are unstable and recovery is under-detected.",
+  ];
+
+  const getClassIndex = (data, dashboardUrl) => {
+    if (!shared.classIndex) {
+      const url = new URL(data.class_maps.index_path, dashboardUrl);
+      shared.classIndex = fetch(url, { cache: "no-cache" }).then((r) => {
+        if (!r.ok) throw new Error(`Per-year class index request failed (${r.status}).`);
+        return r.json();
+      }).then((index) => ({ index, base: url }));
+      shared.classIndex.catch(() => { shared.classIndex = null; });
+    }
+    return shared.classIndex;
+  };
+
+  const getClassFrame = async (data, dashboardUrl, sensor, yr) => {
+    const { index, base } = await getClassIndex(data, dashboardUrl);
+    const meta = index.sensors[sensor]?.frames[yr];
+    if (!meta) return null;
+    const key = `${sensor}/${yr}`;
+    if (!shared.classFrames.has(key)) {
+      shared.classFrames.set(key, new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = () => { shared.classFrames.delete(key); reject(new Error(`Class map ${yr} could not be loaded.`)); };
+        img.src = new URL(meta.file, base).href;
+      }));
+    }
+    return shared.classFrames.get(key);
   };
 
   const getSensorAssets = (sensor, item, dashboardUrl) => {
@@ -295,7 +330,8 @@
             <fieldset class="mx-layers"><legend>Map layer</legend>
               <label><input type="radio" name="mx-layer" value="ndvi" checked> Fitted NDVI ${chip("derived")}</label>
               <label><input type="radio" name="mx-layer" value="onset"> Potential disturbance onset ${chip("interpretation")}</label>
-              <label><input type="radio" name="mx-layer" value="class"> Rule-based class ${chip("rule")}</label>
+              <label><input type="radio" name="mx-layer" value="classyear"> Rule-based class by year ${chip("rule")}</label>
+              <label><input type="radio" name="mx-layer" value="class"> Rule-based class, whole record ${chip("rule")}</label>
             </fieldset>
             <fieldset class="mx-overlays"><legend>Overlays</legend>
               <label><input type="checkbox" id="mx-bands" checked> Administrative distance strata</label>
@@ -396,6 +432,12 @@
           const frame = await getFrame(state.sensor, state.year);
           if (token !== state.token) return;
           lctx.drawImage(frame, 0, 0, frame.width * 4, frame.height * 4);
+        } else if (state.layer === "classyear") {
+          setStatus(`Loading ${state.year} class map…`);
+          const frame = await getClassFrame(data, dashboardUrl, state.sensor, state.year);
+          if (token !== state.token) return;
+          // Nearest-neighbour 2x (frames are decimated by 2): class colours are never blended.
+          if (frame) lctx.drawImage(frame, 0, 0, frame.width * 2, frame.height * 2);
         } else if (state.layer === "class") {
           setStatus("Loading class raster…");
           const cr = await assets.classRaster;
@@ -435,8 +477,16 @@
         html = `<div>${chip("derived")} Fitted annual NDVI, ${state.year}</div><div class="mx-ramp" style="background:linear-gradient(90deg,${NDVI_RAMP.map(([, c]) => `rgb(${c})`).join(",")})"></div><div class="mx-ramp-labels"><span>lower</span><span>higher</span></div><p class="muted small">Same fixed −1 to +1 colour scale as the Fitted NDVI view. Each map pixel averages up to 4 × 4 source cells; transparent = no valid fitted value. Fitted, not observed.</p>`;
       } else if (state.layer === "onset") {
         html = `<div>${chip("interpretation")} Potential disturbance onset, cohorts up to ${state.year}</div><div class="mx-ramp" style="background:linear-gradient(90deg,${ONSET_RAMP.map((c) => `rgb(${c})`).join(",")})"></div><div class="mx-ramp-labels"><span>${info.start_year}</span><span>${info.end_year}</span></div><p class="muted small">Colour = onset year of retained Phase 4 event pixels. Potential disturbance for follow-up; cause is not established. ${esc(data.disclosures.r_d_caption)}.</p>`;
+      } else if (state.layer === "classyear") {
+        const ci = shared.classIndexData, sensorName = state.sensor === "landsat" ? "Landsat" : "Sentinel-2";
+        const years = ci?.sensors[state.sensor]?.years ?? [];
+        const meta = ci?.sensors[state.sensor]?.frames[state.year];
+        const legend = ci ? Object.entries(ci.legend).map(([code, l]) => `<li><span class="swatch" style="background:rgb(${l.rgb})"></span>${esc(l.label)}</li>`).join("") : "";
+        html = `<div>${chip("rule")} <span class="mx-sensor-badge">${sensorName}</span> Rule-based class as of ${state.year} · unvalidated</div><ul class="mx-classes">${legend}</ul>
+          <p class="muted small">Transparent = no class (outside the analysed area or no valid fit). ${years.length ? `${sensorName} class maps exist for ${years[0]}–${years[years.length - 1]} only; ` : ""}the other sensor is a separate product and is not cross-calibrated. Displayed at 60 m (every second 30 m cell); click reads the same 60 m pixel.${meta ? ` Stability band width this year: ${meta.stability_band_width.toFixed(3)}.` : ""}</p>
+          <div class="mx-caution" role="note"><strong>Read with care</strong><ul>${CLASS_YEAR_CAVEATS.map((c) => `<li>${esc(c)}</li>`).join("")}</ul></div>`;
       } else {
-        html = `<div>${chip("rule")} ${esc(data.disclosures.class_label)}</div><ul class="mx-classes">${it.class_map.legend.map((l) => `<li><span class="swatch" style="background:rgb(${l.color})"></span>${esc(l.label)}</li>`).join("")}</ul><p class="muted small">Not time-varying: one class map for the whole record, so the year slider does not apply. Rate labels only, not rehabilitation-quality verdicts.</p>`;
+        html = `<div>${chip("rule")} ${esc(data.disclosures.class_label)}</div><ul class="mx-classes">${it.class_map.legend.map((l) => `<li><span class="swatch" style="background:rgb(${l.color})"></span>${esc(l.label)}</li>`).join("")}</ul><p class="muted small">Not time-varying: one class map for the whole record, so the year slider does not apply (use "Rule-based class by year" for per-year maps). Rate labels only, not rehabilitation-quality verdicts.</p>`;
       }
       html += `<div class="mx-bandkey">${Object.entries(BAND_STYLE).map(([b, s]) => `<span><i style="border-top:2px ${s.dash.length ? "dashed" : "solid"} ${s.color}; background:#4a5a55"></i>${b}</span>`).join("")}<small>Administrative distance strata (derived geometry, not lease boundaries)</small></div>`;
       $("#mx-legend").innerHTML = html;
@@ -445,8 +495,14 @@
     const updateTime = async () => {
       const manifest = await getManifest(), info = shared.info = manifest.sensors[state.sensor];
       const slider = $("#mx-year");
-      slider.min = info.start_year; slider.max = info.end_year;
-      state.year = Math.min(info.end_year, Math.max(info.start_year, state.year));
+      let lo = info.start_year, hi = info.end_year;
+      if (state.layer === "classyear") {
+        const ci = shared.classIndexData ??= (await getClassIndex(data, dashboardUrl)).index, yrs = ci.sensors[state.sensor].years;
+        lo = yrs[0]; hi = yrs[yrs.length - 1];
+      }
+      state.range = { lo, hi };
+      slider.min = lo; slider.max = hi;
+      state.year = Math.min(hi, Math.max(lo, state.year));
       slider.value = state.year;
       $("#mx-year-out").textContent = state.year;
       slider.disabled = state.layer === "class";
@@ -454,6 +510,10 @@
       const valid = info.valid_pixels_by_year ?? {}, peak = Math.max(...Object.values(valid), 1), n = valid[state.year];
       let note = "";
       if (state.layer === "class") note = "Class map has no time dimension.";
+      else if (state.layer === "classyear") {
+        const yrs = shared.classIndexData.sensors[state.sensor].years;
+        note = `Class map as of ${state.year}, built from data up to ${state.year}.${state.year >= yrs[yrs.length - 1] - 2 ? " End-effect: the last years of the series are unstable and under-detect recovery." : ""}`;
+      }
       else if (state.layer === "ndvi" && n !== undefined && n < peak * 0.05) note = `Sparse or no fitted coverage in ${state.year} (${nf.format(n)} cells); gaps are left blank, not filled.`;
       else if (state.layer === "ndvi") note = `${nf.format(n ?? 0)} cells with a fitted value in ${state.year}.`;
       else note = `Cumulative to ${state.year}.`;
@@ -535,10 +595,25 @@
           const l = item().class_map.legend.find((x) => x.color.every((v, i) => v === rgb[i]));
           if (l) { classLine = `<strong>${esc(l.label)}</strong> — ${esc(l.plain_language)}`; source = "sampled from the reduced display raster; approximate at cell level"; }
         }
+        let yearClassLine = "";
+        if (state.layer === "classyear") {
+          const frame = await getClassFrame(data, dashboardUrl, state.sensor, state.year).catch(() => null);
+          const ci = shared.classIndexData ?? (await getClassIndex(data, dashboardUrl)).index;
+          if (token !== state.panelToken) return;
+          if (!frame) yearClassLine = `<p class="small">No ${esc(item().label)} class map exists for ${state.year}.</p>`;
+          else {
+            const c = document.createElement("canvas"); c.width = 1; c.height = 1;
+            const x = c.getContext("2d", { willReadFrequently: true });
+            x.drawImage(frame, Math.min(frame.width - 1, col >> 1), Math.min(frame.height - 1, row >> 1), 1, 1, 0, 0, 1, 1);
+            const d = x.getImageData(0, 0, 1, 1).data;
+            const hit = d[3] ? Object.values(ci.legend).find((l) => l.rgb.every((v, i) => v === d[i])) : null;
+            yearClassLine = `<p class="small"><strong>Class as of ${state.year}${hit ? `: ${esc(hit.label)}` : ": none"}</strong> (60 m display pixel; per-year map, unvalidated, not consistent across years and not mining attribution).</p>`;
+          }
+        }
         const band = bands ? (() => { const cx = col + 0.5, cy = row + 0.5, hit = bands.find((bd) => state.hitContext.isPointInPath(bd.path, cx, cy, "evenodd")); return hit?.band; })() : null;
         html += `<section class="mx-block">${chip("rule", "Rule-based classification · unvalidated")}
           <p>${classLine}</p>${source ? `<p class="muted small">Class ${source}.</p>` : ""}
-          <p class="muted small">${esc(data.disclosures.class_label)}. Rate labels only, not a rehabilitation-quality verdict. <a href="./methodology.html#status">Method status</a></p></section>
+          ${state.layer === "classyear" ? yearClassLine : ""}<p class="muted small">${esc(data.disclosures.class_label)}. Rate labels only, not a rehabilitation-quality verdict. <a href="./methodology.html#status">Method status</a></p></section>
           <section class="mx-block"><h3>Context</h3><p class="small">Administrative distance stratum: ${band ? esc(band) : "outside the mapped strata"}. This is a distance classification, not a lease boundary.</p></section>
           <section class="mx-block">${chip("regulatory")}<p class="small">Whether this location meets any rehabilitation, completion or compliance criterion cannot be concluded from this view. It requires independent assessment, field verification and statutory process.</p></section>`;
         panelEl.innerHTML = html;
@@ -601,8 +676,8 @@
       if (state.playing) { stopPlay(); return; }
       $("#mx-play").textContent = "❚❚ Pause";
       state.playing = setInterval(() => {
-        const info = shared.info, slider = $("#mx-year");
-        state.year = state.year >= info.end_year ? info.start_year : state.year + 1;
+        const slider = $("#mx-year"), { lo, hi } = state.range;
+        state.year = state.year >= hi ? lo : state.year + 1;
         slider.value = state.year; slider.dispatchEvent(new Event("input"));
       }, 900);
     }, { signal: abort.signal });

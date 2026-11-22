@@ -63,3 +63,6 @@
   .mx-panel { position: static; max-height: none; }
 }
 .mx-classes .swatch { display: inline-block; width: 0.8rem; height: 0.8rem; margin-right: 0.4rem; vertical-align: middle; border-radius: 2px; }
+.mx-sensor-badge { display: inline-block; padding: 0.05rem 0.45rem; border-radius: 0.3rem; background: #172522; color: #fff; font-size: 0.72rem; font-weight: 800; }
+.mx-caution { margin: 0.5rem 0; padding: 0.5rem 0.7rem; border: 1px solid #e6c677; border-left-width: 4px; border-radius: 0.4rem; background: #fdf6e1; color: #4d3a00; font-size: 0.78rem; }
+.mx-caution ul { margin: 0.3rem 0 0; padding-left: 1.1rem; }
