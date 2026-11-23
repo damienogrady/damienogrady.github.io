@@ -38,7 +38,7 @@
           <a href="./">← Return to the dashboard</a>
           <a href="#" onclick="window.print(); return false;">Print or save as PDF</a>
         </nav>
-        <p class="eyebrow">Purpose, principles and limits</p>
+        <p class="eyebrow">Purpose, approach and boundaries</p>
         <h1>What this monitoring demonstration is for</h1>
         <a class="report-author" href="https://damienogrady.github.io/">
           <img src="./branding/favicon.svg?v=d4a4e5f5d2" width="32" height="32" alt="">
@@ -52,9 +52,9 @@
         <p>Satellite imagery provides repeated observations over large areas. This demonstration turns those observations into maps and records of vegetation trajectory: areas that appear stable, areas with a disturbance signal, and areas with a later recovery signal. It is designed to make it easier to find patterns, follow up locations on the ground, and review how evidence was assembled.</p>
         <p>The demonstration focuses on Curragh in Queensland. We chose Curragh because pinned monitoring outputs provide a concrete dataset to examine, and peer-reviewed research has already applied Landsat and LandTrendr to vegetation disturbance and recovery at the site. This gives the demonstration a locally relevant, research-informed starting point; its results and thresholds are specific to Curragh and should not be assumed to transfer to other mines.</p>
         <p>The intended outcome is a practical monitoring aid for mine rehabilitation and monitoring managers and a transparent evidence interface for regulators. The longer-term aim is to support site-specific, repeatable monitoring that can direct attention and help organize evidence—not to replace field assessment or statutory completion criteria.</p>
-        <p><strong>Beyond mine sites:</strong> the underlying approach could be adapted relatively quickly to monitor vegetation in other landscapes, subject to suitable imagery, local configuration and validation. This website shows a pinned snapshot of Curragh output from the working (but still developing) mine-rehab-monitor pipeline: the page itself does not run analyses for new areas, and Curragh's thresholds and results should not be assumed to apply elsewhere.</p>
+        <p><strong>Beyond mine sites:</strong> the underlying approach could be adapted relatively quickly to monitor vegetation in other landscapes, subject to suitable imagery, local configuration and validation. This website shows a pinned snapshot of Curragh output from the working (but still developing) monitoring pipeline: the page itself does not run analyses for new areas, and Curragh's thresholds and results should not be assumed to apply elsewhere.</p>
         <p><strong>Closer inspection:</strong> a future extension could combine the broad-area monitoring with higher-resolution imagery to help scrutinise locations flagged for management. Such imagery is not included here and would complement rather than replace field checks.</p>
-        <div class="report-note"><strong>What it does not establish:</strong> a mapped disturbance is not proof that mining caused it; a vegetation recovery label is not a rehabilitation-quality verdict; and this demonstration does not determine legal completion or compliance.</div>
+        <p class="report-meta">What this demonstration does not establish is set out in <a href="#limitations">Important boundaries</a>.</p>
 
         <h2 id="research-foundations">The peer-reviewed research behind the approach</h2>
         <p>These are not decorative citations: each paper informs a specific part of the method or its interpretation. The dashboard adapts those ideas to pinned Curragh data; citing a study does not mean that study validated this implementation.</p>
@@ -97,6 +97,7 @@
 
         <h2 id="limitations">Important boundaries</h2>
         <p>Specialists: the <a href="./methodology.html">Methodology &amp; data provenance</a> page tabulates method status, parameters, sensor comparability, 2022 confounding and the tenure disclosure.</p>
+        <div class="report-note"><strong>What it does not establish:</strong> a mapped disturbance is not proof that mining caused it; a vegetation recovery label is not a rehabilitation-quality verdict; and this demonstration does not determine legal completion or compliance.</div>
         <ul>
           <li>The outputs are real results from a working analysis pipeline that is still under development. This web demo shows a pinned, versioned historical snapshot of them; it does not run live analysis or make Earth Engine requests, and nothing is recalculated here.</li>
           <li>The two sensors remain separate. Their thresholds and products are not combined or cross-calibrated.</li>

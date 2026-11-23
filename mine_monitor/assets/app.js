@@ -184,8 +184,12 @@
       "Start from the map",
       "Switch between the pinned outputs, step through the years and click any 30 m cell to read its fitted trajectory, mapped disturbance history and rule-based class together."
     )}
-    <div class="notice warning demo-flag" role="note">
-      <p><strong>Real pipeline output, pinned as a historical, unreconciled snapshot.</strong> These maps come from a working analysis pipeline that is still under development; this page only displays its pinned output (15 November 2026 tenure snapshot; results not recalculated after the 19 November discrepancy). ${escapeHtml(data.disclosures.generalisation_caveat)} This view supports targeting and record-keeping; it does not replace field verification or statutory assessment, and it is not a current-tenure or regulatory determination. Areas are 30 m cell equivalents.</p>
+    <div class="notice demo-flag" role="note">
+      <p><strong>Real pipeline output.</strong> Explore pinned maps from a working analysis pipeline: step through the years and click any 30 m cell for its trajectory. This view supports targeting and record-keeping.</p>
+      <details>
+        <summary>Scope and limits of this snapshot</summary>
+        <p>These maps come from a pipeline that is still under development, and this page only displays its pinned output (15 November 2026 tenure snapshot; results not recalculated after the 19 November discrepancy). ${escapeHtml(data.disclosures.generalisation_caveat)} It does not replace field verification or statutory assessment, and it is not a current-tenure or regulatory determination. Areas are 30 m cell equivalents.</p>
+      </details>
     </div>
     <div id="map-explorer" class="map-explorer"></div>
     <p class="muted small">Related technical evidence: <button type="button" class="text-action" data-go-view="ndvi">Standalone NDVI viewer</button> · <button type="button" class="text-action" data-go-view="events">Event records</button> · <button type="button" class="text-action" data-go-view="timing">Annual timing &amp; thresholds</button> · <button type="button" class="text-action" data-go-view="methods">Hash-gate &amp; lineage checks</button> · <a href="./methodology.html">Methodology &amp; provenance</a></p>`;
@@ -199,8 +203,11 @@
     <div class="notice">
       <p><strong>What is NDVI?</strong> The Normalised Difference Vegetation Index is a satellite-based indicator of vegetation condition. Healthy vegetation typically absorbs red light for photosynthesis and reflects much of the near-infrared light, largely due to leaf structure. NDVI compares these reflected wavelengths on a scale from −1 to +1; higher values generally indicate more vigorous or denser vegetation. Changes can highlight areas worth investigating, but NDVI alone cannot diagnose plant health, assess the whole ecosystem or establish the cause of change.</p>
     </div>
-    <div class="notice warning ndvi-shell-note">
-      <p><strong>Interpretation limits:</strong> these are fitted values, not observations. Missing years remain gaps, Landsat and Sentinel-2 are not cross-calibrated, and matched controls provide context—not a causal estimate. The 2022 cohort remains internal QA-only.</p>
+    <div class="notice ndvi-shell-note">
+      <details>
+        <summary>Reading the fitted values</summary>
+        <p>These are fitted values, not observations. Missing years remain gaps, Landsat and Sentinel-2 are not cross-calibrated, and matched controls provide context—not a causal estimate. The 2022 cohort remains internal QA-only.</p>
+      </details>
     </div>
     <div class="notice">
       <p><strong>How do controls help?</strong> BACI means <em>Before–After, Control–Impact</em>: it compares change at a location of interest with change over the same period at a reference location, helping distinguish local change from broader conditions.</p>
@@ -634,11 +641,29 @@
         <a class="cta-secondary" href="mailto:${enquiryEmail}?subject=Monitoring%20project%20enquiry">Discuss a monitoring project</a>
       </div>
     </section>
-    <div class="notice warning demo-flag" role="note">
-      <p><strong>Real output from a working monitoring pipeline, still under development.</strong> This demo shows a pinned, historical snapshot of that output (<a href="https://github.com/damienogrady/mine-rehab-monitor">mine-rehab-monitor</a>): the web page does not run the analysis or query Earth Engine, and the classes are unvalidated. It retains a 15 November 2026 tenure snapshot; a 19 November comparison found a discrepancy (one 30 m cell outside the refreshed analysis area) and results have <strong>not been recalculated</strong>. Not for current-tenure or regulatory use.</p>
-    </div>
+    <section class="capabilities" aria-labelledby="capabilities-title">
+      <h2 id="capabilities-title">What the system does</h2>
+      <p>Mine Rehabilitation Monitor turns the public satellite record into a clear, traceable picture of how vegetation across a mine site has changed, year by year, from the 1980s to today.</p>
+      <div class="entry-cards">
+        <button type="button" class="start-action" data-go-view="mapexplorer"><span>01</span><strong>Trajectories and per-year class maps</strong><small>Satellite-derived greenness (NDVI) is fitted through time for every 30 m cell, showing where vegetation has recovered, stalled or been lost, and when. Each year's map uses only the data available up to that year. Click any cell to read its history. Explore →</small></button>
+        <button type="button" class="start-action" data-go-view="events"><span>02</span><strong>Potential disturbances, flagged</strong><small>Sudden, sustained drops in greenness are flagged with their timing and extent, so attention goes to places that merit a closer look. Open the event records →</small></button>
+        <button type="button" class="start-action" data-go-view="reporting"><span>03</span><strong>An auditable, reproducible record</strong><small>Every output is fingerprinted and tied to the imagery, settings and versions that produced it, and the checks can be re-run in your browser. Open evidence and reporting →</small></button>
+        <a class="start-action" href="./curragh-case-study.html"><span>04</span><strong>Worked example: Curragh case study</strong><small>Three real trajectories, read step by step. Read →</small></a>
+        <a class="start-action" href="./methodology.html"><span>05</span><strong>Methodology &amp; provenance</strong><small>Sources, parameters, versions and known limitations. Read →</small></a>
+      </div>
+      <p class="muted small">Two independent satellite records are used: Landsat (from 1988) and Sentinel-2 (from 2016), built on public data with no dependence on proprietary imagery. Impact-versus-control comparisons, comparison with your own field or high-resolution imagery, and per-rehabilitation-area reporting are part of the system being developed.</p>
+    </section>
+    <section class="audience" aria-labelledby="audience-title">
+      <h2 id="audience-title">Who it is for</h2>
+      <ul>
+        <li><strong>Mining companies</strong> tracking rehabilitation progress across large areas and building evidence over time.</li>
+        <li><strong>Environmental consultants</strong> who need a defensible, repeatable view of vegetation change to support their own assessments.</li>
+        <li><strong>Closure and rehabilitation specialists</strong> deciding where to inspect, and keeping a clear record of what the imagery showed and when.</li>
+      </ul>
+      <p>Reviewers can browse the results without specialist tools and see exactly how each output was made.</p>
+    </section>
     <section class="overview-block" aria-labelledby="overview-block-title">
-      <h2 id="overview-block-title">Demonstration at a glance</h2>
+      <h2 id="overview-block-title">The Curragh demonstration at a glance</h2>
       <dl class="stat-row">
         <div><dt>Tenure areas</dt><dd>14</dd></div>
         <div><dt>Observation record</dt><dd>Sentinel-2 2016–26<br><small>Landsat from 1988</small></dd></div>
@@ -646,39 +671,9 @@
         <div><dt>Analysis grid</dt><dd>30 m</dd></div>
       </dl>
     </section>
-    <section aria-labelledby="entry-title">
-      <h2 id="entry-title">Start here</h2>
-      <div class="entry-cards">
-        <button type="button" class="start-action" data-go-view="mapexplorer"><span>01</span><strong>Map explorer</strong><small>Start from the map: fitted NDVI, potential-disturbance onset and rule-based classes by year, with a cell's history on click.</small></button>
-        <a class="start-action" href="./curragh-case-study.html"><span>02</span><strong>Curragh case study</strong><small>Three real trajectories, with the limits of each.</small></a>
-        <button type="button" class="start-action" data-go-view="reporting"><span>03</span><strong>Evidence and reporting</strong><small>Inspect cohort summaries, control gates and a traceable record.</small></button>
-        <a class="start-action" href="./methodology.html"><span>04</span><strong>Methodology &amp; provenance</strong><small>Sources, parameters, versions and known limitations.</small></a>
-      </div>
-    </section>
-    <section class="case-study-card" aria-labelledby="case-study-title">
-      <h2 id="case-study-title">Case study: three trajectories at Curragh</h2>
-      <p>A sustained improvement, a possible disturbance and an ambiguous 2022 signal, drawn from the pinned data, with the limits of each.</p>
-      <a class="cta-secondary" href="./curragh-case-study.html">Read the Curragh case study →</a>
-    </section>
-    <section class="audience" aria-labelledby="audience-title">
-      <h2 id="audience-title">Who it is for</h2>
-      <p>Mining companies, environmental consultants, regulators and closure specialists who want an independent, traceable view of vegetation change. Satellite analysis supports targeting and record-keeping; it does not replace field verification or statutory assessment.</p>
-    </section>
     <section class="limits-summary" aria-labelledby="limits-title">
-      <h2 id="limits-title">Method and limitations in brief</h2>
-      <ul>
-        <li>One site (Curragh); thresholds are not general defaults and results do not transfer to other sites.</li>
-        <li>Vegetation classes are a rule-based adaptation, unvalidated, pending supervised validation.</li>
-        <li>NDVI-based patterns are monitoring signals, not proof of cause or a pass/fail rehabilitation verdict. 2022 attribution is under investigation (flood/wet-season confounding).</li>
-        <li>Flood-prone areas are a HAND screening proxy, not a statutory flood extent. Areas are 30 m cell equivalents, not surveyed areas.</li>
-        <li>Landsat and Sentinel-2 are not cross-calibrated; Sentinel-2 matched-control capacity is limited.</li>
-      </ul>
-      <p>
-        <a href="./approach-report.html#limitations">Full monitoring approach and limitations</a> ·
-        <button type="button" class="text-action" data-go-view="methods">Hash-gate &amp; lineage checks</button> ·
-        <a href="./methodology.html">Methodology &amp; data provenance</a> ·
-        <a href="./data-licensing.html">Data licensing</a> · full disclosures in the page footer.
-      </p>
+      <h2 id="limits-title">About this demonstration</h2>
+      <p>This is a pinned, historical snapshot of real output from a monitoring pipeline that is still under development, for one site (Curragh). Vegetation classes are unvalidated, results are monitoring signals rather than rehabilitation or compliance verdicts, and nothing here replaces field verification or statutory assessment. The tenure snapshot (15 November 2026) has not been recalculated after a later comparison. <a href="./approach-report.html#limitations">Read the full limitations</a> · <a href="./methodology.html">Methodology &amp; data provenance</a> · <a href="./data-licensing.html">Data licensing</a> · full disclosures in the page footer.</p>
     </section>
     <section class="credentials" aria-labelledby="credentials-title">
       <h2 id="credentials-title">Why this approach</h2>
@@ -762,7 +757,7 @@
       ${pageHeading(
         "Regulator reporting",
         "Pinned evidence for a reporting submission",
-        "A compact review pack for checking what the pinned monitoring outputs say, how the controls performed, and what remains uncertain. These records can support a submission workflow; they are not a completed regulatory report or a compliance finding.",
+        "A compact review pack for checking what the pinned monitoring outputs show, how the matched controls performed and how each figure traces back to its source. These records can support a submission workflow; they are an evidence aid, not a completed regulatory report.",
         true
       )}
       <a class="report-author" href="https://damienogrady.github.io/">
@@ -771,7 +766,7 @@
           <small>Independent remote sensing and GIS consultant</small></span>
       </a>
       <div class="page-purpose"><strong>Why these tables matter</strong><p>Cohort summaries show which mapped years and tiers are represented. Threshold sensitivities (on the Annual timing &amp; thresholds page) show how classification responds to alternative settings. Control gates show whether a comparison met pre-set quality requirements. Together, they let a reviewer trace a conclusion back to its limits instead of relying on a map alone.</p></div>
-      <div class="notice warning">All figures below are copied or counted from hash-pinned entities. No new analysis or synthesized result is presented.</div>
+      <div class="notice">All figures below are copied or counted from hash-pinned entities. No new analysis or synthesized result is presented.</div>
       <div class="spacer"></div>
       ${panel("Cohort ledger · fixed 2-cell display floor", `${cohortLedger}<p>${escapeHtml(item.timeline.fragility_note)}</p>`)}
       <div class="spacer"></div>
@@ -966,7 +961,7 @@
     );
     return `
       ${pageHeading(
-        "Matched-control gates, not effect claims",
+        "Quality-checked comparisons",
         `${item.label} control audit`,
         "Before comparing vegetation change, the analysis checks whether impact and reference pixels have enough suitable matches and pass quality rules. This page shows those checks—not the size of an environmental effect.",
         true
