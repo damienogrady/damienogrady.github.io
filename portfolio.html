@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio &mdash; Damien O&rsquo;Grady</title>
+<meta name="description" content="Portfolio: vegetation and ecosystem monitoring, water extent mapping, nature-related measurement systems (SDG, TNFD, SBTN), machine-learning classification, and groundwater modelling support.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/icon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<link rel="manifest" href="./ste.webmanifest">
+<meta name="theme-color" content="#102522">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1><a href="./index.html"><img src="./favicon.svg" alt="">Damien O&rsquo;Grady</a></h1>
+    <nav>
+      <a href="./portfolio.html">Portfolio</a>
+      <a href="./mine_monitor/">Mine monitor</a>
+      <a href="./index.html#demonstrations">Demonstrations</a>
+      <a href="./index.html#live">Live tools</a>
+      <a href="./index.html#heritage">Earlier work</a>
+      <a href="./background.html">Background</a>
+      <a href="./publications.html">Publications</a>
+      <a href="https://github.com/damienogrady">GitHub</a>
+      <a href="mailto:damien.ogrady@proton.me">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-hero wrap">
+    <h2>Portfolio</h2>
+    <p class="crosslink">I am a Principal Scientist at <a href="https://www.ngis.com.au/">NGIS</a>, Melbourne.</p>
+    <p>Systems and methods I have built, and who they are built for. Three headline problems organise my work: monitoring vegetation and ecosystems through satellite time-series &mdash; including rehabilitation monitoring of mine sites and other regulated disturbed ground &mdash; mapping water extent and change, and measuring progress towards nature- and climate-related commitments (SDG, TNFD, SBTN). All of it is Python-driven and orchestrated in code, with analysis that is traceable, defensible and reproducible.</p>
+  </div>
+
+  <section id="credentials">
+    <div class="wrap">
+      <h3>Credentials and approach</h3>
+      <div class="grid">
+        <article class="card service-card">
+          <h4>Technical grounding</h4>
+          <p>Trained in physics and applied mathematics, with a Masters and Ph.D. at James Cook University and over a decade in remote sensing analysis for the environment. See my <a href="./background.html">background</a> and <a href="./publications.html">publications</a>.</p>
+        </article>
+        <article class="card service-card">
+          <h4>Open-source tools</h4>
+          <p>Analysis built on established, publicly available satellite datasets, using open-source tools that people can keep and own.</p>
+        </article>
+        <article class="card service-card">
+          <h4>Auditability</h4>
+          <p>Reproducible processing, documented assumptions and traceable outputs. Commercial work is confidential, by the client organisations&rsquo; choice.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h3>The three pillars</h3>
+      <div class="grid">
+        <article class="card service-card">
+          <div class="pillar-art" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 53V25M32 39 19 26M32 33l13-14M32 29 24 16" />
+              <path d="M19 26c-1-8 3-12 11-11 0 7-3 11-11 11ZM45 19c1-8-3-12-11-11 0 7 3 11 11 11ZM24 16c0-7 3-10 8-10 1 6-2 10-8 10Z" />
+              <path d="M22 53h20" />
+            </svg>
+          </div>
+          <h4>Vegetation and ecosystem monitoring</h4>
+          <p><strong>Problem:</strong> Governments, landowners and regulators need to know what condition vegetation and ecosystems are in, how that&rsquo;s changing, and whether interventions are working. And it doesn&rsquo;t stop at natural ecosystems: operators of mine sites &mdash; and of any other site where regulators require monitoring and rehabilitation of disturbed ground &mdash; must produce objective evidence that disturbance is being managed and recovery is progressing.</p>
+          <p><strong>Built:</strong> Satellite time-series monitoring of vegetation extent, condition and change &mdash; habitat and vegetation mapping, fire scar and regrowth tracking, land-clearing and habitat-loss detection, fine-scale classification down to individual trees using machine-learning image segmentation. For disturbed-ground sites &mdash; mines, quarries, construction and demolition sites, corridors and other regulated operations &mdash; change detection over the full satellite record, customised to the site and monitored over time, in a form operators and regulators can use.</p>
+          <p><strong>Holds up:</strong> Time-series separates real trends from seasonal noise &mdash; a single image can mislead; a decade of them rarely does. For rehabilitation sites, that means recovery trajectories measured from the satellite record rather than asserted from inspections &mdash; matched-control comparisons that show whether an intervention actually worked, in the language regulators use. Methods documented and reproducible, which matters when a clearing-detection finding or a rehabilitation report becomes evidence in a compliance or planning dispute.</p>
+          <p class="crosslink">See the <a href="./mine_monitor/">mine rehabilitation monitor</a> for a working demonstration &mdash; Curragh only · pinned snapshot · not a live service. The system behind it is built and reusable: the monitoring can be applied to any site where regulators require monitoring or rehabilitation of disturbed ground. It is built for mine operators who must evidence rehabilitation progress, and the regulators and communities who scrutinise it. Satellite evidence complements field verification and statutory assessment; it does not replace them.</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="pillar-art" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 8c8 11 15 19 15 29a15 15 0 1 1-30 0c0-10 7-18 15-29Z" />
+              <path d="M8 48c6-3 11-3 17 0s11 3 17 0 9-3 14 0M12 56c5-2 9-2 14 0s9 2 14 0 8-2 12 0" />
+            </svg>
+          </div>
+          <h4>Water extent mapping and monitoring</h4>
+          <p><strong>Problem:</strong> Where the water is, where it was, and where it&rsquo;s going &mdash; floods as they happen, lakes and wetlands shrinking or growing, soil moisture across a catchment. Emergency-management agencies and water authorities are the natural users of this kind of product, and decisions hang on the numbers, so they have to hold up.</p>
+          <p><strong>Built:</strong> Water extent and change mapping from multispectral and radar (SAR) satellite data, from a single wetland to a whole catchment &mdash; flood extent maps for emergency response, time-series of lake and wetland extent, catchment-scale surface-water and soil-moisture monitoring. Automated Python pipelines rather than one-off runs, refreshed with each satellite pass.</p>
+          <p><strong>Holds up:</strong> Radar sees through cloud and darkness &mdash; flood mapping doesn&rsquo;t wait for weather. Every map is traceable, defensible and reproducible: source imagery, processing chain and parameters documented, so the analysis survives scrutiny and can be rerun or audited.</p>
+          <p class="crosslink">Related demonstrations: <a href="./index.html#demonstrations">Flood Extent Explorer and Aral Sea Waterline Change</a>.</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="pillar-art" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 17c-7-5-15-6-23-4v34c8-2 16-1 23 4 7-5 15-6 23-4V13c-8-2-16-1-23 4Z" />
+              <path d="M32 17v34M15 22c4 0 8 1 11 3M15 30c4 0 8 1 11 3M49 22c-4 0-8 1-11 3M49 30c-4 0-8 1-11 3" />
+            </svg>
+          </div>
+          <h4>Nature- and climate-related measurement systems</h4>
+          <p><strong>Problem:</strong> Boards, investors and regulators want numbers on progress towards nature- and climate-related commitments that survive an audit.</p>
+          <p><strong>Built:</strong> I designed and built the back end of systems that demonstrate and measure progress towards the Sustainable Development Goals and towards nature- and climate-related impacts and opportunities, following TNFD and SBTN guidance.</p>
+          <p><strong>Holds up:</strong> Every figure traces back to its source data and processing chain, so it can be rerun and audited.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h3>Related work</h3>
+      <div class="grid">
+        <article class="card service-card">
+          <h4>Environmental compliance monitoring</h4>
+          <p>Satellite-based monitoring of conditions attached to environmental approvals: clearing limits, waterway disturbance, rehabilitation progress. Documented and repeatable on schedule; built to survive regulatory and legal scrutiny.</p>
+          <p class="crosslink">See a working demonstration of this monitoring approach in the <a href="./mine_monitor/">mine rehabilitation monitor</a>.</p>
+        </article>
+        <article class="card service-card">
+          <h4>Machine-learning classification and image segmentation</h4>
+          <p>Custom land-cover and feature classification where off-the-shelf products fall short &mdash; trained, validated, and documented for the region and purpose.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h3>Groundwater modelling</h3>
+      <p><strong>Analysis support and collaboration.</strong> I work with hydrogeology teams on groundwater modelling as a collaborator and analysis-support provider, grounded in co-authored research. I contributed to the integrated hydrological model of the Stampriet Transboundary Aquifer System (STAS), spanning Botswana, Namibia and South Africa. The research was published in the 2022 UNESCO volume <em>Transboundary aquifers: challenges and the way forward</em>, including the chapter &ldquo;Recent advances with the integrated hydrological model of the Stampriet Transboundary Aquifer System.&rdquo;</p>
+      <p>Work with hydrogeology teams on spatial data assembly, model integration and reproducible workflows &mdash; not standalone expert hydrogeological consultancy.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h3>A niche born from two careers</h3>
+      <p>Before moving into remote sensing, I spent over a decade in Hong Kong&rsquo;s construction industry, working on some of the era&rsquo;s great civil engineering projects. I surveyed in the anchorage of the Tsing Ma Bridge, did planning and temporary works drafting on the Ting Kau Bridge, worked as Planning Manager for a maintenance depot on the KCRC West Rail works, and produced the Programme of Works for the Stonecutters Bridge tender (Costain&ndash;China Harbour&ndash;JFE joint venture). Later, in Australia, I built tracking systems for minesite steelwork projects. I combine that experience with satellite monitoring: progress tracking, vegetation and ground-condition monitoring, and change surveillance across operational sites. I also collaborate on, or provide analysis support for, work in engineering contexts without in-house remote sensing.</p>
+      <p><strong>Fine-scale ground movement measurement (InSAR).</strong> Millimetre-scale surface movement from radar interferometry &mdash; subsidence, ground deformation, structural settlement &mdash; as a component of monitoring programmes.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h3>How I work</h3>
+      <p>Python-driven geospatial pipelines, orchestrated in code. Open source preferred because people should own their toolchain, not rent it. Toolkit:</p>
+      <ul>
+        <li>Python (primary language for all pipeline development)</li>
+        <li>Google Earth Engine &mdash; large-area raster processing, time-series analysis</li>
+        <li>Google BigQuery &mdash; large vector datasets, accessed through Python</li>
+        <li>PostgreSQL / PostGIS</li>
+        <li>QGIS, GRASS GIS</li>
+        <li>Machine-learning classification and image segmentation</li>
+        <li>SAR processing; flood and water-extent mapping from Sentinel/ENVISAT-class sensors</li>
+        <li>Satellite time-series analysis (vegetation, fire scars, lake extent, air quality proxies)</li>
+        <li>InSAR interferometry &mdash; fine-scale ground movement measurement</li>
+        <li>Parallel processing on multi-node HPC networks</li>
+        <li>Web tool back ends (e.g. the Australian &Delta;R Calculator, delta-r-calc.jcu.io)</li>
+        <li>ArcGIS (experienced; prefer open source, but take Esri-mandated work)</li>
+        <li>Construction planning tools, historical: Primavera, Microsoft Project, TaskJuggler</li>
+      </ul>
+      <p>I aim for analysis that is <strong>traceable, defensible and reproducible</strong>. My peer-reviewed publications demonstrate the scientific rigour; commercial work is confidential (the organisations&rsquo; choice) and held to the same standard.</p>
+    </div>
+  </section>
+
+
+<footer class="wrap">
+  <p><strong>Damien O&rsquo;Grady</strong> &mdash; Principal Scientist, <a href="https://www.ngis.com.au/">NGIS</a>, Melbourne, Australia.
+  Methods underpinned by my own <a href="./publications.html">peer-reviewed publications</a>.
+  Personal contact: <a href="mailto:damien.ogrady@proton.me">Email</a> &middot; <a href="https://github.com/damienogrady">github.com/damienogrady</a>. Business enquiries: <a href="https://www.ngis.com.au/">via NGIS</a>.</p>
+</footer>
+
+</body>
+</html>

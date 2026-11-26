@@ -431,46 +431,6 @@ section .lede {
   box-shadow: var(--shadow);
 }
 
-.service-teaser {
-  padding: 0;
-}
-
-.service-teaser > .wrap {
-  padding-top: 12px;
-  padding-bottom: 12px;
-}
-
-.service-teaser p {
-  max-width: 48rem;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.training-table-wrap {
-  overflow-x: auto;
-  margin-top: 16px;
-}
-
-.training-table {
-  width: 100%;
-  min-width: 620px;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-}
-
-.training-table th,
-.training-table td {
-  padding: 10px 12px;
-  border-bottom: 1px solid var(--line);
-  text-align: left;
-  vertical-align: top;
-}
-
-.training-table th {
-  color: var(--forest);
-  background: #f0f4e9;
-}
-
 .publist {
   list-style: none;
   counter-reset: pub;
