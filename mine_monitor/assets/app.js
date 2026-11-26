@@ -627,10 +627,9 @@
       <p class="caption">T1 onset and recovery-onset areas are shown as hectares of 30 m cell-area equivalents; these are not surveyed or statutory areas. T2 and T3 remain separate.</p>`;
   };
 
-  const enquiryEmail = "damien.ogrady@proton.me";
   const renderHome = () => `
     <section class="hero" aria-labelledby="hero-title">
-      <p class="eyebrow">Independent remote sensing and GIS consultancy · Damien O’Grady</p>
+      <p class="eyebrow">Demonstration built by Damien O’Grady</p>
       <h1 id="hero-title">Independent evidence for mine rehabilitation.</h1>
       <p class="hero-sub">Monitor vegetation recovery, identify potential disturbances and build a traceable record of change, using satellite remote sensing and spatial analysis.</p>
       <ul class="chip-row" aria-label="Methods and data">
@@ -638,7 +637,6 @@
       </ul>
       <div class="hero-actions">
         <button type="button" class="cta-primary" data-go-view="mapexplorer">Explore the Curragh map →</button>
-        <a class="cta-secondary" href="mailto:${enquiryEmail}?subject=Monitoring%20project%20enquiry">Discuss a monitoring project</a>
       </div>
     </section>
     <section class="capabilities" aria-labelledby="capabilities-title">
@@ -654,7 +652,7 @@
       <p class="muted small">Two independent satellite records are used: Landsat (from 1988) and Sentinel-2 (from 2016), built on public data with no dependence on proprietary imagery. Impact-versus-control comparisons, comparison with your own field or high-resolution imagery, and per-rehabilitation-area reporting are part of the system being developed.</p>
     </section>
     <section class="audience" aria-labelledby="audience-title">
-      <h2 id="audience-title">Who it is for</h2>
+      <h2 id="audience-title">Who this kind of analysis is for</h2>
       <ul>
         <li><strong>Mining companies</strong> tracking rehabilitation progress across large areas and building evidence over time.</li>
         <li><strong>Environmental consultants</strong> who need a defensible, repeatable view of vegetation change to support their own assessments.</li>
@@ -682,11 +680,6 @@
         <li><strong>Technical independence.</strong> Built on public satellite datasets (Landsat and Sentinel-2), with no dependence on proprietary imagery.</li>
         <li><strong>Auditability.</strong> Documented, reproducible and traceable outputs: see the <a href="./methodology.html">methodology and provenance</a>.</li>
       </ul>
-    </section>
-    <section class="enquiry" aria-labelledby="enquiry-title">
-      <h2 id="enquiry-title">Interested in monitoring your mine site?</h2>
-      <p>Engagements are scoped to the site and questions, at one of three levels: <strong>assessment</strong>, <strong>monitoring</strong> or <strong>integrated monitoring</strong> alongside your existing programme. A preliminary site assessment is a low-commitment way to start. Satellite analysis complements field verification and statutory assessment; it does not replace them. More on the <a href="../services.html">services page</a>.</p>
-      <a class="cta-primary" href="mailto:${enquiryEmail}?subject=Monitoring%20project%20enquiry">Discuss a monitoring project</a>
     </section>
   `;
 
@@ -763,7 +756,7 @@
       <a class="report-author" href="https://damienogrady.github.io/">
         <img src="./branding/favicon.svg" width="32" height="32" alt="">
         <span><strong>Damien O’Grady</strong>
-          <small>Independent remote sensing and GIS consultant</small></span>
+          <small>Demonstration built by the author</small></span>
       </a>
       <div class="page-purpose"><strong>Why these tables matter</strong><p>Cohort summaries show which mapped years and tiers are represented. Threshold sensitivities (on the Annual timing &amp; thresholds page) show how classification responds to alternative settings. Control gates show whether a comparison met pre-set quality requirements. Together, they let a reviewer trace a conclusion back to its limits instead of relying on a map alone.</p></div>
       <div class="notice">All figures below are copied or counted from hash-pinned entities. No new analysis or synthesized result is presented.</div>
